@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>New in Coding Standard 4: Long Line Breaks Automated and 3 Legacy Prevention Fixers | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 87 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="new-in-coding-standard-4-long-line-breaks-automated-and-3-legacy-prevention-fixers"><a href="#new-in-coding-standard-4-long-line-breaks-automated-and-3-legacy-prevention-fixers">New in Coding Standard 4: Long Line Breaks Automated and 3 Legacy Prevention Fixers</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-03-Thu">Thursday, March 29, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/03/29/new-in-coding-standard-4-long-line-breaks-automated-and-3-legacy-prevention-fixers/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-03-29-new-in-coding-standard-4-long-line-breaks-automated-and-3-legacy-prevention-fixers.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        Legacy code prevention, lines automated and clear naming of classes in huge projects.
+That all is coming to Coding Standard 4 (still in alpha).
+<br><br>
+Are you curious what work will now these 4 news fixers handle for you? Look inside.
+                    </div>
+                </div>
+
+                
+                
+<h2 id="1-let-coding-standard-handle-line-length-for-you"><a href="#1-let-coding-standard-handle-line-length-for-you">1. Let Coding Standard handle Line Length for You</a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/749" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #749
+</a></p>
+<p><em>I'm so happy to announce this fixer, because it saved my so many times and also motivates me to use decoupling to smaller, SRP classes.</em></p>
+<p>If you use <code>LineLengthSniff</code>, you know it's painful to fix every error report it makes.</p>
+<pre><code class="language-yaml"># easy-coding-standard.yml
+services:
+    PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff:
+        absoluteLineLimit: 120</code></pre>
+<p>The most typical use case is constructor dependencies. You code start small:</p>
+<pre><code class="language-php">public function __construct(OneLittleDependency $oneLittleDependency)
+{
+}</code></pre>
+<p>Then it grows...</p>
+<pre><code class="language-php">public function __construct(OneLittleDependency $oneLittleDependency, AnotherLittleDependency $anotherLittleDependency)
+{
+}</code></pre>
+<p>...and grows...</p>
+<pre><code class="language-php">public function __construct(OneLittleDependency $oneLittleDependency, AnotherLittleDependency $anotherLittleDependency, $someParameter)
+{
+}</code></pre>
+<p>...sniff screams, so you inline it...</p>
+<pre><code class="language-php">public function __construct(
+    OneLittleDependency $oneLittleDependency,
+    AnotherLittleDependency $anotherLittleDependency,
+    $someParameter
+) {
+}</code></pre>
+<p>...then you refactor and merge 2 services to 1...</p>
+<pre><code class="language-php">public function __construct(
+    OneLittleDependency $oneLittleDependency,
+    $someParameter
+) {
+}</code></pre>
+<p>...and that is inconsistent and has no reason to be inlined, so you inline it...</p>
+<pre><code class="language-php">public function __construct(OneLittleDependency $oneLittleDependency, $someParameter) {
+}</code></pre>
+<p>...and that is one of many reasons people don't like to decouple classes and keep them small.</p>
+<p><br></p>
+<p>There are other cases, where parameters, arguments or array items can change up and down:</p>
+<pre><code class="language-diff">-$someObject = new SomeClass(
+-    $shortArg
+-);
++$someObject = new SomeClass($shortArg);</code></pre>
+<pre><code class="language-diff">-$someArray = ['superlooongArgumentsover120chars', 'superlooongArgumentsover120chars', 'superlooongArgumentsover120chars'];
++$someArray = [
++    'superlooongArgumentsover120chars',
++    'superlooongArgumentsover120chars',
++    'superlooongArgumentsover120chars'
++];</code></pre>
+<p>What if I told you that you'll have to never deal with this manually. Ever!</p>
+<p>Welcome <code>LineLengthFixer</code>.</p>
+<h3 id="how-to-register-it"><a href="#how-to-register-it">How to Register It?</a></h3>
+<pre><code class="language-yaml"># easy-coding-standard.yml
+services:
+    Symplify\CodingStandard\Fixer\LineLength\LineLengthFixer: ~</code></pre>
+<p>As you guessed, this fixer works with 120 chars as maximum line-size... by default ↓</p>
+<p><br></p>
+<h2 id="2-choose-line-length-to-match-your-display"><a href="#2-choose-line-length-to-match-your-display">2. Choose Line Length to Match Your Display</a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/747" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #751
+</a></p>
+<p>Do you prefer shorter or longer lines?</p>
+<p>Do you want use breaks only and not inline short code?</p>
+<p>Just configure it:</p>
+<pre><code class="language-yaml"># easy-coding-standard.yml
+services:
+    Symplify\CodingStandard\Fixer\LineLength\LineLengthFixer:
+        max_line_length: 100 # default: 120
+        break_long_lines: true # default: true
+        inline_short_lines: false # default: true</code></pre>
+<p><br></p>
+<h2 id="3-keep-legacy-far-away-with-new-code-forbiddenstaticfunctionsniff-code"><a href="#3-keep-legacy-far-away-with-new-code-forbiddenstaticfunctionsniff-code">3. Keep Legacy Far Away with New <code>ForbiddenStaticFunctionSniff</code></a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/722" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #722
+</a></p>
+<p>It started as one simple static method. A helper method. They say: it's ok to use static methods, when you know when to use them.
+And that's how cancer started to spread slowly and legally through Symplify code.</p>
+<p>One day you wake up and from 1 static method is 60 static factories all over your code - Dependency Injection for very poor. And that not the worst. When all code works and is easy to maintain, 1 static method can't hurt it, right?</p>
+<p><strong>Well until you need to replace one of nested dependencies that requires few more classes. And then you realized your work is to basically manually maintain dump of dependency injection container</strong> and that you're not coding anymore.</p>
+<p>It took weeks to get from this position back to clear dependency injection and I don't want to do it ever again. That's why this fixer was born.</p>
+<h3 id="how-to-register-it"><a href="#how-to-register-it">How to Register It?</a></h3>
+<pre><code class="language-yaml">services:
+    Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenStaticFunctionSniff: ~</code></pre>
+<p><br></p>
+<h2 id="4-prevent-amp-references-with-code-forbiddenstaticfunctionsniff-code"><a href="#4-prevent-amp-references-with-code-forbiddenstaticfunctionsniff-code">4. Prevent &amp; references with <code>ForbiddenStaticFunctionSniff</code></a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/692" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #692
+</a></p>
+<p>We all already know that <code>&amp;$references</code> are bad practise, since they increase cyclomatic complexity and hide dependency logic.</p>
+<pre><code class="language-php">function someFunction(&amp;$var)
+{
+    $var + 1;
+}</code></pre>
+<p>And that we should prefer explicit syntax:</p>
+<pre><code class="language-php">function someFunction($var)
+{
+    return $var + 1;
+}</code></pre>
+<p>I though I would never meet them again, but they somehow pop-up in PRs. So I made a Fixer for it!</p>
+<h3 id="how-to-register-it"><a href="#how-to-register-it">How to Register It?</a></h3>
+<pre><code class="language-php"># easy-coding-standard.yml
+services:
+    Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenReferenceSniff</code></pre>
+<p><br></p>
+<h2 id="5-clear-child-class-naming-once-and-for-all-with-code-classnamesuffixbyparentfixer-code"><a href="#5-clear-child-class-naming-once-and-for-all-with-code-classnamesuffixbyparentfixer-code">5. Clear Child Class Naming Once and For All with <code>ClassNameSuffixByParentFixer</code></a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/633" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #633
+</a></p>
+<p>Often in the code of private companies there are classes like:</p>
+<ul>
+<li><code>ProductSorter</code></li>
+<li><code>ProductSorter</code></li>
+<li><code>ProductSorter</code></li>
+</ul>
+<p>If you use PhpStorm and <em>open file</em> shortcut, you know where I aim.</p>
+<p>Now, imagine you want to update the Command that sorts Products by price to Redis database. Inside, it looks like this:</p>
+<pre><code class="language-php">final class ProductSorter extends Command
+{
+    // ...
+}</code></pre>
+<h3 id="which-one-do-you-open"><a href="#which-one-do-you-open">Which one do you open?</a></h3>
+<p>I could also ask, which one is the interface and which is its implementation, but <a href="https://github.com/Symplify/CodingStandard#class-should-have-suffix-by-parent-classinterface">there is already checker for that</a>.</p>
+<p>Probably each of them manually until you find the right one, which really sucks. That why not only methods names, <strong>but also class names should be as descriptive and as deterministic as possible</strong>. Like this:</p>
+<pre><code class="language-diff">-final class ProductSorter extends Command
++final class ProductSorterCommand extends Command
+ {
+     // ...
+ }</code></pre>
+<p>And then you have clear class names, that you're able to distinguish without their content:</p>
+<ul>
+<li><code>ProductSorterCommand</code></li>
+<li><code>ProductSorterRepository</code></li>
+<li><code>ProductSorterController</code></li>
+</ul>
+<p>And that's exactly what <code>ClassNameSuffixByParentFixer</code> helps you to do.</p>
+<h3 id="how-to-register-it"><a href="#how-to-register-it">How to Register It?</a></h3>
+<pre><code class="language-yaml"># easy-coding-standard.yml
+services:
+    Symplify\CodingStandard\Fixer\Naming\ClassNameSuffixByParentFixer: ~</code></pre>
+<p>And it handles all these cases for you:</p>
+<ul>
+<li><code>*Command</code></li>
+<li><code>*Controller</code></li>
+<li><code>*Repository</code></li>
+<li><code>*Presenter</code></li>
+<li><code>*Request</code></li>
+<li><code>*Response</code></li>
+<li><code>*EventSubscriber</code></li>
+<li><code>*FixerInterface</code></li>
+<li><code>*Sniff</code></li>
+<li><code>*Exception</code></li>
+<li><code>*Handler</code></li>
+</ul>
+<p>Note: since PHP Coding Standard tools don't modify your filesystem, after the fixer run don't forget to change file names as well.</p>
+<h3 id="your-type-is-missing"><a href="#your-type-is-missing">Your type is missing?</a></h3>
+<p>The fixer is configurable to comfort your needs, so just add it:</p>
+<pre><code class="language-yaml"># easy-coding-standard.yml
+services:
+    Symplify\CodingStandard\Fixer\Naming\ClassNameSuffixByParentFixer:
+        parent_types_to_suffixes:
+            '*Control': Control</code></pre>
+<p><br><br></p>
+<p>Happy sniffing and fixing!</p>
+
+                <br>
+
+                
+    <hr class="mt-4 mb-lg-5">
+
+    Do you want more on this topic? You might like these <strong>related posts</strong>:
+
+            <a href="/blog/2017/08/21/5-useful-rules-from-symplify-coding-standard">5 Useful Rules From Symplify Coding Standard</a>,             <a href="/blog/2017/12/17/new-in-symplify-3-doc-block-cleaner-fixer">New in Symplify 3: DocBlock Cleaner Fixer</a>,             <a href="/blog/2018/01/01/new-in-symplify-3-4-time-saving-coding-standard-checkers">New in Symplify 3: 4 Time-saving Coding Standard Checkers</a>,             <a href="/blog/2018/03/26/new-in-easy-coding-standard-4-clean-symfony-standard-with-yaml-and-services">New in Easy Coding Standard 4: Clean Symfony Standard with Yaml and Services</a>    
+    <br>
+    <br>
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="New in Coding Standard 4: Long Line Breaks Automated and 3 Legacy Prevention Fixers" />
+    <meta property="og:description" content="Legacy code prevention, lines automated and clear naming of classes in huge projects.
+That all is coming to Coding Standard 4 (still in alpha).
+
+Are you curious what work will now these 4 news fixers handle for you? Look inside." />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/03/29/new-in-coding-standard-4-long-line-breaks-automated-and-3-legacy-prevention-fixers" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="New in Coding Standard 4: Long Line Breaks Automated and 3 Legacy Prevention Fixers" />
+    <meta name="twitter:description" content="Legacy code prevention, lines automated and clear naming of classes in huge projects.
+That all is coming to Coding Standard 4 (still in alpha).
+
+Are you curious what work will now these 4 news fixers handle for you? Look inside." />

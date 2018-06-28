@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Run Symfony Processes Asynchronously | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 75 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="how-to-run-symfony-processes-asynchronously"><a href="#how-to-run-symfony-processes-asynchronously">How to Run Symfony Processes Asynchronously</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-02-Mon">Monday, February 5, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/02/05/how-to-run-symfony-processes-asynchronously/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-02-05-how-to-run-symfony-processes-asynchronously.md">Typo? Fix me, please</a>
+        </li>
+    
+            <li class="list-inline-item pull-right">
+                        <a href="https://github.com/TomasVotruba/tomasvotruba.cz/tree/master/tests/Posts/Year{post->getDateInFormat('Y'))/ProcessAsync" class="badge badge-success">
+                <em class="fa fa-fw fa-thumbs-up"></em> Tested
+            </a>
+        </li>
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        It takes quite a long time to split Symplify <a href="https://github.com/Symplify/Monorepo">monorepo</a> packages: exactly <strong>420 s for 8 packages</strong> of Symplify.
+<br><br>
+Could we go 200 % faster by putting processes from serial to parallel?
+                    </div>
+                </div>
+
+                
+                
+<h2 id="process-run-one-by-one"><a href="#process-run-one-by-one">Process Run One by One</a></h2>
+<p>This is our code now. Each process waits on each other - one is finished, then next starts.</p>
+<pre><code class="language-php">foreach ($splitConfiguration as $directory =&gt; $repository) {
+    $process = new Process(sprintf('git subsplit %s:%s', $directory, $repository));
+    $process-&gt;run();
+
+    // here the process is finished
+    if (! $process-&gt;isSuccessful()) {
+        throw new PackageToRepositorySplitException($process-&gt;getErrorOutput());
+    }
+
+    // report exactly what happened, so it's easier to know result and debug
+    $symfonyStyle-&gt;success(sprintf(
+        'Split from "%s" to "%s" is done',
+        $directory,
+        $repository
+    ));
+}</code></pre>
+<h2 id="how-to-go-async-in-php"><a href="#how-to-go-async-in-php">How to Go Async in PHP?</a></h2>
+<p>We tried <a href="https://github.com/spatie/async">spatie/async</a> which has very nice README at first sight and works probably very well for simple functions. But it turned out to be rather magic <a href="https://github.com/spatie/async/blob/master/src/Runtime/ParentRuntime.php">by passing service as serialized string</a> to <a href="https://github.com/spatie/async/blob/master/src/Runtime/ChildRuntime.php">CLI that desirializes it and runs on own thread</a>. It also caused other process commands fail on success message. It is probably good enought for Laravel, but not for my <a href="https://github.com/jupeter/clean-code-php#solid">SOLID standards</a>.</p>
+<h3 id="what-are-the-other-options"><a href="#what-are-the-other-options">What are the Other options?</a></h3>
+<p>We could go <a href="https://github.com/amphp/amp">amp</a> or <a href="https://reactphp.org/">reactphp</a>, but wouldn't that be an overkill?</p>
+<p>There is also faster way like <a href="https://github.com/splitsh/lite">splitsh/lite</a>, but <strong>we aim on PHP + Git combination so PHP developers could extend the code</strong>.</p>
+<p>Luckily, Symfony Process already <strong>allows <a href="https://symfony.com/doc/current/components/process.html#running-processes-asynchronously">standalone process</a></strong> without waiting on each other.</p>
+<h2 id="what-we-actually-need"><a href="#what-we-actually-need">What We Actually Need?</a></h2>
+<p>Picking the right tool is important, since it vendor locks our code to package, but lets step back a little.</p>
+<p><strong>What is the exact goal we need?</strong></p>
+<ol>
+<li>Run all processes at once</li>
+<li>Wait until they're finished</li>
+<li>Report their success/error status</li>
+</ol>
+<h2 id="1-to-run-all-processes-at-once"><a href="#1-to-run-all-processes-at-once">1. To run all Processes at Once</a></h2>
+<pre><code class="language-php">$runningProccesses = [];
+
+foreach ($splitConfiguration as $directory =&gt; $repository) {
+    $process = new Process(sprintf('git subsplit %s:%s', $directory, $repository));
+    // start() doesn't wait until the process is finished, oppose to run()
+    $process-&gt;start();
+
+    // store process for later, so we evaluate it's finished
+    $runningProccesses[] = $process;
+}</code></pre>
+<p>This foreach starts all processes in parallel. Without knowing they're finished or not.</p>
+<p><strong>Don't forget to check that your CPU is not burned by running many processes at once</strong> by limiting concurrency.
+In our case it's only 8, so we survive this.</p>
+<h2 id="2-wait-until-they-re-finished"><a href="#2-wait-until-they-re-finished">2. Wait Until They're Finished</a></h2>
+<pre><code class="language-php">while (count($activeProcesses)) {
+    foreach ($activeProcesses as $i =&gt; $runningProcess) {
+        // specific process is finished, so we remove it
+        if (! $runningProcess-&gt;isRunning()) {
+            unset($activeProcesses[$i]);
+        }
+
+        // check every second
+        sleep(1);
+    }
+}
+
+// here we know that all are finished</code></pre>
+<h2 id="3-report-their-success-error-status"><a href="#3-report-their-success-error-status">3. Report their Success/Error Status</a></h2>
+<pre><code class="language-php">$symfonyStyle-&gt;success('Split was successful');</code></pre>
+<p>But how useful is this message compared to previous one?</p>
+<pre><code class="language-php">$symfonyStyle-&gt;success(sprintf(
+    'Split from "%s" to "%s" is done',
+    $directory,
+    $repository
+));</code></pre>
+<p>And what if any processes failed?</p>
+<h3 id="let-s-improve-this"><a href="#let-s-improve-this">Let's improve this</a></h3>
+<pre><code class="language-diff"> $runningProccesses = [];
++$allProcessInfos = [];
+
+ foreach ($splitConfiguration as $directory =&gt; $repository) {
+     $process = new Process(sprintf('git subsplit %s:%s', $directory, $repository));
+     $process-&gt;start();
+
+     $runningProccesses[] = $process;
++    // value object with types would be better and faster here, this is just example
++    $allProcessInfos[] = [
++        'process' =&gt; $process,
++        'directory' =&gt; $subdirectory,
++        'repository' =&gt; $repository
++    ];
+ }</code></pre>
+<p>So final reporting would look like this:</p>
+<pre><code class="language-php">foreach ($allProcessInfos as $processInfo) {
+    /** @var Process $process */
+    $process = $processInfo['process'];
+    if (! $process-&gt;isSuccessful()) {
+        throw new PackageToRepositorySplitException($process-&gt;getErrorOutput());
+    }
+
+    $symfonyStyle-&gt;success(sprintf(
+        'Push of "%s" directory to "%s" repository was successful',
+        $processInfo['directory'],
+        $processInfo['repository']
+    ));
+}</code></pre>
+<h3 id="speed-up-from-420-to-139-s"><a href="#speed-up-from-420-to-139-s">Speed up From 420 to 139 s</a></h3>
+<p>Symplify has 8 packages to build at the moment. Putting split commands to async had amazing improvement!</p>
+<p><a href="https://github.com/Symplify/Symplify/pull/620" class="btn btn-dark btn-sm">
+<em class="fa fa-github fa-fw"></em>
+See pull-request #620
+</a></p>
+<p>That's it!</p>
+<p><br><br></p>
+<p>pyHpa ansyc rusn!</p>
+
+                <br>
+
+                
+
+                                    <div class="mt-5 mb-5 card card-bigger">
+                        <div class="card-body">
+                                                        <p>
+                                <strong>This Post is Tested, Make it Last Forever</strong>
+                            </p>
+
+                            <p>
+                                The final code is tested (<a href="https://github.com/TomasVotruba/tomasvotruba.cz/tree/master/tests/Posts/Year2018/ProcessAsync"><em class="fa fa-fw fa-github"></em>see it on Github</a>) and is the best solution in time being.
+                            </p>
+
+                            <p>
+                                Thanks to tests this code:
+                                <ul>
+                                    <li><strong>always run against the most recent dependencies</strong></li>
+                                    <li>will get updates with just a little work</li>
+                                    <li>will be useful for as long as possible</li>
+                                </ul>
+                            </p>
+
+                            <p>
+                                Read more <a href="https://pehapkari.cz/blog/2017/01/12/why-articles-with-code-examples-should-be-CI-tested">about tested posts as they're essential for post's lifetime</a>.</p>
+                            <p>
+                                <strong>Without tests the post won't make it through next <a href="https://semver.org/#spec-item-8">major</a> release</strong> and it's long tail effect would spread obsolete practise.
+                            </p>
+                        </div>
+                    </div>
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Run Symfony Processes Asynchronously" />
+    <meta property="og:description" content="It takes quite a long time to split Symplify monorepo packages: exactly 420 s for 8 packages of Symplify.
+
+Could we go 200 % faster by putting processes from serial to parallel?" />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/02/05/how-to-run-symfony-processes-asynchronously" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Run Symfony Processes Asynchronously" />
+    <meta name="twitter:description" content="It takes quite a long time to split Symplify monorepo packages: exactly 420 s for 8 packages of Symplify.
+
+Could we go 200 % faster by putting processes from serial to parallel?" />

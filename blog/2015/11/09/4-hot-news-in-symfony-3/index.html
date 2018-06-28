@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>4 Hot News in Symfony 3 | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 2 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="4-hot-news-in-symfony-3"><a href="#4-hot-news-in-symfony-3">4 Hot News in Symfony 3</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2015-11-Mon">Monday, November 9, 2015</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2015/11/09/4-hot-news-in-symfony-3/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2015/2015-11-09-4-hot-news-in-symfony-3.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        In November 2015 except for a <a href="https://wiki.php.net/rfc/php7timeline">PHP 7</a> and <a href="https://www.drupal.org/node/2605142">Drupal 8</a>,
+Symfony 3 is about to come.
+<br><br>
+<strong>What changes and news it brings?</strong>
+                    </div>
+                </div>
+
+                
+                
+<p>Symfony already knows that a lot. The new version places great emphasis on the <a href="https://symfony.com/blog/making-the-symfony-experience-exceptional">DX (developer experience)</a>. It brings us a <strong>simpler and more straightforward API</strong>, <strong>better decoupled components</strong>, <strong>standards <a href="https://www.php-fig.org/psr/psr-3/">PSR-3</a> and <a href="https://symfony.com/doc/current/cookbook/psr7.html">PSR-7</a> integration</strong>. A lot of other innovations that will make writing applications just got more fun.</p>
+<h2 id="when-is-what-version-out"><a href="#when-is-what-version-out">When is What Version Out?</a></h2>
+<p>Have you migrated from Symfony 1 to 2 and do you want to avoid a similar massacre? Don't worry - although there are lot of news, Symfony now respects <a href="https://symfony.com/doc/current/contributing/code/bc.html">backward compatibility promise</a>.</p>
+<p>Migration Symfony 2 to 3 will be greatly simplified by the fact that <strong>along with the version 3 will be released and version 2.8</strong>. <strong>It will have all the new feature in version 3 and will include BC layer to the 2.x series</strong>. Version 2.8 will be long term supported (LTS) - so you can <strong>count on the support until the end of 2018</strong>.</p>
+<p><br></p>
+<div class="text-center">
+    <img src="/assets/images/posts/2015/symfony3/release-plan.png"><br><em>Version 2.8 will LTS. The first LTS new series will be up to 3.3 (to be released in May 2017).</em>
+</div>
+<p><br></p>
+<p>What are the 2 main differences between 3.0 and 2.8 then?</p>
+<ul>
+<li>min. PHP version 5.5</li>
+<li>removing all deprecated code that provides compatibility to the BC 2.x (~ 10% of the code)</li>
+</ul>
+<h2 id="and-now-the-most-expected-4-news"><a href="#and-now-the-most-expected-4-news">And now The Most Expected 4 News</a></h2>
+<h3 id="1-service-autowiring"><a href="#1-service-autowiring">1. Service Autowiring</a></h3>
+<p><a href="https://github.com/symfony/symfony/pull/15613" class="btn btn-dark btn-sm">
+<em class="fa fa-github fa-fw"></em>
+See pull-request
+</a></p>
+<p>Symfony now supports constructor autowiring. When you are creating a service definition so you can turn on <code>autowiring</code> and skip the manual passing arguments.</p>
+<p>Autowiring is quite popular in the Czech Republic due to bundles like <a href="https://github.com/skrz/autowiring-bundle">Skrz</a> or <a href="https://github.com/kutny/autowiring-bundle">Kutny</a></p>
+<p><strong>How it looks like in practice?</strong></p>
+<p>Earlier long registration</p>
+<pre><code class="language-yaml"># services.yml
+
+services:
+    myService:
+        class: MyBundle\MyService
+        arguments: [ @dependency1, @dependency2 ]
+
+    dependency1:
+        class: MyBundle\Dependency1
+
+    dependency2:
+        class: MyBundle\Dependency2</code></pre>
+<p>Now you can cut to</p>
+<pre><code class="language-yaml"># services.yml
+
+services:
+    myService:
+        class: MyBundle\MyService
+        autowiring: true</code></pre>
+<p><strong>How does it work?</strong></p>
+<p>Dependency Injection container analyze constructor and services:</p>
+<ul>
+<li>if the services are available → forward them</li>
+<li>if not → is registered as a private service</li>
+</ul>
+<p><strong>What about the interface?</strong></p>
+<p>Instead of a specific type of service you require an interface that implements the service. But what if we have multiple services to one interface (typical chain pattern)? Just for the service explicitly state:</p>
+<pre><code class="language-yaml"># services.yml
+
+services:
+    dependency1:
+        class: MyBundle\Dependency1
+        autowiring_types: MyBundle\MyInterface</code></pre>
+<hr>
+<h3 id="2-more-logical-folders"><a href="#2-more-logical-folders">2. More Logical Folders</a></h3>
+<p>Symfony 3 full-stack brings order. Get rid of chaos in the <code>/app</code> folder.</p>
+<p><strong>How?</strong></p>
+<p>Temporary files, logs, settings for PHPUnit, console files...</p>
+<p>All this is now obvious location separate from the code of our application.</p>
+<p><br></p>
+<div class="text-center">
+    <img src="/assets/images/posts/2015/symfony3/directory-structure.png" class="img-thumbnail"></div>
+<p><br></p>
+<p>Tests you can run simply in command line via <code>vendor/bin/phpunit</code>.</p>
+<hr>
+<h3 id="3-symfony-profiler-in-a-new-jacket"><a href="#3-symfony-profiler-in-a-new-jacket">3. Symfony Profiler in a New Jacket</a></h3>
+<p><a href="https://github.com/symfony/symfony/pull/15523" class="btn btn-dark btn-sm">
+<em class="fa fa-github fa-fw"></em>
+See pull-request
+</a></p>
+<p>For the programmer it is important not only to clear the code, but also arranged the meta-information about the application. Those in Symfony easily displayed using Symfony Profiler.</p>
+<p>He had displayed so much information that it began to lose programmer. After 4 years he has finally made flat design.</p>
+<p>Important information and above all error messages are now much easier to read.</p>
+<p><br></p>
+<div class="text-center">
+    <img src="/assets/images/posts/2015/symfony3/profiler-before-after.png" style="max-width:60%" class="img-thumbnail"></div>
+<p><br></p>
+<div class="text-center">
+    <img src="/assets/images/posts/2015/symfony3/profiler-old-new.png" class="img-thumbnail"></div>
+<p><br></p>
+<div class="text-center">
+    <img src="/assets/images/posts/2015/symfony3/profiler-go-back.gif" style="max-width:60%" class="img-thumbnail"><br><em>Easy to get from profiler back to page</em>
+</div>
+<hr>
+<h3 id="4-micro-kernel"><a href="#4-micro-kernel">4. Micro Kernel</a></h3>
+<p><a href="https://github.com/symfony/symfony/pull/15990" class="btn btn-dark btn-sm">
+<em class="fa fa-github fa-fw"></em>
+See pull-request
+</a></p>
+<p>Great joy will have smaller applications developers, who enjoy the comfort of the ecosystem full-stack Symfony. A few days ago, on November 5, was added to FrameworkBundle <strong>Micro Kernel</strong>.</p>
+<p>That is precisely suited to applications that require simple configuration, bundle and that Silex enough.</p>
+<p>Micro Kernel namely:</p>
+<ul>
+<li>requires no additional configuration files</li>
+<li>allows extension without adding bundles</li>
+<li>supports routing</li>
+</ul>
+<p><strong>How does the Micro Kernel looks like?</strong></p>
+<pre><code class="language-php">&lt;?php
+
+use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
+use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
+use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Routing\RouteCollectionBuilder;
+
+class ConcreteMicroKernel extends Kernel
+{
+    use MicroKernelTrait;
+
+    public function halloweenAction()
+    {
+        return new Response('halloween');
+    }
+
+    public function registerBundles()
+    {
+        return [new FrameworkBundle()];
+    }
+
+    protected function configureRoutes(RouteCollectionBuilder $routes)
+    {
+        $routes-&gt;add('/', 'kernel:halloweenAction');
+    }
+
+    protected function configureContainer(ContainerBuilder $containerBuilder, LoaderInterface $loader)
+    {
+        $containerBuilder-&gt;loadFromExtension('framework', [
+            'secret' =&gt; '$ecret',
+        ]);
+
+        $containerBuilder-&gt;setParameter('title', 'Symfony 3 is painless');
+    }
+}</code></pre>
+<hr>
+<h2 id="now-you-know"><a href="#now-you-know">Now you know...</a></h2>
+<ul>
+<li>That version 2.8 will LTS and released along with version 3.0.</li>
+<li>How did autowiring saves work when writing the definition of services.</li>
+<li>How do you clean up the ingredients <code>/app</code> to make it make sense.</li>
+<li>That work with the profiler will be much clearer.</li>
+<li>And for small applications you available Micro Kernel.</li>
+</ul>
+<h3 id="in-symfony-they-know"><a href="#in-symfony-they-know">In Symfony they Know...</a></h3>
+<p><em>When the programmer may resort to more simple solution, he or she will.</em></p>
+<p>Therefore, they are trying to use it without its obstacles.</p>
+<p><br></p>
+<div class="text-center">
+    <img src="/assets/images/posts/2015/symfony3/you-got-this-meme.png" class="img-thumbnail"></div>
+
+                <br>
+
+                
+    <hr class="mt-4 mb-lg-5">
+
+    Do you want more on this topic? You might like these <strong>related posts</strong>:
+
+            <a href="/blog/2015/12/20/the-best-of-symfonycon-2015">The Best of SymfonyCon 2015</a>    
+    <br>
+    <br>
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="4 Hot News in Symfony 3" />
+    <meta property="og:description" content="In November 2015 except for a PHP 7 and Drupal 8,
+Symfony 3 is about to come.
+
+What changes and news it brings?" />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2015/11/09/4-hot-news-in-symfony-3" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="4 Hot News in Symfony 3" />
+    <meta name="twitter:description" content="In November 2015 except for a PHP 7 and Drupal 8,
+Symfony 3 is about to come.
+
+What changes and news it brings?" />

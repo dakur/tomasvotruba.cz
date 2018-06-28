@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Rectify: Turn All Action Injects to Constructor Injection in Your Symfony Application | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 104 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="rectify-turn-all-action-injects-to-constructor-injection-in-your-symfony-application"><a href="#rectify-turn-all-action-injects-to-constructor-injection-in-your-symfony-application">Rectify: Turn All Action Injects to Constructor Injection in Your Symfony Application</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-05-Thu">Thursday, May 10, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/05/10/rectify-turn-all-action-injects-to-constructor-injection-in-your-symfony-application/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-05-10-rectify-turn-all-action-injects-to-constructor-injection-in-your-symfony-application.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        Action Injections are much fun, but it can turn your project to legacy very fast. How to <strong>refactor out of the legacy back to constructor injection</strong> and still keep that smile on your face?
+                    </div>
+                </div>
+
+                
+                
+<p>I wrote about <a href="/blog/2018/04/23/how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection">How to Slowly Turn your Symfony Project to Legacy with Action Injection</a> a few weeks ago. It surprised me that <strong>the approach had mostly positive <a href="/blog/2018/04/23/how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection/#comments">feedback</a></strong>:</p>
+<blockquote class="blockquote">
+    Couldn't agree more with pretty much everything said! Action injection makes it really confusing on whether an object is treated stateful or stateless (very grey area with the Session for example).
+    <footer class="blockquote-footer text-right">Iltar van der Berg</footer></blockquote>
+<blockquote class="blockquote">
+    I'm a Symfony trainer and I'm told to teach people how to use Symfony and talk about this injection pattern. Sob.
+    <footer class="blockquote-footer text-right">Alex Rock</footer></blockquote>
+<blockquote class="blockquote">
+    I'm working on a Project that uses action injection pattern and I hate it. I like autowiring but the whole idea about action injection is broken. And this project is in sf28 do we don't use autowiring. Maintainance and development with this pattern is a total nightmare.
+    <footer class="blockquote-footer text-right">A</footer></blockquote>
+<p><br></p>
+<p>It's natural to <strong>try new patterns with an open heart</strong> and validate them in practice, but <strong>what if</strong> you find this way as not ideal and want to go to constructor injection instead?</p>
+<p>How would you change all your 50 controllers with action injections...</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace App\Controller;
+
+final class SomeController
+{
+    public function detail(int $id, Request $request, ProductRepository $productRepository)
+    {
+        $this-&gt;validateRequest($request);
+        $product = $productRepository-&gt;find($id);
+        // ...
+    }
+}</code></pre>
+<p><strong>...to the constructor injection:</strong></p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace App\Controller;
+
+final class SomeController
+{
+    /**
+     * @var ProductRepository
+     */
+    private $productRepository;
+
+    public function __construct(ProductRepository $productRepository)
+    {
+        $this-&gt;productRepository = $productRepository;
+    }
+
+    public function detail(int $id, Request $request)
+    {
+        $this-&gt;validateRequest($request);
+        $product = $this-&gt;productRepository-&gt;find($id);
+        // ...
+    }
+}</code></pre>
+<h3 id="how-to-waste-week-in-1-team"><a href="#how-to-waste-week-in-1-team">How to Waste Week in 1 Team</a></h3>
+<ul>
+<li>50 controllers, 4 actions per each → 200 services</li>
+<li>some of them are duplicated</li>
+<li>identify services, <a href="https://symfony.com/doc/current/controller.html#controller-request-argument"><code>Request</code> objects</a> and <a href="https://symfony.com/doc/current/controller/argument_value_resolver.html">Argument Resolver objects</a></li>
+<li>code-reviews and discussions that might take up-to 5-10 days</li>
+<li>and rebase on new merged PRs... well, you have 4-10 hours of team-work wasted ahead of you.</li>
+</ul>
+<p><br></p>
+<p><strong>I find the time of my team very precious</strong>, don't you? So I Let Rector do the work.</p>
+<h2 id="3-steps-to-instant-refactoring-of-all-controllers"><a href="#3-steps-to-instant-refactoring-of-all-controllers">3 Steps to Instant Refactoring of All Controllers</a></h2>
+<h3 id="1-install-rector"><a href="#1-install-rector">1. Install Rector</a></h3>
+<pre><code class="language-bash">composer install rector/rector --dev</code></pre>
+<h3 id="2-prepare-config"><a href="#2-prepare-config">2. Prepare Config</a></h3>
+<p>Import the <code>action-injection-to-constructor-injection</code> level and configure your Kernel class name.</p>
+<pre><code class="language-yaml"># rector.yml
+imports:
+    - { resource: 'vendor/rector/rector/config/level/architecture/action-injection-to-constructor-injection.yml' }
+
+parameters:
+    kernel_class: 'App\Kernel' # the default value</code></pre>
+<p><br></p>
+<p>Do you have <code>App\Kernel</code> in your application? Use <code>--level</code> in CLI this instead of <code>rector.yml</code>:</p>
+<pre><code class="language-bash">vendor/bin/rector ... --level action-injection-to-constructor-injection</code></pre>
+<h3 id="3-run-rector-on-your-code"><a href="#3-run-rector-on-your-code">3. Run Rector on Your Code</a></h3>
+<pre><code class="language-bash">vendor/bin/rector process /app --dry-run</code></pre>
+<p>You should see diffs like:</p>
+<pre><code class="language-diff"> &lt;?php declare(strict_types=1);
+
+ namespace App\Controller;
+
+ final class SomeController
+ {
++    /**
++     * @var ProductRepository
++     */
++    private $productRepository;
++
++    public function __construct(ProductRepository $productRepository)
++    {
++        $this-&gt;productRepository = $productRepository;
++    }
++
+-    public function detail(int $id, Request $request, ProductRepository $productRepository)
++    public function detail(int $id, Request $request)
+     {
+         $this-&gt;validateRequest($request);
+-        $product = $productRepository-&gt;find($id);
++        $product = $this-&gt;productRepository-&gt;find($id);
+         // ...
+     }
+ }</code></pre>
+<h3 id="3-run-it"><a href="#3-run-it">3. Run It</a></h3>
+<p>Are all looking good? Run it:</p>
+<pre><code class="language-bash">vendor/bin/rector process /app</code></pre>
+<h2 id="clean-code-done-but-what-about-beautiful"><a href="#clean-code-done-but-what-about-beautiful">Clean Code... Done, but What About Beautiful?</a></h2>
+<p>You've probably noticed that code itself is not looking too good. Rector's job is not to clean, but to change the code. It's not a hipster designer, but rather a thermonuclear engineer. <strong>That's why there are coding standards. You can apply your own or if not good enough use Rector's prepared set</strong>:</p>
+<pre><code class="language-bash">composer require symplify/easy-coding-standard --dev
+vendor/bin/ecs --config vendor/rector/rector/ecs-after-rector.yml --fix</code></pre>
+<p>And your code is now both <strong>refactored and clean</strong>. That's it!</p>
+<p><br><br></p>
+<p>Happy instant refactoring!</p>
+
+                <br>
+
+                
+    <hr class="mt-4 mb-lg-5">
+
+    Do you want more on this topic? You might like these <strong>related posts</strong>:
+
+            <a href="/blog/2018/04/02/rectify-turn-repositories-to-services-in-symfony">Rectify: Turn All Doctrine Repositories From Inheritance To Composition in Seconds</a>,             <a href="/blog/2018/04/23/how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection">How to Slowly Turn your Symfony Project to Legacy with Action Injection</a>    
+    <br>
+    <br>
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Rectify: Turn All Action Injects to Constructor Injection in Your Symfony Application" />
+    <meta property="og:description" content="Action Injections are much fun, but it can turn your project to legacy very fast. How to refactor out of the legacy back to constructor injection and still keep that smile on your face?" />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/05/10/rectify-turn-all-action-injects-to-constructor-injection-in-your-symfony-application" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Rectify: Turn All Action Injects to Constructor Injection in Your Symfony Application" />
+    <meta name="twitter:description" content="Action Injections are much fun, but it can turn your project to legacy very fast. How to refactor out of the legacy back to constructor injection and still keep that smile on your face?" />

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>New in Symplify 3: Statie Generators | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 67 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="new-in-symplify-3-statie-generators"><a href="#new-in-symplify-3-statie-generators">New in Symplify 3: Statie Generators</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2017-12-Mon">Monday, December 11, 2017</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2017/12/11/new-in-symplify-3-statie-generators/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2017/2017-12-11-new-in-symplify-3-statie-generators.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        Statie missed one important feature. <strong>Posts were the only elements</strong> that you could render as standlone page.
+But what if you want a web porfolio, not with posts but with features projects? Or lectures pages?
+<br><br>
+<strong>Statie 3 to the rescue!</strong>
+                    </div>
+                </div>
+
+                
+                
+<h2 id="coupled-approach-in-statie-2"><a href="#coupled-approach-in-statie-2">Coupled Approach in Statie 2</a></h2>
+<p>Posts in Statie 2 were enabled by defaults with following hard coded logic:</p>
+<ul>
+<li>find all <code>*.md</code> files in <code>_posts</code> directory</li>
+<li>create <code>PostFile</code> objects from them</li>
+<li>save all of them to global variable <code>$posts</code></li>
+<li>use route defined in <code>parameters &gt; post_route</code> to render it</li>
+<li>render it with <code>_layouts/post.latte</code> layout</li>
+</ul>
+<p>You could change a <code>post_route</code> or <code>layout</code> in specific post file, but that was it. No flexibility, no extendability and modification of <code>PostFile</code> class was not possible.</p>
+<p>In <a href="https://pehapkari.cz/">Pehapkari.cz</a> we're staring community <a href="https://pehapkari.cz/vzdelavej-se/">lectures</a> and we need not only posts, but <strong>also lectures to be on stand-alone page</strong>, e.g.</p>
+<ul>
+<li><a href="https://pehapkari.cz/course/doctrine-from-basics">https://pehapkari.cz/course/doctrine-from-basics</a>,</li>
+<li><a href="https://pehapkari.cz/course/phpstorm-hacks-and-tips">https://pehapkari.cz/course/phpstorm-hacks-and-tips</a> etc.</li>
+</ul>
+<p>If this could be only configurable, it would benefit many websites that are more than just a list of posts.</p>
+<h2 id="configurable-approach-in-statie-3-with-generators"><a href="#configurable-approach-in-statie-3-with-generators">Configurable Approach in Statie 3 with Generators</a></h2>
+<p><strong>So here comes Statie 3 Generators</strong>. Same posts approach is now set by default, but also configurable in <code>parameters &gt; generators</code> section:</p>
+<pre><code class="language-yaml">parameters:
+    generators:
+        posts: # key useful for exception reports
+            # name of variable inside single such item
+            variable: post
+            # name of variable that contains all items
+            varbiale_global: posts
+            # directory, where to look for them
+            path: '_posts'
+            # which layout to use, will be converted to "_layout/post.latte"
+            layout: 'post'
+            # and url prefix, e.g. /blog/some-post.md
+            route_prefix: 'blog'
+            # an object that will wrap it's logic, you can add helper methods into it and use it in templates
+            object: 'Symplify\Statie\Renderable\File\PostFile'</code></pre>
+<p>The whole old posts logic is now configurable.</p>
+<p>Do you need to change path to <code>_articles</code>?</p>
+<pre><code class="language-yaml">parameters:
+    generators:
+        posts:
+            path: '_articles'</code></pre>
+<p>Or do you want to use own simpler object?</p>
+<pre><code class="language-yaml">parameters:
+    generators:
+        posts:
+            object: 'MyWebsite\Statie\SimplePostFile'</code></pre>
+<h2 id="how-to-add-own-generator"><a href="#how-to-add-own-generator">How to Add Own Generator?</a></h2>
+<p>So how did we solved lectures in Pehapkari.cz website?</p>
+<p>Adding new Generator Element is now easy:</p>
+<pre><code class="language-yaml"># statie.yml
+parameters:
+    generators:
+        lectures:
+            variable: 'lecture'
+            variable_global: 'lectures'
+            path: '_lectures'
+            layout: 'lecture'
+            route_prefix: 'kurz'
+            object: 'Pehapkari\Website\Statie\Generator\LectureFile'</code></pre>
+<p>Do you want <strong>real code</strong>? See <a href="https://github.com/pehapkari/pehapkari.cz/pull/358/commits/e68d8f98172b2a04e4cf80e635c036c3f2a7bef2">this commit</a> that has it all.</p>
+<p>The configuration is as simple as possible, so <code>object</code> is optional. You can read <strong>how to set own file</strong> in <a href="https://www.statie.org/docs/generators/">documentation</a>.</p>
+<h3 id="how-to-add-new-lecture"><a href="#how-to-add-new-lecture">How to add new Lecture?</a></h3>
+<ol>
+<li>Create <a href="https://github.com/pehapkari/pehapkari.cz/pull/358/commits/e68d8f98172b2a04e4cf80e635c036c3f2a7bef2#diff-f5b8e6c24f5a089810b255d7d0757105">new <code>*.md</code> file</a> in <code>source/_lectures/</code> directory</li>
+<li>Have <a href="https://github.com/pehapkari/pehapkari.cz/pull/358/commits/e68d8f98172b2a04e4cf80e635c036c3f2a7bef2#diff-63d6418d873273aad1011eb0c40b5f3b"><code>_layout/lecture.latte</code></a> ready</li>
+<li>Create <a href="https://github.com/pehapkari/pehapkari.cz/pull/358/commits/e68d8f98172b2a04e4cf80e635c036c3f2a7bef2#diff-34b7c0f32f7935ef12a8b2f732c8a9d6"><code>LectureFile</code></a> with extra <code>getTitle()</code> method</li>
+</ol>
+<p>That's all!</p>
+<p>These lectures will be available <strong>in every template under <code>{$lectures}</code> variable</strong>, as configured in <code>variable_global</code> option.</p>
+<p>So you can create page <code>source/all-lectures.latte</code> with all lectures (ordered by filename):</p>
+<pre><code class="language-html">{foreach $lectures as $lecture}
+    &lt;h2&gt;{$lecture-&gt;getTitle()}&lt;/h2&gt;
+{/foreach}</code></pre>
+<h2 id="try-generators-out"><a href="#try-generators-out">Try Generators Out</a></h2>
+<p>Just upgrade to <a href="https://github.com/Symplify/Symplify/releases/tag/v3.0.0">Statie 3</a>:</p>
+<pre><code class="language-bash">composer update symplify/statie</code></pre>
+<p>and add lectures, talks with details, products, docs, gifts... anything you need.</p>
+<h3 id="date-me"><a href="#date-me">Date Me!</a></h3>
+<p>One more surprise to prevent. In case you use <code>route_prefix</code> with date in it:</p>
+<pre><code class="language-yaml">parameters:
+    generators:
+        route_prefix: 'blog/:year/:month/:day'</code></pre>
+<p>remember, <strong>the date has to be in start of the filename</strong>:</p>
+<pre><code class="language-bash">_lectures/2018-01-30-use-open-source-statie-for-open-blogging.md</code></pre>
+<p>When setup properly, you get this file in generated code:</p>
+<pre><code class="language-bash">2018/01/30/use-open-source-statie-for-open-blogging</code></pre>
+<h2 id="how-to-upgrade-from-statie-2-to-statie-3"><a href="#how-to-upgrade-from-statie-2-to-statie-3">How to Upgrade from Statie 2 to Statie 3?</a></h2>
+<blockquote class="blockquote text-center mt-lg-5 mb-5">
+    "Real code is worth of thousand words describing it."
+    <footer class="blockquote-footer">Anonymous Lazy Programmer</footer></blockquote>
+<p>See these PRs:</p>
+<ul>
+<li><a href="https://github.com/TomasVotruba/tomasvotruba.cz/pull/204">upgrading TomasVotruba.cz</a></li>
+<li>and <a href="https://github.com/pehapkari/pehapkari.cz/pull/358">Pehapkari.cz</a></li>
+</ul>
+<p><br></p>
+<p>Happy Generating!</p>
+
+                <br>
+
+                
+    <hr class="mt-4 mb-lg-5">
+
+    Do you want more on this topic? You might like these <strong>related posts</strong>:
+
+            <a href="/blog/2017/02/20/statie-how-to-run-it-locally">Statie: How to run it Locally</a>,             <a href="/blog/2017/03/06/statie-2-how-to-add-contact-page-with-data">Statie 2: How add Contact Page With Data</a>,             <a href="/blog/2017/03/09/statie-3-how-to-add-reusable-parts-of-code">Statie 3: How to Add Reusable Parts of Code</a>,             <a href="/blog/2017/03/13/statie-4-how-to-create-the-simplest-blog">Statie 4: How to Create The Simplest Blog</a>    
+    <br>
+    <br>
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="New in Symplify 3: Statie Generators" />
+    <meta property="og:description" content="Statie missed one important feature. Posts were the only elements that you could render as standlone page.
+But what if you want a web porfolio, not with posts but with features projects? Or lectures pages?
+
+Statie 3 to the rescue!" />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2017/12/11/new-in-symplify-3-statie-generators" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="New in Symplify 3: Statie Generators" />
+    <meta name="twitter:description" content="Statie missed one important feature. Posts were the only elements that you could render as standlone page.
+But what if you want a web porfolio, not with posts but with features projects? Or lectures pages?
+
+Statie 3 to the rescue!" />

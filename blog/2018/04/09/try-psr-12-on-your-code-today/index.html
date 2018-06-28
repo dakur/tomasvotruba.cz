@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Try PSR-12 on Your Code Today | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 90 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="try-psr-12-on-your-code-today"><a href="#try-psr-12-on-your-code-today">Try PSR-12 on Your Code Today</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-04-Mon">Monday, April 9, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/04/09/try-psr-12-on-your-code-today/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-04-09-try-psr-12-on-your-code-today.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        The standard is still behind the door, but feedback, before it gets accepted, is very important. After accepting it will be written down and it will be difficult to change anything.
+<br><br>
+Try PSR-12 today and see, how it works for your code.
+                    </div>
+                </div>
+
+                
+                
+<h2 id="tl-dr"><a href="#tl-dr">tl;dr;</a></h2>
+<pre><code class="language-bash">composer require symplify/easy-coding-standard --dev
+vendor/bin/ecs check /src --level psr12</code></pre>
+<p>And to fix the code:</p>
+<pre><code class="language-bash">vendor/bin/ecs check /src --level psr12 --fix</code></pre>
+<p>Now in more detailed way.</p>
+<h2 id="psr-12-meets-ecs"><a href="#psr-12-meets-ecs">PSR-12 meets ECS</a></h2>
+<p>Someone on <a href="https://www.reddit.com/r/PHP/comments/84vafc/phpfig_psr_status_update/">Reddit referred a PSR Google Group</a>, where they <strong>asked for real-life PSR-12 ruleset implementation in a coding standard tool</strong>. Korvin Szanto already prepared 1st implementation for PHP CS Fixer, at the moment <a href="https://github.com/KorvinSzanto/PHP-CS-Fixer/commit/c0b642c186d8f666a64937c2d37442dc77f6f393">only as a commit in</a> the fork. I put the ruleset to <code>psr12.yml</code> level in ECS and it looks like this in time of being:</p>
+<pre><code class="language-yaml">imports:
+    - { resource: 'php_cs_fixer/psr2.yml' }
+
+services:
+    PhpCsFixer\Fixer\CastNotation\LowercaseCastFixer: ~
+    PhpCsFixer\Fixer\CastNotation\ShortScalarCastFixer: ~
+    PhpCsFixer\Fixer\PhpTag\BlankLineAfterOpeningTagFixer: ~
+    PhpCsFixer\Fixer\Import\NoLeadingImportSlashFixer: ~
+    PhpCsFixer\Fixer\Import\OrderedImportsFixer:
+        importsOrder:
+            - 'class'
+            - 'const'
+            - 'function'
+    PhpCsFixer\Fixer\LanguageConstruct\DeclareEqualNormalizeFixer:
+        space: 'none'
+    PhpCsFixer\Fixer\Operator\NewWithBracesFixer: ~
+    PhpCsFixer\Fixer\Basic\BracesFixer:
+        'allow_single_line_closure': false
+        'position_after_functions_and_oop_constructs': 'next'
+        'position_after_control_structures': 'same'
+        'position_after_anonymous_constructs': 'same'
+
+    PhpCsFixer\Fixer\ClassNotation\NoBlankLinesAfterClassOpeningFixer: ~
+    PhpCsFixer\Fixer\ClassNotation\OrderedClassElementsFixer:
+        order:
+            - 'use_trait'
+    PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer:
+        elements:
+            - 'const'
+            - 'method'
+            - 'property'
+    PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer: ~
+    PhpCsFixer\Fixer\Operator\TernaryOperatorSpacesFixer: ~
+    PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer: ~
+    PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer: ~
+    PhpCsFixer\Fixer\Whitespace\NoTrailingWhitespaceFixer: ~
+
+    PhpCsFixer\Fixer\Operator\ConcatSpaceFixer:
+        spacing: 'one'
+
+    PhpCsFixer\Fixer\Semicolon\NoSinglelineWhitespaceBeforeSemicolonsFixer: ~
+    PhpCsFixer\Fixer\ArrayNotation\NoWhitespaceBeforeCommaInArrayFixer:
+    PhpCsFixer\Fixer\ArrayNotation\WhitespaceAfterCommaInArrayFixer:
+
+parameters:
+    exclude_checkers:
+        - 'PhpCsFixer\Fixer\Import\SingleImportPerStatementFixer'
+        - 'PhpCsFixer\Fixer\Whitespace\NoExtraBlankLinesFixer'</code></pre>
+<h2 id="do-you-agree-or-disagree-with-psr12"><a href="#do-you-agree-or-disagree-with-psr12">Do You Agree or Disagree with PSR12?</a></h2>
+<p>There are still many <a href="https://github.com/KorvinSzanto/PHP-CS-Fixer/milestones">missed cases to be integrated into the standard</a>, but there is never to soon to get feedback from the community.</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2018/psr-12/php-cs-fixer-thing.png" alt="PR in PHP CS Fixer?" class="img-thumbnail"></div>
+<p>It will be <em>a thing</em>: PSR-12 set is definitely coming to PHP CS Fixer and <a href="https://github.com/squizlabs/PHP_CodeSniffer/issues/750">PHP_CodeSniffer has also an active issue</a> as well. Both of these tools are more stable, more popular and thus more rigid than ECS. So it will take time before there will be a pull-request and then stable release with PSR-12 set.</p>
+<p><strong>That's an advantage of smaller packages like ECS, they can evolve faster and live in the present.</strong> Only that way ECS 4 already has PSR-12 set on board and ready to use.</p>
+<h3 id="what-do-i-like"><a href="#what-do-i-like">What do I Like?</a></h3>
+<p>I like that PSR-12 puts to standard rules that I consider standard for years and most of them are already integrated with ECS <a href="https://github.com/Symplify/Symplify/tree/master/packages/EasyCodingStandard/config/common"><code>common</code> sets</a>:</p>
+<ul>
+<li>it applies PHP 7.1 features, like constant visibility</li>
+<li>concat <code>.</code> spacing</li>
+<li>mostly spacing</li>
+<li>and letter casing</li>
+</ul>
+<h3 id="what-don-t-i-like"><a href="#what-don-t-i-like">What don't I Like?</a></h3>
+<p>Symplify code is already checked by PSR-12 (<a href="https://github.com/Symplify/Symplify/pull/773">see pull-request</a>):</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2018/psr-12/symplify-implementation.png" alt="Integration to project with ECS" class="img-thumbnail"></div>
+<p>It was easy to setup and works with 0 changes in the code. But as you can see, there 2 rules I don't fully agree with.</p>
+<h4 id="1-code-phpcsfixer-fixer-phptag-blanklineafteropeningtagfixer-code"><a href="#1-code-phpcsfixer-fixer-phptag-blanklineafteropeningtagfixer-code">1. <code>PhpCsFixer\Fixer\PhpTag\BlankLineAfterOpeningTagFixer</code></a></h4>
+<p>This rule creates this code:</p>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);</code></pre>
+<p>Namespace changes, file doc changes, <code>use</code>, <code>class</code>, <code>interface</code>... that all changes in every file, so it should be on a standalone line, <strong>that will force you to notice it and orientate</strong>. But not <code>declare(strict_types=1);</code>, that is the same in every file.</p>
+<p>I think our attention deserves to ignore anything that is the same in every file so inline its line:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);</code></pre>
+<p><br></p>
+<h4 id="2-code-phpcsfixer-fixer-operator-unaryoperatorspacesfixex-code"><a href="#2-code-phpcsfixer-fixer-operator-unaryoperatorspacesfixex-code">2. <code>PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixex</code></a></h4>
+<p>It takes care of spacing around <code>!</code></p>
+<pre><code class="language-php">if (!$isNotTrue) {
+}
+
+if ($isNotTrue) {
+}</code></pre>
+<p>Here we can apply the same approach we did in 1. An important code should be visually clear, an unimportant code should not bother us. Personally, <strong>I prefer seeing the negation clearly</strong>, so I know it's a negation:</p>
+<pre><code class="language-php">if (! $isNotTrue) {
+}</code></pre>
+<h2 id="try-it-yourself-today"><a href="#try-it-yourself-today">Try It Yourself Today</a></h2>
+<p>Communicate, spread the ideas and find your way. This is only PSR - PS <strong>Recommendation</strong>. It's better to keep things standard for others, <a href="/blog/2018/03/12/neon-vs-yaml-and-how-to-migrate-between-them/#why-are-standards-so-important">so they can drink water if they're thirsty and not start a research on bottle colors instead</a>. But not a rigid rule that cannot be improved.</p>
+<p>So just <a href="#tl-dr">try it</a>. Maybe your code is already PSR-12 ready.</p>
+<p>And let me know in the comments, if you love it or rather hate it :)</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Try PSR-12 on Your Code Today" />
+    <meta property="og:description" content="The standard is still behind the door, but feedback, before it gets accepted, is very important. After accepting it will be written down and it will be difficult to change anything.
+
+Try PSR-12 today and see, how it works for your code." />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/04/09/try-psr-12-on-your-code-today" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Try PSR-12 on Your Code Today" />
+    <meta name="twitter:description" content="The standard is still behind the door, but feedback, before it gets accepted, is very important. After accepting it will be written down and it will be difficult to change anything.
+
+Try PSR-12 today and see, how it works for your code." />

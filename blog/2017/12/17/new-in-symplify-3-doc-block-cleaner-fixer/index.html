@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>New in Symplify 3: DocBlock Cleaner Fixer | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 68 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="new-in-symplify-3-docblock-cleaner-fixer"><a href="#new-in-symplify-3-docblock-cleaner-fixer">New in Symplify 3: DocBlock Cleaner Fixer</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2017-12-Sun">Sunday, December 17, 2017</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2017/12/17/new-in-symplify-3-doc-block-cleaner-fixer/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2017/2017-12-17-new-in-symplify-3-doc-block-cleaner-fixer.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated on April 2018</strong>
+                        </div>
+                        <div class="card-body">
+                            Updated with <a href="https://github.com/Symplify/Symplify/blob/master/CHANGELOG.md#v400---2018-04-02">ECS 4.0</a>, Neon to Yaml migration and <code>checkers</code> to <code>services</code> migration.
+
+                        </div>
+                    </div>
+
+                    <br>
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        Focus on docblock has increased thanks to <a href="https://php.net/manual/en/migration70.new-features.php#migration70.new-features.scalar-type-declarations">PHP 7 scalar types</a> and PHPStan with <a href="https://medium.com/@ondrejmirtes/phpstan-0-9-a-huge-leap-forward-1e9b0872d1cc">intersection and union types</a>. Thanks to that, more and more <strong>docblocks become just visual noise</strong> causing <a href="https://en.wikipedia.org/wiki/Cognitive_load">cognitive overload</a>.
+<br><br>
+Symplify 3 introduces a new help hand - <strong>fixer that cleans doc block noise for you and makes your code more valuable to the reader</strong>.
+                    </div>
+                </div>
+
+                
+                
+<blockquote class="blockquote text-center">
+    ...when you program, you have to <strong>think about how someone will read your code</strong>, not just how a computer will interpret it.
+    <footer class="blockquote-footer"><a href="https://en.wikiquote.org/wiki/Kent_Beck">Kent Beck</a>, creator of the Extreme Programming and Test Driven Development
+    </footer></blockquote>
+<p><br></p>
+<p>Do you find similar patterns in your code?</p>
+<p><br></p>
+<pre><code class="language-php">/**
+ * @param string $name
+ */
+public function addVisitor(string $name)
+{
+    // ...
+}</code></pre>
+<p><br></p>
+<pre><code class="language-php">/**
+ * @param InputInterface $input An Input instance
+ */
+public function getArguments(InputInterface $input)
+{
+    // ...
+}</code></pre>
+<p><br></p>
+<pre><code class="language-php">/**
+ * @param array $items
+ */
+public function prependItems(array $items)
+{
+    // ...
+}</code></pre>
+<p><br></p>
+<pre><code class="language-php">/**
+ * @return boolean
+ */
+public function getStorage(): bool
+{
+    // ...
+}</code></pre>
+<p><br></p>
+<p>Do you know what do they have in common?
+<strong>They only duplicate the typehint information and bring no extra value to the reader</strong>.</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/doc-block-cleaner/use-only-what-you-need.jpg" class="img-thumbnail"></div>
+<p><em>No big deal</em> you might say as code author. But your code is much more read that written, so making it as readable as possible should be your priority.</p>
+<p><br></p>
+<h2 id="how-to-remove-strike-manually-strike-automatically"><a href="#how-to-remove-strike-manually-strike-automatically">How to Remove <strike>Manually</strike> Automatically?</a></h2>
+<p>Cleaning every single case would be crazy. Luckily, we <strong>live in CLI-refactoring generation</strong>,
+so all we need is new Fixer from <code>Symplify\CodingStandard</code> 3.0 - <code>Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer</code>.</p>
+<p><a href="https://github.com/Symplify/Symplify/pull/427" class="btn btn-dark btn-sm">
+<em class="fa fa-github fa-fw"></em>
+See pull-request #427
+</a></p>
+<p>This fixer scans docs blocks, compares it with code types, evaluates value of each one (like you would do) and <strong>drops</strong> those, which do not add any extra value and only slow down the code reading time.</p>
+<h3 id="tested-on-many-open-source-projects"><a href="#tested-on-many-open-source-projects">Tested on many Open-Source Projects</a></h3>
+<p>Docblocks don't have any standard format, so I <strong>first tested this Fixer</strong> on handful of PHP open-source projects. <strong>Open them</strong> to see, what this fixer can do in real code:</p>
+<ul>
+<li><a href="https://github.com/php-ai/php-ml/pull/145">php-ml</a> and <a href="https://github.com/php-ai/php-ml/pull/146">other PR</a></li>
+<li><a href="https://github.com/phpDocumentor/ReflectionDocBlock/pull/137">ReflectionDocBlock</a></li>
+<li>and <a href="https://github.com/symfony/symfony/pull/24931">Symfony</a></li>
+</ul>
+<p>Thanks to that Fixer now <strong>covers dozens of edge cases</strong>.</p>
+<h2 id="challenge-your-code"><a href="#challenge-your-code">Challenge Your Code</a></h2>
+<p><strong>1. Install</strong></p>
+<pre><code class="language-bash">composer require symplify/easy-coding-standard --dev</code></pre>
+<p><strong>2. Create <code>easy-coding-standard.yml</code></strong></p>
+<pre><code class="language-yaml"># easy-coding-standard.yml
+services:
+    Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer: ~
+
+    # works best with these checkers, to remove empty docblock
+    Symplify\CodingStandard\Fixer\Commenting\RemoveSuperfluousDocBlockWhitespaceFixer: ~
+    Symplify\CodingStandard\Fixer\Commenting\RemoveEmptyDocBlockFixer: ~</code></pre>
+<p><strong>3. Run it</strong></p>
+<pre><code class="language-bash">vendor/bin/ecs check src</code></pre>
+<p><strong>4. See the diff</strong></p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/doc-block-cleaner/diff.png" class="img-thumbnail"></div>
+<p><strong>5. And fix it</strong></p>
+<pre><code class="language-bash">vendor/bin/ecs check src --fix</code></pre>
+<p><br></p>
+<p>Don't you like <code>mixed</code> or <code>object</code>? The fixer is <a href="https://github.com/Symplify/CodingStandard#block-comment-should-only-contain-useful-information-about-types-wrench">configurable</a>, so you can set types that you'd like to remove.</p>
+<pre><code class="language-yaml"># easy-coding-standard.yml
+services:
+    Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer:
+        useless_types: ['mixed', 'object'] # [] by default</code></pre>
+<p><br></p>
+<p>Happy eye resting!</p>
+
+                <br>
+
+                
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="New in Symplify 3: DocBlock Cleaner Fixer" />
+    <meta property="og:description" content="Focus on docblock has increased thanks to PHP 7 scalar types and PHPStan with intersection and union types. Thanks to that, more and more docblocks become just visual noise causing cognitive overload.
+
+Symplify 3 introduces a new help hand - fixer that cleans doc block noise for you and makes your code more valuable to the reader." />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2017/12/17/new-in-symplify-3-doc-block-cleaner-fixer" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="New in Symplify 3: DocBlock Cleaner Fixer" />
+    <meta name="twitter:description" content="Focus on docblock has increased thanks to PHP 7 scalar types and PHPStan with intersection and union types. Thanks to that, more and more docblocks become just visual noise causing cognitive overload.
+
+Symplify 3 introduces a new help hand - fixer that cleans doc block noise for you and makes your code more valuable to the reader." />

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Let Changelog Linker Generate CHANGELOG.md for You | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 117 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="let-changelog-linker-generate-changelog-md-for-you"><a href="#let-changelog-linker-generate-changelog-md-for-you">Let Changelog Linker Generate CHANGELOG.md for You</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-06-Mon">Monday, June 25, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/06/25/let-changelog-linker-generate-changelog-for-you/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-06-25-let-changelog-linker-generate-changelog-for-you.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        Do you have an open-source project on Github? Do you want your users to know about new features and changes without you writing posts about it?
+Do you <a href="https://keepachangelog.com/en/1.0.0/">keep a changelog</a>? Do you struggle with keeping it up-to-date and descriptive and with all the links to all merged pull-requests?
+<br>
+<br>
+Yes? Then you'll love <em>Changelog Linker</em>. A PHP CLI tool that does all this boring work for you.
+                    </div>
+                </div>
+
+                
+                
+<p>Changelogs have many forms.</p>
+<p>From standard <a href="https://keepachangelog.com/en/1.0.0/">keepachangelog.com</a> with <em>Added</em>, <em>Changed</em>, <em>Fixed</em> and <em>Removed</em>:</p>
+<img src="/assets/images/posts/2018/generate-changelog/keepachangelog.png" class="img-thumbnail">
+<p>Through <a href="https://raw.githubusercontent.com/symfony/symfony/master/CHANGELOG-4.1.md">Symfony dump</a>:</p>
+<img src="/assets/images/posts/2018/generate-changelog/symfony.png" class="img-thumbnail">
+<p>Over <a href="https://github.com/phpstan/phpstan/releases/tag/0.10">PHPStan Release notes</a>:</p>
+<img src="/assets/images/posts/2018/generate-changelog/phpstan.png" class="img-thumbnail">
+<h2 id="why-is-every-changelog-different"><a href="#why-is-every-changelog-different">Why is Every Changelog Different?</a></h2>
+<p>There is a standard recommendation in <a href="https://keepachangelog.com/en/1.0.0/">keepachangelog.com</a>, so it can all be the same, right?
+I think it's because <strong>there is no easy way to generate such changelog</strong>. And by easy I mean automated = 1 click solution. And we don't even talk about <a href="https://gomonorepo.org/">monorepo</a> changelog yet.</p>
+<p>When I looked on Github <a href="https://github.com/Symplify/Symplify/issues/841">for inspiration</a>, I found only <a href="https://github.com/github-changelog-generator/github-changelog-generator">github-changelog-generator</a> - that has over 4600 stars on Github. Yet, it still doesn't work with <em>Added</em>, <em>Changed</em> etc. categories and requires labeling issues and pull-requests and adding milestones. <strong>I wanted to save time, not to add extra work.</strong></p>
+<h2 id="category-monorepo-support"><a href="#category-monorepo-support">Category + Monorepo Support?</a></h2>
+<p>All I wanted to do is run 1 command and update <code>CHANGELOG.md</code> with content like this:</p>
+<pre><code class="language-markdown">## [v4.4.0] - 2018-06-03
+
+### Added
+
+#### BetterPhpDocParser
+
+- [#811] Add multi-types method support
+- [#810] Add `AbstractPhpDocInfoDecorator`
+- [#809] Allow `PhpDocInfoFactory` extension without modification
+- [#807], [#808] Add `replaceTagByAnother()`
+- [#806] Add `getParamTypeNodeByName()`
+- [#804] Add `hasTag()` to `PhpDocInfo` and other improvements
+- [#801] Add `PhpDocModifier` class
+
+#### CodingStandard
+
+- [#851] Add _ support to PropertyNameMatchingTypeFixer
+- [#845] Extended RemoveEmptyDocBlockFixer fix
+- [#836] Improve cognitive complexity error, Thanks to [@enumag]
+- [#823] Add Cognitive complexity sniff</code></pre>
+<p>I aim for 80/20 rule = let 80 % of manual work, manual linking, collecting of <em>Added</em>, grouping by <em>CodingStandard</em> package etc. handle program for us. Then we can polish the rest 20 %, like adding a description to the release or moving PR that the program failed to classify.</p>
+<p>I imagined something like:</p>
+<pre><code class="language-bash">vendor/bin/changelog-linker dump-mergers</code></pre>
+<p>That would be much better than looking on Github, going through commits and putting it all together manually, right? Or bare git dump that no-one except you orients in.</p>
+<p>Well, 2 months of work later and after detailed feedback from <a href="https://github.com/MattCzerner">Matouš Czerner</a> and <a href="https://github.com/vitek-rostislav">Rosťa Vítek</a> whom I'm very thankful, a <a href="https://github.com/symplify/changeloglinker">Symplify\ChangelogLinker</a> package was born.</p>
+<h2 id="5-steps-to-your-generated-changelog"><a href="#5-steps-to-your-generated-changelog">5 Steps to Your Generated CHANGELOG</a></h2>
+<ol>
+<li>
+<p>Install it</p>
+<pre><code class="language-bash">composer require --dev symplify/changelog-linker</code></pre>
+</li>
+<li>
+<p>Add target to your <code>CHANGELOG.md</code></p>
+<pre><code class="language-markdown"># CHANGELOG
+
+This is a changelog, you know?
+
+&lt;!-- changelog-linker --&gt;</code></pre>
+<p>There will be dumped the list of changes.</p>
+</li>
+<li>
+<p>Run it dry</p>
+<pre><code class="language-bash">vendor/bin/changelog-linker dump-merges --dry-run</code></pre>
+</li>
+<li>
+<p>Good. How about adding those links so people can just click it and see the pull-request?</p>
+<pre><code class="language-bash">vendor/bin/changelog-linker dump-merges --dry-run --linkify</code></pre>
+<p>There are many other cool options like <code>--in-packages</code>, <code>--in-categories</code>, <code>--in-tags</code> (see <a href="https://github.com/symplify/changeloglinker">README</a> for more), but just to give you the idea I prepared a small demo:</p>
+<img src="/assets/images/posts/2018/generate-changelog/showcase.gif" class="img-thumbnail">
+</li>
+<li>
+<p>When you're ready, run dump to <code>CHANGELOG.md</code>:</p>
+<pre><code class="language-bash">vendor/bin/changelog-linker dump-merges --linkify --in-packages --in-categories</code></pre>
+</li>
+</ol>
+<p>That's it.</p>
+<p><br></p>
+<p>Enjoy your new free time!</p>
+
+                <br>
+
+                
+    <hr class="mt-4 mb-lg-5">
+
+    Do you want more on this topic? You might like these <strong>related posts</strong>:
+
+            <a href="/blog/2018/01/15/is-your-changelog-useful-or-just-boring-plain-text-and-how-to-fix-that">Is Your CHANGELOG Useful or Just Boring Plain Text? And How to Fix That</a>    
+    <br>
+    <br>
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Let Changelog Linker Generate CHANGELOG.md for You" />
+    <meta property="og:description" content="Do you have an open-source project on Github? Do you want your users to know about new features and changes without you writing posts about it?
+Do you keep a changelog? Do you struggle with keeping it up-to-date and descriptive and with all the links to all merged pull-requests?
+
+
+Yes? Then you&#039;ll love Changelog Linker. A PHP CLI tool that does all this boring work for you." />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/06/25/let-changelog-linker-generate-changelog-for-you" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Let Changelog Linker Generate CHANGELOG.md for You" />
+    <meta name="twitter:description" content="Do you have an open-source project on Github? Do you want your users to know about new features and changes without you writing posts about it?
+Do you keep a changelog? Do you struggle with keeping it up-to-date and descriptive and with all the links to all merged pull-requests?
+
+
+Yes? Then you&#039;ll love Changelog Linker. A PHP CLI tool that does all this boring work for you." />

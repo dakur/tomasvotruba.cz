@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Symfony vs Laravel vs Nette - Which PHP Framework Should You Choose | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 110 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="symfony-vs-laravel-vs-nette-which-php-framework-should-you-choose"><a href="#symfony-vs-laravel-vs-nette-which-php-framework-should-you-choose">Symfony vs Laravel vs Nette - Which PHP Framework Should You Choose</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-05-Thu">Thursday, May 31, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/05/31/symfony-vs-laravel-vs-nette-which-php-framework-you-should-choose/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-05-31-symfony-vs-laravel-vs-nette-which-php-framework-you-should-choose.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        I have been asked this question over hundred times, in person, as <a href="https://github.com/TomasVotruba/tomasvotruba.cz/issues/278">a post request</a>. When to use Symfony? How is Laravel better than Symfony? What are Nette killer features compared to Symfony and Laravel?
+<br><br>
+Today, we look on the answer.
+                    </div>
+                </div>
+
+                
+                
+<h2 id="so-which-php-framework-is-the-silver-bullet"><a href="#so-which-php-framework-is-the-silver-bullet">So Which PHP Framework is the Silver Bullet?</a></h2>
+<p>According to Wikipedia &quot;the only weapon that is effective against a werewolf, witch, or other monsters&quot;. But also &quot;a direct and effortless solution to a problem.&quot; Spoiler alert: <strong>Silver bullet does not exist.</strong></p>
+<p>What does that mean in the software world? Let's say you use framework A. You have many problems - bad documentation, missing package in the core for command bus etc. - with it and you've heard that all of them solves framework B. So you migrate to framework B. Many problems solved. You use it for 2 years and  new problems appear and you've just heard that all of them solves framework C...</p>
+<blockquote class="blockquote text-center mt-lg-5 mb-lg-5">
+    There are no solutions. There are only trade-offs.
+</blockquote>
+<h3 id="sex-for-one-night-vs-love-for-the-lifetime"><a href="#sex-for-one-night-vs-love-for-the-lifetime">Sex for One Night vs. Love for The Lifetime</a></h3>
+<p>And that does not apply only framework, I've seen very good programmer moving from PHP to PHP Framework, from PHP to Python, from Python to Javascript... It's a way but has some trade-offs.</p>
+<p><strong>If you have a new partner every 2 years, how well do you think you'll get to know them?</strong> Same goes for frameworks (or any field, really).</p>
+<h2 id="the-best-php-framework-based-on-my-experience"><a href="#the-best-php-framework-based-on-my-experience">The Best PHP Framework based on My Experience</a></h2>
+<p>So which PHP framework would I recommend to you in 2018? You know from my posts and from founding PHP group &quot;Symfonists&quot; in the Czech Republic in 2016, that <strong>I'm all over the Symfony</strong>. Even though there are <a href="/blog/2017/02/12/drop-all-service-tags-in-your-nette-and-symfony-applications/#get-rid-of-tagging-in-symfony">many</a> <a href="https://github.com/symfony/symfony/pull/26686">things</a> I <a href="/blog/2018/04/23/how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection/">disagree</a> with.</p>
+<p>Luckily, I'm aware of this <em>confirmation bias</em>, so when somebody asks me the question in the title, <strong>I think the right answer is</strong>:</p>
+<blockquote class="blockquote text-center mt-lg-5 mb-lg-5">
+    Use what you love. There is no better way to do things.
+</blockquote>
+<p>Yes, <strong>it can be that simple</strong>. I could give you technical arguments like:</p>
+<ul>
+<li>drop 3 lines of framework A code and show that in framework B it takes 20 to do the same,</li>
+<li>show that framework A can process 35 % more requests than framework B,</li>
+<li>show <a href="https://medium.com/@taylorotwell/measuring-code-complexity-64356da605f9">a metric that is 4 times bigger</a> in framework B than in framework A,</li>
+<li>argue that this framework has 10 times more plugins, that one has autowiring and that one has not.</li>
+</ul>
+<p>But that's not really the point - it's not a contest, it's fun. Programming needs to be fun, because:</p>
+<blockquote class="blockquote text-center mt-lg-5 mb-lg-5">
+    If you're not doing a job you want to do for the rest of your life... why are you doing it?
+</blockquote>
+<h3 id="but-where-to-start"><a href="#but-where-to-start">But Where to Start?</a></h3>
+<p>Ok, let's say you're looking for your first framework to fall in love with. What is the best place to start?</p>
+<p><br></p>
+<h2 id="the-one-thing-i-love-about-nette"><a href="#the-one-thing-i-love-about-nette">The one Thing I love about Nette</a></h2>
+<img src="https://files.nette.org/git/www/nette-logo-blue.png" width="300">
+<p>I really fell in love with Nette mainly because of monthly meetups called <a href="https://www.posobota.cz/">Posobota</a>. In English: last Saturday shortened to &quot;LaSaturday&quot;. Maintained for last ~5 years by <a href="https://honzacerny.com/">Honza Černý</a> who's keeping an awesome job of running them.</p>
+<p>It's a meetup with 50 developers, a <strong>regular</strong> meetup. Regular meetups is the best place <strong>to build deep meaningful relationships</strong>, where you can <strong>learn a massive amount of knowledge</strong> over the years and <strong>to share ideas and get feedback on them</strong>.</p>
+<p>This could never happen on conferences, no matter how big.</p>
+<p><br></p>
+<h2 id="the-one-thing-i-love-about-laravel"><a href="#the-one-thing-i-love-about-laravel">The one Thing I love about Laravel</a></h2>
+<img src="http://laravelblog.cz/wp-content/uploads/2017/01/co-je-laravel.png" width="300">
+<p>There is <strong>a place where can you learn almost everything about Laravel</strong>. It's called <strong><a href="https://laracasts.com/">Laracasts</a></strong>, it's entertaining, it's short (mostly 3-5 mins long videos) and to the point. A very rare combination in software educational sources.</p>
+<p>I got into it with free series <a href="https://laracasts.com/series/how-to-be-awesome-in-phpstorm">Be Awesome in PHPStorm</a> series, where <a href="https://github.com/JeffreyWay">Jeffrey Way</a> gave me the best basic about PHPStorm I could dream of. To this day I still use 70 % knowledge I learned there.</p>
+<p><br></p>
+<h2 id="the-one-thing-i-love-about-symfony"><a href="#the-one-thing-i-love-about-symfony">The one Thing I love about Symfony</a></h2>
+<img src="https://www.rostemespolecne.cz/copohwegoiwhe/uploads/2017/01/symfony_black_02.png" width=300>
+<p>What I love the most about Symfony? It has people, education, sharing, the newest information, dopamine-driven reward system... guess!</p>
+<p><br></p>
+<p><strong>It's a <a href="https://stackoverflow.com/questions/tagged/symfony">StackoverFlow support for Symfony</a>.</strong> I learned a lot of basic know-how there and almost all of the edge-cases. The answers are experienced and right to the point. I just love it. And when I find an outdated answer, I can improve it. That way it's clear, what was the best-proven practice in Symfony 2, in Symfony 3 and is now in Symfony 4 in one page - one example for all <a href="https://stackoverflow.com/questions/13901256/how-do-i-read-from-parameters-yml-in-a-controller-in-symfony2">How to get Parameter in Controller</a>. Its like <a href="https://github.com/rectorphp/rector">Rector</a> just to humans.</p>
+<h2 id="it-s-all-about-you-community"><a href="#it-s-all-about-you-community">It's all About You - Community</a></h2>
+<img src="/assets/images/posts/2018/frameworks/community.jpg">
+<p>It might be weird to see that software is all about people. It's about people, emotions, relationships, what people create from their love - a post, a package, a book, a video series, a local meetup, a beer meetup, a shirt with a logo, a hat with a log, stickers, open-source package, conference, a talk...</p>
+<p><strong>There would be no frameworks without you - people talking about it on meetups, online forums, people who write about it with passion in comments on Reddit.</strong></p>
+<p>So just go out there on a meetup, grab a beer. No pressure, you can stay there just for 30 minutes and then go home - but try to <strong>feel the mood and see how people work in that group</strong>. See how that fits you. That way you'll know you have found the best framework for you, not by some random metrics.</p>
+<p>As they say:</p>
+<blockquote class="blockquote text-center mt-lg-5 mb-lg-5">
+    One loves vanilla ice-cream, the other pistachio.
+</blockquote>
+<p><br><br></p>
+<p>Spread love! That's all there is :)</p>
+
+                <br>
+
+                
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Symfony vs Laravel vs Nette - Which PHP Framework Should You Choose" />
+    <meta property="og:description" content="I have been asked this question over hundred times, in person, as a post request. When to use Symfony? How is Laravel better than Symfony? What are Nette killer features compared to Symfony and Laravel?
+
+Today, we look on the answer." />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/05/31/symfony-vs-laravel-vs-nette-which-php-framework-you-should-choose" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Symfony vs Laravel vs Nette - Which PHP Framework Should You Choose" />
+    <meta name="twitter:description" content="I have been asked this question over hundred times, in person, as a post request. When to use Symfony? How is Laravel better than Symfony? What are Nette killer features compared to Symfony and Laravel?
+
+Today, we look on the answer." />

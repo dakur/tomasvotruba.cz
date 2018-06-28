@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Collector Pattern for Dummies | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 114 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="collector-pattern-for-dummies"><a href="#collector-pattern-for-dummies">Collector Pattern for Dummies</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-06-Thu">Thursday, June 14, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/06/14/collector-pattern-for-dummies/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-06-14-collector-pattern-for-dummies.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        I wrote <em><a href="/blog/2018/03/08/why-is-collector-pattern-so-awesome/">Why is Collector Pattern so Awesome</a></em> a while ago, but I got feeling and feedback that it's way too complicated.
+<br><br>
+The pattern itself is simple, but put in framework context, it might be too confusing to understand.
+<br><br>
+That's why we look on collector pattern in minimalistic plain PHP way today.
+                    </div>
+                </div>
+
+                
+                
+<p>Let's say you have a simple <code>PriceCalculator</code> class that calculates a price for a product with a VAT:</p>
+<pre><code class="language-php">class PriceCalculator
+{
+    public function calculate(Product $product): float
+    {
+        // compute vat
+        $price = $product-&gt;getPrice() * (1 + $vat);
+
+        return $price;
+    }
+}</code></pre>
+<p>Then we decide to have 50 % discount for admins:</p>
+<pre><code class="language-diff"> class PriceCalculator
+ {
+     public function calculate(Product $product): float
+     {
+         // compute vat
+         $price = $product-&gt;getPrice() * (1 + $vat);
+
++        // discount for admin
++        if ($this-&gt;currentUser-&gt;getRole() === 'admin') {
++            $price *= 0.5;
++        }
++
+         return $price;
+     }
+ }</code></pre>
+<p>And another 20 % discount for students:</p>
+<pre><code class="language-diff"> class PriceCalculator
+ {
+     public function calculate(Product $product): float
+     {
+         // compute vat
+         $price = $product-&gt;getPrice() * 1.21;
+
+         // discount for admin
+         if ($this-&gt;currentUser-&gt;getRole() === 'admin') {
+             $price *= 0.5;
+         }
+
++        // discount for students
++        if ($this-&gt;currentUser-&gt;getOccupation() === 'student') {
++            $price *= 0.8;
++        }
++
+         return $price;
+     }
+ }</code></pre>
+<p>Our <code>PriceCalculator</code> grows and grows, our e-commerce platform expands all over Europe and we found out they have a different strategy to calculate price with VAT. How do we solve it?</p>
+<p>&quot;Override the whole class and implements <code>calculate()</code> method for yourself.&quot;</p>
+<pre><code class="language-php"> class UnitedKingdomPriceCalculator extends PriceCalculator
+ {
+     public function calculate(Product $product): float
+     {
+         // compute vat
+         $price = $product-&gt;getPrice() * 1.15;
+
+         return $price;
+     }
+ }</code></pre>
+<p>That's an easy solution for the end-user. But it also means zero reusable code that leads to duplicated work. Imagine there will be 20 websites in the UK and <strong>each of them will have their own code to calculate price with VAT</strong>. 100 % similar code (if written correctly), because it applies to the whole country.</p>
+<h2 id="sharing-is-caring"><a href="#sharing-is-caring">Sharing is Caring</a></h2>
+<p>Instead, such UK solution can be one of many, that is openly shared.</p>
+<ul>
+<li>Do you need a UK price calculator? Plug it in.</li>
+<li>Do you need a configurable discount based on role? Plug it in.</li>
+<li>Do you need to decrease all price by 100 € if possible? Plug it in.</li>
+</ul>
+<p>No need to write it more than once for all of the e-commerce sites.</p>
+<h2 id="how-does-that-look-in-the-code"><a href="#how-does-that-look-in-the-code">How Does That Look in the Code?</a></h2>
+<h3 id="1-turn-your-main-class-to-a-collector"><a href="#1-turn-your-main-class-to-a-collector">1. Turn Your Main Class to A Collector</a></h3>
+<pre><code class="language-php">class PriceCalculatorCollector
+{
+    /**
+     * @var PriceCalculatorInterface[]
+     */
+    private $priceCalculators = [];
+
+    public function addPriceCalculator(PriceCalculatorInterface $priceCalculator)
+    {
+        $this-&gt;priceCalculators[] = $priceCalculator;
+    }
+
+    public function calculate(Product $product): float
+    {
+        $price = $product-&gt;getPrice();
+
+        foreach ($this-&gt;priceCalculators as $priceCalculator) {
+            $price = $priceCalculator-&gt;calculate($price);
+        }
+
+        return $price;
+    }
+}</code></pre>
+<p>with interface decoupling:</p>
+<pre><code class="language-php">interface PriceCalculatorInterface
+{
+    public function calculate(float $price): float;
+}</code></pre>
+<h3 id="2-converts-each-case-to-collected"><a href="#2-converts-each-case-to-collected">2. Converts Each Case to Collected</a></h3>
+<pre><code class="language-php">final class CzechVatPriceCalculator implements PriceCalculatorInterface
+{
+    public function calculate(float $price): float
+    {
+        return $price * 1.21;
+    }
+}</code></pre>
+<pre><code class="language-php">final class AdminDiscountPriceCalculator implements PriceCalculatorInterface
+{
+    public function calculate(float $price): float
+    {
+        if (! $this-&gt;currentUser-&gt;getRole() === 'admin') {
+            return $price;
+        }
+
+        return $price *= 0.5;
+    }
+}</code></pre>
+<pre><code class="language-php">final class UnitedKingdomPriceCalculator implements PriceCalculatorInterface
+{
+   public function calculate(float $price): float
+   {
+       return $price * 1.15;
+   }
+}</code></pre>
+<h3 id="3-let-collector-collect-what-you-need"><a href="#3-let-collector-collect-what-you-need">3. Let Collector Collect What You Need</a></h3>
+<p>Based on your needs, collect this or that service.</p>
+<pre><code class="language-php">$priceCalculatorCollector = class PriceCalculatorCollector;
+$priceCalculatorCollector-&gt;addPriceCalculator(new AdminDiscountPriceCalculator());
+$priceCalculatorCollector-&gt;addPriceCalculator(new UnitedKingdomPriceCalculator());
+
+$price = $priceCalculatorCollector-&gt;calculatePrice($product);</code></pre>
+<p><em class="fa fa-fw fa-lg fa-check text-success"></em> single entry point for <code>Collector</code></p>
+<p><em class="fa fa-fw fa-lg fa-check text-success"></em> each solution that implements <code>PriceCalculatorInterface</code> <strong>is reusable</strong></p>
+<p><em class="fa fa-fw fa-lg fa-check text-success"></em> <strong>to extend</strong> <code>PriceCalculatorCollector</code> with another feature, e.g. have a discount for Lenovo laptops from now till the end of June 2018, <strong>we don't have to modify</strong> it - just register a new <code>PriceCalculator</code></p>
+<p><em class="fa fa-fw fa-lg fa-check text-success"></em> <strong>to reflect 1 change in reality</strong>, e.g. from 15 % to 20 % VAT, all we need to do it <strong>change 1 class for everyone</strong></p>
+<p><br></p>
+<p><strong>Win for the end-user, win for your project and win for the code.</strong></p>
+<p><br></p>
+<p><em>And that's all there is.</em> Just kidding, there is much more, but that's out of the scope of this simple tutorial.
+Why the collector class doesn't implement the interface and other questions will be answered in following posts.</p>
+<p><br><br></p>
+<p>Happy collecting!</p>
+
+                <br>
+
+                
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Collector Pattern for Dummies" />
+    <meta property="og:description" content="I wrote Why is Collector Pattern so Awesome a while ago, but I got feeling and feedback that it&#039;s way too complicated.
+
+The pattern itself is simple, but put in framework context, it might be too confusing to understand.
+
+That&#039;s why we look on collector pattern in minimalistic plain PHP way today." />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/06/14/collector-pattern-for-dummies" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Collector Pattern for Dummies" />
+    <meta name="twitter:description" content="I wrote Why is Collector Pattern so Awesome a while ago, but I got feeling and feedback that it&#039;s way too complicated.
+
+The pattern itself is simple, but put in framework context, it might be too confusing to understand.
+
+That&#039;s why we look on collector pattern in minimalistic plain PHP way today." />

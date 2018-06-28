@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Composer Local Packages for Dummies | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 69 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="composer-local-packages-for-dummies"><a href="#composer-local-packages-for-dummies">Composer Local Packages for Dummies</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2017-12-Mon">Monday, December 25, 2017</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2017/12/25/composer-local-packages-for-dummies/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2017/2017-12-25-composer-local-packages-for-dummies.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        This is the simplest way to start using <code>/packages</code> directory in your application, that <strong>leads to cleaner code, maintainable architecture</strong> and is <strong>the best to start testing</strong>.
+                    </div>
+                </div>
+
+                
+                
+<p>I wrote about <a href="/blog/2017/02/07/how-to-decouple-monolith-like-a-boss-with-composer-local-packages/">pros and cons of local packages before</a>.
+After year of using this in <a href="https://github.com/Symplify/Symplify">practice</a> and <a href="/mentoring-and-lectures/">mentorings</a> I polished this approach to even <strong>simpler version that is easy to start with</strong>.</p>
+<h3 id="do-you-have"><a href="#do-you-have">Do You Have?</a></h3>
+<ul>
+<li><strong>monolithic code in <code>/app</code></strong></li>
+<li><strong>no unit tests</strong></li>
+<li>code that is using 3rd party services, like payments, invoice API and coding standards</li>
+<li>namespaces</li>
+<li>old application you maintain for many years</li>
+</ul>
+<h3 id="do-you-want-to"><a href="#do-you-want-to">Do You Want to?</a></h3>
+<ul>
+<li><strong>start testing</strong></li>
+<li><strong>have decoupled code</strong></li>
+<li>board new programmer with <strong>no explaining</strong></li>
+<li>understand how to scale architecture by decreasing code complexity</li>
+</ul>
+<p><br></p>
+<p>There is no need to use Github, <a href="/blog/2017/01/31/how-monolithic-repository-in-open-source-saved-my-laziness/">love open-source</a>, understand <a href="https://leanpub.com/principles-of-package-design">package design</a> or understand <a href="https://pehapkari.cz/blog/2017/03/02/drop-robot-loader-and-let-composer-deal-with-autoloading/">composer beyond PSR-4</a>.
+No <a href="https://johannespichler.com/developing-composer-packages-locally">symlink issues</a>, no forgotten <code>composer update</code>. <strong>Anyone can start using this!</strong></p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/composer-local-packages/composer.png"></div>
+<h2 id="4-steps-to-first-dummy-local-package"><a href="#4-steps-to-first-dummy-local-package">4 Steps to first Dummy Local Package</a></h2>
+<p>Your application now looks similar to this:</p>
+<pre><code class="language-bash">/app
+/temp
+/vendor
+composer.json</code></pre>
+<h3 id="1-create-code-packages-code-directory"><a href="#1-create-code-packages-code-directory">1. Create <code>Packages</code> directory</a></h3>
+<pre><code class="language-diff">/app
+/temp
++/packages
+/vendor
+composer.json</code></pre>
+<h3 id="2-create-first-package"><a href="#2-create-first-package">2. Create First Package</a></h3>
+<p>Start with something simple like filesystem or string utils.</p>
+<pre><code class="language-diff">/app
+/temp
+/packages
++   /file-system
++       /src
+/vendor
+composer.json</code></pre>
+<h3 id="3-move-first-class-to-new-package-directory"><a href="#3-move-first-class-to-new-package-directory">3. Move first Class to new package directory</a></h3>
+<pre><code class="language-diff">/app
+/temp
+/packages
+    /file-system
+        /src
++           FileSystem.php
+/vendor
+composer.json</code></pre>
+<p><br></p>
+<p>The best practise is to use your <strong>company or application name</strong> as namespace, e.g. <a href="https://www.entrydo.com/"><code>EntryDo</code></a>.
+Second part of namespace will be <strong>package name</strong> (<code>file-system</code>) in <strong>CamelCaps format</strong>.</p>
+<pre><code class="language-php">namespace EntryDo\FileSystem;
+
+final class FileSystem
+{
+    public function readFile(string $filePath): string
+    {
+        // is file or directory?
+        // is readable?
+        // ...
+    }
+}</code></pre>
+<p><strong>You're awesome! Congratulations</strong>, you've just made your first local packages and you're definitely not a dummy anymore.</p>
+<h3 id="4-autoload-with-composer"><a href="#4-autoload-with-composer">4. Autoload with Composer</a></h3>
+<p>The class is now decoupled. Now we have to <strong>tell composer where to find it</strong>!</p>
+<p>This is your <code>composer.json</code>:</p>
+<pre><code class="language-json">{
+    "require": {
+        "favorite/framework": "^4.0"
+    },
+    "autoload": {
+        "classmap": "app"
+    }
+}</code></pre>
+<p>Maybe your already have PSR-4 structure (great job if you do!), but let's say you maintain an old application.</p>
+<p><br></p>
+<p>Add our new package:</p>
+<pre><code class="language-diff">{
+    "require": {
+        "favorite/framework": "^4.0"
+    },
+    "autoload": {
+        "classmap": "app",
++       "psr-4": {
++           "EntryDo\FileSystem\": "packages/file-system/src
++       }
+    }
+}</code></pre>
+<p><br></p>
+<p>And now the answer to most questions on StackOverflow around this topic- <strong>rebuild the composer autoload file</strong> (<code>/vendor/autoload.php</code>) from CLI:</p>
+<pre><code class="language-bash">composer dump
+# which is shortcut for:
+# composer dump-autoload</code></pre>
+<p>That's it. You are ready to go!</p>
+<h2 id="5-bonus-add-your-first-test"><a href="#5-bonus-add-your-first-test">5. Bonus: Add Your First Test</a></h2>
+<p>Add test for a class was never easier. Create Test file for <code>FileSystem</code> class:</p>
+<pre><code class="language-diff">/app
+/temp
+/packages
+    /file-system
+        /src
+            FileSystem.php
++       /tests
++           FileSystemTest.php
+/vendor
+composer.json</code></pre>
+<p><br></p>
+<p>Add <code>\Tests</code> to <code>EntryDo\FileSystem</code> namespace:</p>
+<pre><code class="language-php">namespace EntryDo\FileSystem\Tests;
+
+use PHPUnit\Framework\TestCase;
+
+final class FileSystemTest extends TestCase
+{
+    public function testReadFile(): void
+    {
+        // test readFile() method
+    }
+}</code></pre>
+<p><br></p>
+<p>Update <code>phpunit.xml</code> to cover all tests of local packages:</p>
+<pre><code class="language-xml">&lt;phpunit bootstrap="vendor/autoload.php" colors="true"&gt;
+   &lt;testsuite&gt;
+       &lt;directory&gt;packages/*/tests&lt;/directory&gt;
+   &lt;/testsuite&gt;
+&lt;/phpunit&gt;</code></pre>
+<p><br></p>
+<p>And run tests:</p>
+<pre><code class="language-bash">vendor/bin/phpunit</code></pre>
+<p><br></p>
+<p>So this is the easiest way how to use composer local packages in 2018. I hope you enjoy it the same way your application does.</p>
+<p><br></p>
+<p>Happy packaging!</p>
+
+                <br>
+
+                
+    <hr class="mt-4 mb-lg-5">
+
+    Do you want more on this topic? You might like these <strong>related posts</strong>:
+
+            <a href="/blog/2017/01/31/how-monolithic-repository-in-open-source-saved-my-laziness">How Monolithic Repository in Open Source saved my Laziness</a>,             <a href="/blog/2017/02/07/how-to-decouple-monolith-like-a-boss-with-composer-local-packages">How to Decouple Monolith like a Boss with Composer Local Packages</a>    
+    <br>
+    <br>
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Composer Local Packages for Dummies" />
+    <meta property="og:description" content="This is the simplest way to start using /packages directory in your application, that leads to cleaner code, maintainable architecture and is the best to start testing." />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2017/12/25/composer-local-packages-for-dummies" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Composer Local Packages for Dummies" />
+    <meta name="twitter:description" content="This is the simplest way to start using /packages directory in your application, that leads to cleaner code, maintainable architecture and is the best to start testing." />

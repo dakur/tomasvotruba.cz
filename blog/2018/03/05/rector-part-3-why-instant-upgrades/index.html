@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Rector: Part 3 - Why Instant Upgrades | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 81 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="rector-part-3-why-instant-upgrades"><a href="#rector-part-3-why-instant-upgrades">Rector: Part 3 - Why Instant Upgrades</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-03-Mon">Monday, March 5, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/03/05/rector-part-3-why-instant-upgrades/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-03-05-rector-part-3-why-instant-upgrades.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        Why are instant upgrades better than old school <em>manual upgrades</em>? Why is the path to find exact before/after like hell-road?
+Why you should use Rector and when?
+                    </div>
+                </div>
+
+                
+                
+<p><em>Read also:</em></p>
+<ul>
+<li><a href="/blog/2018/02/19/rector-part-1-what-and-how/">Part 1 - What and How</a></li>
+<li><a href="/blog/2018/02/26/rector-part-2-maturity-of-php-ecocystem-and-founding-fathers/">Part 2 - Maturity of PHP Ecosystem and Founding Fathers</a></li>
+</ul>
+<p><br></p>
+<h2 id="why-was-rector-needed"><a href="#why-was-rector-needed">Why was Rector needed</a></h2>
+<p>You need 2 things to upgrade PHP application to newer version of the framework you use:</p>
+<h3 id="1-the-knowledge"><a href="#1-the-knowledge">1. The Knowledge</a></h3>
+<p>Most of you follow changes in Symfony or Nette. You know that <a href="https://github.com/symfony/symfony/blob/master/UPGRADE-4.0.md#process"><code>ProcessBuilder</code> was removed</a> and that you'll have to migrate to <code>Process</code> class only. You know that <a href="https://forum.nette.org/cs/26250-pojdte-otestovat-nette-2-4-rc"><code>Nette\Object</code> was removed</a> and that you'll have to rewrite all <code>@method</code> annotation to real methods.</p>
+<p>You read blogs, follow news on forum, read all <code>CHANGELOG.md</code> and <code>UPGRADE.md</code> files and sometimes commits, to find out what all has changed. <strong>You have the knowledge</strong>.</p>
+<p>Or don't you? <strong>Imagine you could drop delegate all this to a computer.</strong></p>
+<h3 id="2-the-resources"><a href="#2-the-resources">2. The Resources</a></h3>
+<p>You work in a company where up-to-date it very important value. Your employer finances upgrades and also your education in it (pays you to get the knowledge). Once a 6 months you have dedicated paid time to update all packages to most recent versions. <strong>You have the resources</strong></p>
+<p>Do you find yourself in such situation? If so, <strong>you belong to 5 % blessed and active people around me.</strong></p>
+<h2 id="how-expensive-are-upgrades-now"><a href="#how-expensive-are-upgrades-now">How Expensive are Upgrades Now?</a></h2>
+<p>From my experience with consulting over 50 PHP projects in last 4 years, it can take 80-400 hours per one minor version upgrade (e.g. Symfony 2.7 → 2.8), including all deprecations.</p>
+<h3 id="1-teams-are-not-supported-in-upgrades"><a href="#1-teams-are-not-supported-in-upgrades">1. Teams are not Supported in Upgrades</a></h3>
+<p>Teams don't have space to find out what changed between Symfony 2.7 and Symfony 2.8. They don't care, because their employer cares mostly about creating new website as fast and as cheap as possible. And that's logical.</p>
+<p>That's why most of <a href="/mentoring-and-lectures/">lectures</a> I make is about giving teams <em>the knowledge</em> that they can use with their very limited resources to make the best out of it.</p>
+<p>Such approach also naturally leads to huge legacy code, team performance drop from 100 % to 20 %, which consequently leads to hiring 5x more people to keep productivity the same, more money, and pressure to faster development, which lead to huge legacy code...</p>
+<h3 id="2-are-deprecations-easy-to-find"><a href="#2-are-deprecations-easy-to-find">2. Are Deprecations Easy to Find?</a></h3>
+<p>Let's say you have time to explore the Internet, follow <a href="https://twitter.com/symfony_en">Symfony News on Twitter</a>, read <a href="https://symfony.com/blog/category/living-on-the-edge">every news post on Symfony Blog</a> or know where on the Nette forum are located <a href="https://forum.nette.org/en/f78-release-announcements-news">Release Notes</a>.</p>
+<p>Sometimes if you're lucky there is <code>UPGRADE-x.md</code> in project's Github repository, like <a href="https://github.com/symfony/symfony/blob/master/UPGRADE-4.0.md"><code>UPGRADE-4.0.md</code></a> in Symfony 4 repository. But what if you need upgrade to version 3.x? Could you find it? Well no, but yes in <a href="https://github.com/symfony/symfony/tree/3.4">3.x branch</a>.</p>
+<p>And sometimes these changes are in files called <code>CHANGELOG-x.md</code>. But more often <strong>they're newer to be seen and you have to go <code>git blame</code> in Github specific line and hope for an answer</strong>. And just pray that there is PR with more detailed changes with tests as well and not direct set of commits to the <code>master</code> branch without context.</p>
+<img src="/assets/images/posts/2018/rector-3/frustration.jpg" class="img-thumbnail">
+<h3 id="3-when-we-find-them-are-they-valid"><a href="#3-when-we-find-them-are-they-valid">3. When We Find Them, are They Valid?</a></h3>
+<p>Sometimes there can be bare useless description, like <a href="https://github.com/symfony/symfony/blob/master/UPGRADE-4.0.md#process">in <code>UPGRADE-4.0</code></a>:</p>
+<p><em>The <code>Symfony\Component\Process\ProcessBuilder</code> class has been removed, use the <code>Symfony\Component\Process\Process</code> class directly instead.</em></p>
+<p>Do you mean like this?</p>
+<pre><code class="language-diff">-use Symfony\Component\Process\ProcessBuilder;
++use Symfony\Component\Process\Process;
+
+-$builder = new ProcessBuilder();
++$builder = new Process();
+ $builder-&gt;setArguments(['build', '-force', '-var "blah=blah"', 'path/to/json.json'])
+    -&gt;getProcess();</code></pre>
+<p>Unfortunately no and our investigative programming begins. Git blame..., Google? Symfony Docs?</p>
+<p>Sometimes <strong>they are embodied in the best place - the code</strong>. Kudos to all developers who do it like that! When running this method, you'll be informed:</p>
+<pre><code class="language-php">public function add()
+{
+    trigger_error('Method add() is deprecated, use addHtml() instead.', E_USER_DEPRECATED);
+}</code></pre>
+<h3 id="4-found-them-and-valid-but-are-they-standardized"><a href="#4-found-them-and-valid-but-are-they-standardized">4. Found them and Valid! But are They Standardized?</a></h3>
+<p>Sometimes the maintainer goes as far to deprecate code slowly (!= remove):</p>
+<pre><code class="language-php">trigger_error('Method add() is deprecated, use addHtml() instead.', E_USER_DEPRECATED);</code></pre>
+<p>Which is good enough for start. Symfony even has <a href="https://symfony.com/doc/current/components/phpunit_bridge.html">PHPUnit Bridge</a> that tries to detect those deprecations. Would you know what exactly do you need to change?</p>
+<img src="/assets/images/posts/2018/rector-3/report.png" class="img-thumbnail">
+<p>But what class? What line?</p>
+<p>But that's not the only &quot;standard&quot;.</p>
+<p><a href="https://xkcd.com/927/
+"></p>
+<img src="https://imgs.xkcd.com/comics/standards.png" class="img-thumbnail">
+<p></a></p>
+<p>There is one more way I wrote about in <a href="/blog/2017/09/11/how-to-write-open-source-in-php-3-deprecating-code/#today-s-topic-changed-method-name">How to write Open-Source in PHP 3: Deprecating Code</a>.</p>
+<p>The <code>@deprecated</code> annotation:</p>
+<pre><code class="language-php">/**
+ * @deprecated Method add() is deprecated, use addHtml() instead
+ */
+public function add()
+{
+    // ...
+}</code></pre>
+<p>Which is rather note in the code than helpful to user, like concept post about that great idea your never published. <strong>What happens when <code>-&gt;add()</code> method is called? Nothing.</strong> And in next mayor version you get <em>calling non-existing method</em> error.</p>
+<p>Similar tool to PHPUnit Bridge is <a href="https://github.com/sensiolabs-de/deprecation-detector"><code>deprecation-detector</code></a>, that tries to catch code with <code>@deprecated</code> annotation. Again, not much standardized.</p>
+<p>And that's Symfony, my friends, which <strong>does the best job for <a href="https://symfony.com/doc/current/contributing/code/bc.html">Backward Compatibility Promise</a> in PHP</strong>. <strong>What about those other 50 packages your application uses?</strong></p>
+<h3 id="outsource-all-this"><a href="#outsource-all-this">Outsource all this?</a></h3>
+<p>Would you like to do this job instead of developing your application? Most people wouldn't, so they hire me as a consultant to help them with it. <strong>But would you hire somebody, who would download all dependencies your application need in correct version for you or would you rather start using composer?</strong></p>
+<h2 id="embodied-cognition-instead-of-investigative-programming"><a href="#embodied-cognition-instead-of-investigative-programming">Embodied Cognition instead of Investigative Programming</a></h2>
+<p>I consulted over 50 projects in great depth of legacy. We always tried to figure out, where to start.</p>
+<ul>
+<li>&quot;This is how it's done in your project, and this is the way in Symfony.&quot;</li>
+</ul>
+<p>or</p>
+<ul>
+<li>&quot;This is how it's done in Symfony 2.8 and this is the way in Symfony 3.0.&quot;</li>
+</ul>
+<h3 id="legacy-projects-well-paid-projects-the-way-go"><a href="#legacy-projects-well-paid-projects-the-way-go">Legacy Projects === Well Paid Projects !== The Way Go</a></h3>
+<p>Over and over again, just version numbers and the desired framework change. After few years I started to feel like <em>a dumb copy-paster</em>. I follow every new feature on Symfony, test it, verify its usefulness, then distill 100 hours of my work to 3 hour lecture. I'm lazy and this started to itch my mind. Is this the really education I want to encourage in the world? Well, majority of lecturers do exactly same work, well paid work. But is that reason to do it too?</p>
+<h3 id="delegate-procreate"><a href="#delegate-procreate">Delegate → Procreate</a></h3>
+<p>I borrow a term from psychology - <strong>embodied cognition</strong>. It's something you don't have to remember, cause it's in you. It's like riding a bike. I don't know what words to use and where to find out how to ride a bike - I just know it, cause it's in  my internal reflexes.</p>
+<p>Could something similar happen to upgrading applications? A single place that knows what to do and doesn't have to explain every programmer over and over again?</p>
+<p><br></p>
+<p>These all kinds of problems Rector solves for you.</p>
+
+                <br>
+
+                
+    <hr class="mt-4 mb-lg-5">
+
+    Do you want more on this topic? You might like these <strong>related posts</strong>:
+
+            <a href="/blog/2017/11/06/how-to-change-php-code-with-abstract-syntax-tree">How to change PHP code with Abstract Syntax Tree</a>,             <a href="/blog/2018/02/19/rector-part-1-what-and-how">Rector: Part 1 - What and How</a>,             <a href="/blog/2018/02/26/rector-part-2-maturity-of-php-ecocystem-and-founding-fathers">Rector: Part 2 - Maturity of PHP Ecosystem and Founding Fathers</a>    
+    <br>
+    <br>
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Rector: Part 3 - Why Instant Upgrades" />
+    <meta property="og:description" content="Why are instant upgrades better than old school manual upgrades? Why is the path to find exact before/after like hell-road?
+Why you should use Rector and when?" />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/03/05/rector-part-3-why-instant-upgrades" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Rector: Part 3 - Why Instant Upgrades" />
+    <meta name="twitter:description" content="Why are instant upgrades better than old school manual upgrades? Why is the path to find exact before/after like hell-road?
+Why you should use Rector and when?" />

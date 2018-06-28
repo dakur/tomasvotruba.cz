@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>New in Symplify 3: 4 Improvements in EasyCodingStandard | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 79 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="new-in-symplify-3-4-improvements-in-easycodingstandard"><a href="#new-in-symplify-3-4-improvements-in-easycodingstandard">New in Symplify 3: 4 Improvements in EasyCodingStandard</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-03-Thu">Thursday, March 1, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/03/01/new-in-symplify-3-4-improvements-in-easy-coding-standard/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-03-01-new-in-symplify-3-4-improvements-in-easy-coding-standard.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        What is new in Easy Coding Standard 3?
+Nice diffs for fixable sniffs, smart excluding, support for sniff warnings and one more...
+                    </div>
+                </div>
+
+                
+                
+<h2 id="1-exclude-files-or-dirs"><a href="#1-exclude-files-or-dirs">1. Exclude Files or Dirs</a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/583" class="btn btn-dark btn-sm mt-2 mb-3 pull-left">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #583
+</a></p>
+<p><a href="https://github.com/Symplify/Symplify/pull/584" class="btn btn-dark btn-sm mt-2 mb-3 ml-2">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #584
+</a></p>
+<p>Do you have <code>src/Migrations</code> that you need to skip from your <code>vendor/bin/ecs check src</code> command?</p>
+<pre><code class="language-yaml"># easy-coding-standard.neon
+parameters:
+    exclude_files:
+        - 'src/Migrations/LastMigration.php'
+        # or better all files from the dir
+        - '*src/Migrations/*.php'</code></pre>
+<p>With favorite <a href="http://php.net/manual/en/function.fnmatch.php"><code>fnmatch()</code> function</a> on board.</p>
+<h2 id="2-warnings-are-reported-for-specific-sniffs"><a href="#2-warnings-are-reported-for-specific-sniffs">2. Warnings are Reported for Specific Sniffs</a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/481" class="btn btn-dark btn-sm mb-3 mt-2">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #481
+</a></p>
+<p>Sniff warnings are skipped by default, because it doesn't make sense to differentiate errors vs warnings. Yet some official Sniffs only produce warnings and that made them useless. Like <code>PHP_CodeSniffer\Standards\Squiz\Sniffs\PHP\CommentedOutCodeSniff</code>.</p>
+<p>That changed. New property <a href="https://github.com/Symplify/Symplify/blob/3d058becb57efefe2307c88ee94acbfbd15ebd1c/packages/EasyCodingStandard/packages/SniffRunner/src/File/File.php#L52"><code>$reportWarningsSniffs</code> in <code>Symplify\EasyCodingStandard\SniffRunner\File\File</code></a> now lists all sniffs, that report warnings in ECS as well.</p>
+<p><strong>Do you miss useful Sniff that reports only warnings?</strong> Send PR to add it.</p>
+<h2 id="3-nice-and-clear-diff-over-boring-table-report"><a href="#3-nice-and-clear-diff-over-boring-table-report">3. Nice and Clear Diff over Boring Table Report</a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/474" class="btn btn-dark btn-sm mb-3 mt-2">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #474
+</a></p>
+<p>Inspired by <a href="https://github.com/friendsofphp/php-cs-fixer">PHP CS Fixer</a> we've decided to <strong>use files diffs everywhere wherever it saves user daunting reading</strong>.</p>
+<p>When a <strong>fixable sniff found an error</strong>, ECS reported it like this:</p>
+<pre><code class="language-bash"> ------ --------------------------------------------------------------------------------------------
+  Line   src/Posts/Year2017/Ast/SomeClass.php
+ ------ --------------------------------------------------------------------------------------------
+  10     Property $someProperty should use doc block instead of one liner
+         (SomeSniff)</code></pre>
+<p>But why bother with such detailed text information, if the ECS will fix it to better form anyway?</p>
+<p>From now on, <strong>it is reported the PHP CS Fixer-way like all the fixers</strong>:</p>
+<pre><code class="language-diff">@@ -1,14 +1,13 @@
+ final class SomeClass
+ {
++    /**
++     * @var SomeType
++     */
+-    /** @var SomeType */
+     private $someProperty;
+ }
+
+    ----------- end diff -----------
+
+Applied checkers:
+
+ - SomeSniff</code></pre>
+<p>Which one do you prefer?</p>
+<h2 id="4-skip-sniff-codes-instead-of-whole-sniffs"><a href="#4-skip-sniff-codes-instead-of-whole-sniffs">4. Skip Sniff Codes instead of Whole Sniffs</a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/388" class="btn btn-dark btn-sm mb-3 mt-2">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #388
+</a></p>
+<p>If you wanted to skip specific part of sniff, you had to <strong>exclude whole sniff</strong> via <code>exclude_checkers</code> option:</p>
+<pre><code class="language-yaml"># easy-coding-standard.neon
+parameters:
+    exclude_checkers:
+        # to skip ".UselessDocComment"
+        - SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff</code></pre>
+<p>But what if you liked all the other codes?</p>
+<p>It's now possible to <strong>skip specific sniff codes</strong> in <code>skip_codes</code> option:</p>
+<pre><code class="language-yaml"># easy-coding-standard.neon
+parameters:
+    skip_codes:
+        # code to skip for all files
+        - SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment</code></pre>
+<p>And all the other codes will be checked properly in your code.</p>
+<p><br></p>
+<p><a href="https://github.com/Symplify/Symplify/pull/406" class="btn btn-dark btn-sm mb-3 mt-2">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #406
+</a></p>
+<p><a href="https://github.com/ostrolucky">@ostrolucky</a> took this feature even further and added  <strong>skipping by list of files or <a href="http://php.net/manual/en/function.fnmatch.php"><code>fnmatch</code></a></strong>.</p>
+<pre><code class="language-yaml"># easy-coding-standard.neon
+parameters:
+    skip_codes:
+        # code to skip for specific files/patterns
+        SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.MissingTraversableParameterTypeHintSpecification:
+            - '*src/Form/Type/*Type.php'</code></pre>
+<p>Hope you like the changes and thanks the people who push these tools further by every single PR or issue report!</p>
+<p><br></p>
+<p>Happy code fixing!</p>
+
+                <br>
+
+                
+    <hr class="mt-4 mb-lg-5">
+
+    Do you want more on this topic? You might like these <strong>related posts</strong>:
+
+            <a href="/blog/2017/08/07/7-new-features-in-easy-coding-standard-22">7 New Features in Easy Coding Standard 2.2</a>,             <a href="/blog/2017/12/17/new-in-symplify-3-doc-block-cleaner-fixer">New in Symplify 3: DocBlock Cleaner Fixer</a>,             <a href="/blog/2018/01/01/new-in-symplify-3-4-time-saving-coding-standard-checkers">New in Symplify 3: 4 Time-saving Coding Standard Checkers</a>    
+    <br>
+    <br>
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="New in Symplify 3: 4 Improvements in EasyCodingStandard" />
+    <meta property="og:description" content="What is new in Easy Coding Standard 3?
+Nice diffs for fixable sniffs, smart excluding, support for sniff warnings and one more..." />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/03/01/new-in-symplify-3-4-improvements-in-easy-coding-standard" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="New in Symplify 3: 4 Improvements in EasyCodingStandard" />
+    <meta name="twitter:description" content="What is new in Easy Coding Standard 3?
+Nice diffs for fixable sniffs, smart excluding, support for sniff warnings and one more..." />

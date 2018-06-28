@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Rector: Part 1 - What and How | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 77 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="rector-part-1-what-and-how"><a href="#rector-part-1-what-and-how">Rector: Part 1 - What and How</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-02-Mon">Monday, February 19, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/02/19/rector-part-1-what-and-how/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-02-19-rector-part-1-what-and-how.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        Rector is a PHP tool that handles 2 things: <strong>instant upgrades</strong> and <strong>architecture refactorings</strong>.
+<br><br>
+What exactly Rector does and how does it work?
+                    </div>
+                </div>
+
+                
+                
+<p><em>Read also:</em></p>
+<ul>
+<li><a href="/blog/2018/02/26/rector-part-2-maturity-of-php-ecocystem-and-founding-fathers/">Part 2 - Maturity of PHP Ecosystem and Founding Fathers</a></li>
+<li><a href="/blog/2018/03/05/rector-part-3-why-instant-upgrades/">Part 3 - Why Instant Upgrades</a></li>
+</ul>
+<p><br></p>
+<h2 id="what-is-rector"><a href="#what-is-rector">What is Rector?</a></h2>
+<p>Rector is a PHP CLI tool build on <a href="https://symfony.com/components">Symfony Components</a> that changes your PHP code for better.
+It only does what you tell it to do. You can use it to <em>instantly upgrade</em> your application or to do <em>architecture refactorings</em> once for the whole codebase.</p>
+<p>Rector won't do your job. It's here to <strong>do the boring stuff for you</strong>. Its help is similar to coding standard tools' help with code reviews - move focus from spaces and commas to architecture of the code.</p>
+<h3 id="where-is-it"><a href="#where-is-it">Where is it?</a></h3>
+<p>You can <a href="https://github.com/rectorphp/rector">find it on Github</a>. It has now <a href="https://github.com/rectorphp/rector/graphs/contributors">6 contributors</a> in total. I want to thank young talented PHP developer <a href="https://github.com/carusogabriel">Gabriel Caruso</a> from Brazil for his great contributions since December 2017 that pushed Rector to a brand new level.</p>
+<h2 id="what-are-instant-upgrades"><a href="#what-are-instant-upgrades">What are Instant Upgrades?</a></h2>
+<p><em>I'll show examples on <a href="https://symfony.com/">Symfony</a>, because that's the framework I know and love the best.</em></p>
+<p>Let's say you have a project on Symfony 2.7. And you have a huge <code>service.yml</code>. You know that Symfony 2.8/3.0 brought an awesome <a href="https://symfony.com/blog/new-in-symfony-2-8-service-auto-wiring">autowiring</a> feature that evolved to pure awesomenes in Symfony 3.3 and <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/#4-use-psr-4-based-service-autodiscovery-and-registration">PSR-4 services feature</a>.</p>
+<p>Would you like to do this upgrade work manually? No. You can use Rector instead.
+Just run it with target <code>level</code> of <code>symfony33</code> and it will change everything it knows about.</p>
+<p>Such a command looks like this:</p>
+<pre><code class="language-bash">vendor/bin/rector process src --level symfony33</code></pre>
+<h2 id="what-are-architecture-refactorings"><a href="#what-are-architecture-refactorings">What are Architecture Refactorings?</a></h2>
+<p>The great task Rector can handle is to architecture refactorings. Your code might use a framework, but that's just 50 % of the code. The other 50 % is up to you, how you decide to use it - I mean static calls, services locators, facades over dependency injections etc.</p>
+<p>I've seen many applications built on Symfony that used very interesting patterns:</p>
+<pre><code class="language-php">class LoggingEventSubscriber implements EventSubscriberInterface
+{
+    public function setController($controller)
+    {
+        $this-&gt;controller = $controller;
+    }
+
+    public function process()
+    {
+        $logger = $this-&gt;controller-&gt;get('logger');
+        $logger-&gt;log('it happened!');
+    }
+}</code></pre>
+<p>Let's say you'd like to remove all <code>$this-&gt;get('logger')</code> and replace them with dependency injection of <code>LoggerInterface</code> type. It's not strictly coupled to the Symfony (both <a href="https://forum.nette.org/en/22075-context-on-presenter-is-deprecated">Nette</a> and <a href="https://laravel.com/docs/5.5/facades#facade-class-reference">Laravel</a> allows this in some version) but you want to change this in the whole application.</p>
+<p>From this:</p>
+<pre><code class="language-php">class LectureController extends BaseController
+{
+    public function listAction()
+    {
+        $logger = $this-&gt;get('logger');
+        $logger-&gt;log('it happened!');
+    }
+}</code></pre>
+<p>To this:</p>
+<pre><code class="language-php">class LectureController extends BaseController
+{
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this-&gt;logger = $logger;
+    }
+
+    public function listAction()
+    {
+        $this-&gt;logger-&gt;log('it happened!');
+    }
+}</code></pre>
+<p>This can Rector handle too.</p>
+<p>Do you use Laravel and want to move from facades to constructor injection? Rector can help you.</p>
+<h2 id="how-does-it-work"><a href="#how-does-it-work">How does it Work?</a></h2>
+<p>Rector parses the code to <a href="/blog/2017/11/06/wow-to-change-php-code-with-abstract-syntax-tree/">AST</a> thanks to PHP superman <a href="https://nikic.github.io/">nikic</a>'s <a href="https://github.com/nikic/PHP-Parser">php-parser</a>.</p>
+<p>Then it finds specific places in the code, e.g. all variables that contain <code>Symfony\Component\HttpFoundation\Request</code> type and call <code>isMethodSafe()</code> method.</p>
+<p>Then it changes it into <code>isMethodCacheable()</code> (see <a href="https://github.com/symfony/symfony/blob/master/UPGRADE-4.0.md#httpfoundation">UPGRADE-4.0.md</a>).</p>
+<p>Such a configuration looks like this (as shown in <a href="https://github.com/rectorphp/rector#change-a-method-name"><code>README</code></a>):</p>
+<pre><code class="language-yaml"># rector.yml
+services:
+    # prepared service that handles method name changes
+    Rector\Rector\Dynamic\MethodNameReplacerRector:
+        $perClassOldToNewMethods:
+            # type to look for
+            'Symfony\Component\HttpFoundation\Request':
+                # old method name: new method name
+                'isMethodSafe': 'isMethodCacheable'</code></pre>
+<h3 id="member-of-big-ast-php-family"><a href="#member-of-big-ast-php-family">Member of Big AST PHP Family</a></h3>
+<p>Rector is not the only one who uses <code>nikic\php-parser</code> for context-aware operation on your code.</p>
+<p>You've probably heard of <a href="/blog/2017/01/28/why-I-switched-scrutinizer-for-phpstan-and-you-should-too/">PHPStan</a>. But unfortunately it's read-only for deterministic cases = when 1 error has exactly 1 possible solution.</p>
+<p>A bit further is another static analysis tool - <a href="https://github.com/vimeo/psalm">vimeo/psalm</a> by <a href="https://github.com/muglug">Matthew Brown</a>, which fixes such code. Great job Matthew!</p>
+<h2 id="easter-egg-has-google-own-quot-rector-quot"><a href="#easter-egg-has-google-own-quot-rector-quot">Easter Egg: Has Google Own &quot;Rector&quot;?</a></h2>
+<p>This <em>setup and forget</em> approach is so addictive, that Google must have it too, right?</p>
+<p>And it does! I found 4-page case study <em><a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/41342.pdf">Large-Scale Automated Refactoring Using ClangMR</a></em>, that was <a href="https://www.youtube.com/watch?v=ZpvvmvITOrk">presented by <em>Hyrum Wright</em> on CppCon2014</a> in 57 minutes. Hyrum doesn't work at Google anymore (as he wrote me), yet I still love his detailed and practical talk.</p>
+<p>I'm still amazed by how their approach is 90 % similar to Rector, just for C++.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                
+    <hr class="mt-4 mb-lg-5">
+
+    Do you want more on this topic? You might like these <strong>related posts</strong>:
+
+            <a href="/blog/2017/11/06/how-to-change-php-code-with-abstract-syntax-tree">How to change PHP code with Abstract Syntax Tree</a>,             <a href="/blog/2018/02/26/rector-part-2-maturity-of-php-ecocystem-and-founding-fathers">Rector: Part 2 - Maturity of PHP Ecosystem and Founding Fathers</a>,             <a href="/blog/2018/03/05/rector-part-3-why-instant-upgrades">Rector: Part 3 - Why Instant Upgrades</a>    
+    <br>
+    <br>
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Rector: Part 1 - What and How" />
+    <meta property="og:description" content="Rector is a PHP tool that handles 2 things: instant upgrades and architecture refactorings.
+
+What exactly Rector does and how does it work?" />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/02/19/rector-part-1-what-and-how" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Rector: Part 1 - What and How" />
+    <meta name="twitter:description" content="Rector is a PHP tool that handles 2 things: instant upgrades and architecture refactorings.
+
+What exactly Rector does and how does it work?" />

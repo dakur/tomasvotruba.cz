@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Migrate From PHP CS Fixer to EasyCodingStandard in 6 Steps | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 112 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="how-to-migrate-from-php-cs-fixer-to-easycodingstandard-in-6-steps"><a href="#how-to-migrate-from-php-cs-fixer-to-easycodingstandard-in-6-steps">How to Migrate From PHP CS Fixer to EasyCodingStandard in 6 Steps</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-06-Thu">Thursday, June 7, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/06/07/how-to-migrate-from-php-cs-fixer-to-easy-coding-standard/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-06-07-how-to-migrate-from-php-cs-fixer-to-easy-coding-standard.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        We looked at how to migrate from PHP_CodeSniffer to Easy Coding Standard on Monday. But what if your weapon of choice is PHP CS Fixer and you'd to run also some sniffs?
+<br>
+There are <strong>a few simple A → B changes</strong>, but one has to know about them or will get stuck. Let's learn about them.
+                    </div>
+                </div>
+
+                
+                
+<p>ECS is a tool build on Symfony 3.4 components that <a href="/blog/2017/05/03/combine-power-of-php-code-sniffer-and-php-cs-fixer-in-3-lines/">combines PHP_CodeSniffer and PHP CS Fixer</a>. It's super easy to start to use from scratch:</p>
+<pre><code class="language-bash">composer require symplify/easy-coding-standard --dev
+vendor/bin/ecs check src --level psr12 # yes 12!</code></pre>
+<p>But what if you already have PHP CS Fixer on your project and want to switch?</p>
+<h2 id="1-from-string-codes-to-autocompleted-classes"><a href="#1-from-string-codes-to-autocompleted-classes">1. From String Codes to Autocompleted Classes</a></h2>
+<p>You use string references like <code>strict_types</code> in your <code>.php_cs</code> file. You need to remember them, <a href="https://github.com/friendsofphp/php-cs-fixer">copy paste them from README</a> and <strong>copy-paste them right</strong>.</p>
+<pre><code class="language-php">return PhpCsFixer\Config::create()
+    -&gt;setRules([
+        'strict_types' =&gt; true,
+    ])
+    -&gt;setFinder($finder);</code></pre>
+<p>That can actually cause typos like:</p>
+<pre><code class="language-diff"> return PhpCsFixer\Config::create()
+     -&gt;setRules([
+-        'strict_types' =&gt; true,
++        'declare_strict_types' =&gt; true,
+     ])
+     -&gt;setFinder($finder);</code></pre>
+<p>How to do that in EasyCodingStandard? Copy paste the name from README, capitalize first letter and remove <code>_</code>:</p>
+<pre><code class="language-yaml"># ecs.yml
+services:
+    DeclareStrictTypes&lt;cursor-here&gt;:</code></pre>
+<p>Then hit the &quot;ctrl&quot; + &quot;space&quot; for class autocomplete in PHPStorm (it works even now when I write this post in markdown, nice!).</p>
+<pre><code class="language-yaml">services:
+    PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer: ~</code></pre>
+<p>That way <a href="https://plugins.jetbrains.com/plugin/7219-symfony-plugin">Symfony plugin</a> will autocomplete the class for you:</p>
+<img src="https://github.com/Symplify/EasyCodingStandard/raw/master/docs/yaml-autocomplete.gif">
+<p>No more typos with <em>strong</em> over <em>string typing</em>.</p>
+<h2 id="2-from-code-notpath-code-to-code-skip-code-parameter"><a href="#2-from-code-notpath-code-to-code-skip-code-parameter">2. From <code>notPath()</code> to <code>skip</code> Parameter</a></h2>
+<p>If you'd like to skip nasty code from being analyzed, you'd probably use this in PHP CS Fixer.</p>
+<pre><code class="language-php">$finder = PhpCsFixer\Finder::create()
+    -&gt;exclude('somedir')
+    -&gt;notPath('my-nasty-dirty-file.php')
+    -&gt;in(__DIR__);</code></pre>
+<p>One big cons of this is <strong>that all fixers will skip this code</strong>, not just one. Do you need <code>DeclareStrictTypesFixer</code> to skip thisf ile? Sorry, all fixers will skip it.</p>
+<p>EasyCodingStandard solves this common case - to skip a file, just use <code>skip</code> parameter:</p>
+<pre><code class="language-yaml">parameters:
+    skip:
+        PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer:
+            - 'my-nasty-dirty-file.php'</code></pre>
+<p>Do you have more such cases?</p>
+<pre><code class="language-yaml">parameters:
+    skip:
+        PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer:
+            - 'my-nasty-dirty-file.php'
+            - 'sooo-dirty-file.php'
+            - 'teribly-dirty-file.php'
+            - 'sexy-dirty-file.php'</code></pre>
+<p>You don't have to list them all like a typing monkey. Just use <code>fnmatch()</code> format instead:</p>
+<pre><code class="language-yaml">parameters:
+    skip:
+        PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer:
+            - '*dirty-file.php'</code></pre>
+<p>In case you need to <strong>skip 1 fixer</strong>, put it under <code>exclude_checkers</code>:</p>
+<pre><code class="language-yaml">parameters:
+    exclude_checkers:
+        - PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer</code></pre>
+<p>For all other <code>skip</code> options, <a href="https://github.com/symplify/easyCodingStandard/#ignore-what-you-cant-fix">see README</a>.</p>
+<h2 id="3-from-code-php-cs-code-to-yml-config"><a href="#3-from-code-php-cs-code-to-yml-config">3. From <code>.php_cs</code> to YML Config</a></h2>
+<p>PHP CS Fixer looks for <code>.php_cs</code> file in the root directory by default.</p>
+<p><strong>And EasyCodingStandard looks for:</strong></p>
+<pre><code class="language-bash">- ecs.yml
+- ecs.yaml
+- easy-coding-standard.yml
+- easy-coding-standard.yaml</code></pre>
+<p>What about non-default locations or names?</p>
+<p>From:</p>
+<pre><code class="language-bash">vendor/bin/php-cs-fixer fix /path/to/project --config=custom/location.yml --dry-run</code></pre>
+<p><strong>to:</strong></p>
+<pre><code class="language-bash">vendor/bin/ecs check /path/to/project --config custom/location.yml</code></pre>
+<h2 id="4-configuring-fixer-values"><a href="#4-configuring-fixer-values">4. Configuring Fixer Values</a></h2>
+<p>From PHP configuration in PHP CS Fixer:</p>
+<pre><code class="language-php">return PhpCsFixer\Config::create()
+    -&gt;setRules([
+        'array_syntax' =&gt; ['syntax' =&gt; 'short'],
+    ])
+    -&gt;setFinder($finder);</code></pre>
+<p><strong>to YML parameters in EasyCodingStandard:</strong></p>
+<pre><code class="language-yaml">services:
+    PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer:
+        syntax: short</code></pre>
+<p>Nice and clear!</p>
+<h2 id="5-from-no-code-dry-run-code-to-code-fix-code-option"><a href="#5-from-no-code-dry-run-code-to-code-fix-code-option">5. From no <code>--dry-run</code> to <code>--fix</code> option</a></h2>
+<p>From PHP CS Fixer:</p>
+<pre><code class="language-bash">vendor/bin/php-cs-fixer fix /path/to/project --dry-run
+vendor/bin/php-cs-fixer fix /path/to/project</code></pre>
+<p>to EasyCodingStandard equivalent:</p>
+<pre><code class="language-bash">vendor/bin/ecs check /path/to/project
+vendor/bin/ecs check /path/to/project --fix</code></pre>
+<h3 id="6-from-code-rules-code-to-code-imports-code"><a href="#6-from-code-rules-code-to-code-imports-code">6. From <code>@Rules</code> to <code>imports</code></a></h3>
+<p>Do you like to use standards like PSR-2 or even <a href="/blog/2018/04/09/try-psr-12-on-your-code-today/">PSR-12</a>?</p>
+<p>From <code>@strings</code> in PHP CS Fixer:</p>
+<pre><code class="language-php">$config = PhpCsFixer\Config::create()
+    -&gt;setRules([
+        '@PSR2' =&gt; true,
+    ]);</code></pre>
+<p><strong>to autocompleted config in YAML file in Easy Coding Standard</strong>:</p>
+<pre><code class="language-yaml">imports:
+    - { resource: 'vendor/symplify/easy-coding-standard/config/psr2.yml' }</code></pre>
+<p>Do you want to see all the PSR-2 rules? Easy, just click on the file.</p>
+<p><br></p>
+<h3 id="give-it-a-try"><a href="#give-it-a-try">Give it a Try...</a></h3>
+<p>...and you won't regret it. Sylius, LMC, Shopsys, Nette, and SunFox did and never came back.</p>
+<p><br></p>
+<p>Did I forget a step that you had to fight with? <strong>Please, let me know in the comments or just send PR to this post to add it</strong>, so we help other readers.</p>
+<p><br>
+<br></p>
+<p>Happy code sniffixing!</p>
+
+                <br>
+
+                
+    <hr class="mt-4 mb-lg-5">
+
+    Do you want more on this topic? You might like these <strong>related posts</strong>:
+
+            <a href="/blog/2017/05/03/combine-power-of-php-code-sniffer-and-php-cs-fixer-in-3-lines">Combine power of PHP_CodeSniffer and PHP CS Fixer in 3 lines</a>,             <a href="/blog/2017/08/07/7-new-features-in-easy-coding-standard-22">7 New Features in Easy Coding Standard 2.2</a>,             <a href="/blog/2018/03/26/new-in-easy-coding-standard-4-clean-symfony-standard-with-yaml-and-services">New in Easy Coding Standard 4: Clean Symfony Standard with Yaml and Services</a>,             <a href="/blog/2018/06/04/how-to-migrate-from-php-code-sniffer-to-easy-coding-standard">How to Migrate From PHP_CodeSniffer to EasyCodingStandard in 7 Steps</a>    
+    <br>
+    <br>
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Migrate From PHP CS Fixer to EasyCodingStandard in 6 Steps" />
+    <meta property="og:description" content="We looked at how to migrate from PHP_CodeSniffer to Easy Coding Standard on Monday. But what if your weapon of choice is PHP CS Fixer and you&#039;d to run also some sniffs?
+
+There are a few simple A → B changes, but one has to know about them or will get stuck. Let&#039;s learn about them." />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/06/07/how-to-migrate-from-php-cs-fixer-to-easy-coding-standard" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Migrate From PHP CS Fixer to EasyCodingStandard in 6 Steps" />
+    <meta name="twitter:description" content="We looked at how to migrate from PHP_CodeSniffer to Easy Coding Standard on Monday. But what if your weapon of choice is PHP CS Fixer and you&#039;d to run also some sniffs?
+
+There are a few simple A → B changes, but one has to know about them or will get stuck. Let&#039;s learn about them." />

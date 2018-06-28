@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How I Got into Static Trap and Made Fool of Myself | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 99 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="how-i-got-into-static-trap-and-made-fool-of-myself"><a href="#how-i-got-into-static-trap-and-made-fool-of-myself">How I Got into Static Trap and Made Fool of Myself</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>9 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-04-Thu">Thursday, April 26, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/04/26/how-i-got-into-static-trap-and-made-fool-of-myself/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-04-26-how-i-got-into-static-trap-and-made-fool-of-myself.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        PHP story with code examples, copy-cat killers, just a little bit of static, consistency, sniffs and way to prevent all that ever happening ever again.
+                    </div>
+                </div>
+
+                
+                
+<p>Today the format will be reversed - first I'll show you practical code and its journey to legacy, then theory takeaways that would save it.</p>
+<p><a href="https://github.com/symplify/codingstandard">Symplify\CodingStandard</a> contains complex Sniff and Fixers like <a href="/blog/2017/12/17/new-in-symplify-3-doc-block-cleaner-fixer/">the doc block cleaner</a>. Job of <code>RemoveUselessDocBlockFixer</code> is clear - <strong>remove any doc block that has no extra value over the php code itself</strong>:</p>
+<pre><code class="language-diff"> /**
+- * @param int $value value instance
+- * @param $anotherValue
+- * @param SomeType $someService A SomeType instance
+- * @return array
+  */
+ public function setCount(int $value, $anotherValue, SomeType $someService): array
+ {
+ }</code></pre>
+<p>The goal is clear, but <strong>how does it work beneath the surface</strong>? There are multiple steps that Fixer needs to perform one by one:</p>
+<ul>
+<li>find a method</li>
+<li>find its docblock</li>
+<li>find parameters in method code, detect their names and types</li>
+<li>compare them to docblock</li>
+<li>judge value of description (e.g. &quot;a Type instance&quot; has no value)</li>
+<li>remove those that were found useless</li>
+</ul>
+<p>Is that all? Nope. <strong>There also code that handles php docs</strong>:</p>
+<ul>
+<li>doc block parser that can parse any doc comment</li>
+<li>that can handle invalid and non-standard formats</li>
+<li>and a doc block printer, that can keep the original spacing</li>
+</ul>
+<p>Just a reminder, this all started with a simple idea:</p>
+<pre><code class="language-diff">-/**
+- * @param int $value
+- */
+ public function compute(int $value)
+ {
+ }</code></pre>
+<p>Today I'll write about <strong>how code always grows and that we should anticipate it and code the best way we know right from the beginning</strong>. And what happened to me when I thought I could handle it by <em>using static methods only where it makes sense</em> (well, everything makes sense, until it's legacy drowning you down).</p>
+<h2 id="story-of-static-growth"><a href="#story-of-static-growth">Story Of Static Growth</a></h2>
+<p>Let's look how the fixer grew to the point it turned into legacy, how that shot myself and what I could (and will) do better to prevent it.</p>
+<p>(To skip irrelevant details, I'll use pseudocode instead of <a href="https://github.com/Symplify/Symplify/blob/5603ed130bfd29bfdad050b7726b9c8e65a558fd/packages/CodingStandard/src/Fixer/Commenting/RemoveUselessDocBlockFixer.php">original full code</a>.)</p>
+<pre><code class="language-php">class RemoveUselessDocBlockFixer
+{
+    public function fix($tokens)
+    {
+        foreach ($tokens as $token) {
+            if (! $token-&gt;isMethod()) {
+                continue;
+            }
+
+            // it's a method!
+            $docBlock = $this-&gt;getDocBlockByMethod($token);
+            if ($docBlock === null) {
+                continue;
+            }
+
+            // it has a doc block!
+            $this-&gt;removeUselessContentFromDocBlock($docBlock);
+        }
+    }
+}</code></pre>
+<p>That's a basic workflow. In Easy Coding Standard 3 and below, checkers have no constructor injection, only <code>new</code> and <code>::static</code> methods were allowed. I took this inspiration from <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/search?utf8=%E2%9C%93&amp;q=new+TokensAnalyzer&amp;type=">PHP CS Fixer where <code>new</code> is a first class citizen</a>. There is no DI container, just static instantiations. Maybe that should warn me, but I said to myself &quot;it's a popular package, it has new fixers from time to time and it's tagged once a while, it must be good and they know what they're doing&quot;.</p>
+<p>So back to the code:</p>
+<pre><code class="language-php">public static function getDocBlockByMethod($token)
+{
+    $docBlockPosition = DocBlockFinder::find($token);
+    if ($docBlockPosition === null) {
+        return null;
+    }
+
+    return DocBlockFactory::createFromPosition($docBlockPosition);
+}</code></pre>
+<pre><code class="language-php">public static function removeUselessContentFromDocBlock($docBlock)
+{
+    DocBlockCleaner::processParamAnnotations($docBlock);
+    DocBlockCleaner::processReturnAnnotations($docBlock);
+}</code></pre>
+<h3 id="static-with-3rd-party-code"><a href="#static-with-3rd-party-code">Static with 3rd Party Code?</a></h3>
+<p>You see where it goes. The biggest potential black hole is always 3rd party code (unless it's your code). I could write the docblock parser myself or make use of <a href="https://github.com/phpDocumentor/ReflectionDocBlock">phpDocumentor/ReflectionDocBlock</a>. It was the best on the market in that time. Neither ready for PHP 5.5+ features like variadics nor formatter preserving printer. Except that it worked pretty well.</p>
+<pre><code class="language-php">class DocBlockFactory
+{
+    public static function createFromPosition($docBlockPosition)
+    {
+        $tagFactory = new StandardTagFactory($fqsenResolver, [
+            'param' =&gt; TolerantParam::class, // own overloaded class
+            'return' =&gt; TolerantReturn::class, // own overloaded class
+            'var' =&gt; Var_::class, // own overloaded class
+        ]);
+
+        $descriptionFactory = new DescriptionFactory($tagFactory);
+        $tagFactory-&gt;addService($descriptionFactory);
+        $tagFactory-&gt;addService(new TypeResolver($fqsenResolver));
+
+        $phpDocumentorDocBlockFactory = new DocBlockFactory($descriptionFactory, $tagFactory);
+
+        return $phpDocumentorDocBlockFactory-&gt;create($docBlockPositoin);
+    }
+}</code></pre>
+<p>So every time a single doc block is created, more than 10 classes (counting these on background) are created too. It might be a small deal for performance, but even bigger for legacy code smell that might hit me back later. But whatever, YOLO!</p>
+<p>And here all the static fun ends. Well, not yet, because it worked. I talked a lot with the maintainer of <code>phpDocumentor/ReflectionDocBlock</code> about moving it forward, but as I was the only one trying, it didn't lead much further than issue chats and PRs that were opened for too long. It was only logical that without <a href="https://gomonorepo.org/">monorepo</a> all the time was swallowed only by maintenance of 4 interdependent packages.</p>
+<h3 id="a-new-shiny-package"><a href="#a-new-shiny-package">A New Shiny Package?</a></h3>
+<p>Then <a href="https://github.com/JanTvrdik">Jan Tvrdík</a> came with a support package for PHPStan for handling php docs - <a href="https://github.com/phpstan/phpdoc-parser">phpstan/phpdoc-parser</a>. It is built on similar principles as <code>nikic/php-parser</code>, much younger and robust.</p>
+<p>I thought: &quot;I'd like to try that one package in my code&quot;, but how?</p>
+<p>It's easy, just replace all the old static classes with new ones:</p>
+<pre><code class="language-php">class DocBlockFactory
+{
+    public static function createFromPosition($docBlockPosition)
+    {
+        $content = $this-&gt;getContentOnPosition($docBlockPosition);
+
+        $lexer = new Lexer;
+        $tokenIterator = new TokenIterator($lexer-&gt;tokenize($content));
+
+        $phpStanPhpDocParser = new PhpStanPhpDocParser(new SomeDependency(new AnotherDependency));
+
+        return $phpStanPhpDocParser-&gt;parse($tokenIterator);
+    }
+}</code></pre>
+<h3 id="adding-depedency-to-static-hell-tree"><a href="#adding-depedency-to-static-hell-tree">Adding Depedency to Static Hell Tree</a></h3>
+<p>Do you need to add whitespace config? Just add it in every layer... or make it also static.</p>
+<pre><code class="language-diff"> class DocBlockFactory
+ {
+     public static function createFromPosition($docBlockPosition)
+     {
+         $content = $this-&gt;getContentOnPosition($docBlockPosition);
+
+         $lexer = new Lexer;
+         $tokenIterator = new TokenIterator($lexer-&gt;tokenize($content));
+
+         $phpStanPhpDocParser = new PhpStanPhpDocParser(new SomeDependency(new NewAnotherDependency));
+
+-        return $phpStanPhpDocParser-&gt;parse($tokenIterator);
++        $docBlock = $phpStanPhpDocParser-&gt;parse($tokenIterator);
++        $docBlock-&gt;addWhitespaceConfig($this-&gt;whitespaceConfig);
++
++        return $docBlock;
+    }
++
++    public function setWhitespaceConfig(WhitespaceConfig $whitespaceConfig)
++    {
++        $this-&gt;whitespaceConfig = $whitespaceConfig;
++    }
+}</code></pre>
+<p>But what if you forget to add it</p>
+<pre><code class="language-diff">+    public function ensureWhitespaceConfigIsSet()
++    {
++        if ($this-&gt;whitespaceConfig) {
++            return;
++        }
+
++        throw new WhitespaceConfigNotSetException(sprintf('Informative message in "%s" method', __METHOD__));
++    }</code></pre>
+<p>Congratulations, you've just made a static container all over your code, similar to Laravel Facades.
+Uff, I just get headache by writing this code.</p>
+<p>But why stopping there? Let's add a configuration that will tell the <code>DocBlockFactory</code> if the starting tag should be <code>/*</code> or <code>/**</code>.</p>
+<p>Well, shoot me now!</p>
+<h2 id="how-to-get-from-static-hell"><a href="#how-to-get-from-static-hell">How to Get From Static Hell?</a></h2>
+<h3 id="1-dependency-injection-strike-first-strike-only"><a href="#1-dependency-injection-strike-first-strike-only">1. Dependency Injection <strike>First</strike> Only</a></h3>
+<p>Dependency injection First. Not first, but <strong>only</strong> dependency injection.</p>
+<p>I told myself - &quot;here the static method makes sense, it's just one little method&quot;. The problem is, that static methods work well only with other static methods. You simply can't inject a service to a class with static methods and use it statically.. well, to be honest, Laravel did it in facades and Reflections, but you should not. Unless you want to use such approach in the whole codebase. That would be the only valid reason to do it so.</p>
+<p><strong>So be consistent in architecture pattern you pick.</strong></p>
+<p>It took me <a href="https://github.com/Symplify/Symplify/pull/680">3</a> <a href="https://github.com/Symplify/Symplify/pull/693">pull</a> <a href="https://github.com/Symplify/Symplify/pull/723">requests</a> to get out of this mess. Not to try the new package, just to prepare the code to be able to do so. Instead, I could have a clear DI design, use one PR at a time to trying this package and other 2 PRs could have been new features.</p>
+<h3 id="2-beware-your-inner-copy-cat-coder"><a href="#2-beware-your-inner-copy-cat-coder">2. Beware Your Inner Copy-Cat Coder</a></h3>
+<blockquote>
+<p>A copycat crime is a criminal act that is modeled or inspired by a previous crime that has been reported in the media or described in fiction.</p>
+</blockquote>
+<p>This all started with social learning - &quot;children see, children do&quot;. I saw static approach in Fixers in PHP CS Fixer and I was making a Fixer. So why not use it? I felt in my guts it's not the best way to go, but I was not sure why and I didn't see anybody else using DI in CLI applications. Now I know why.</p>
+<p>If you ever have a feeling that there is a better way to do things but you'll see that some Tomas Votruba is doing it differently, take your time - <strong>trust yourself, your intuition guides you for a reason</strong>. Question him and propose your idea, even though it might be crazy at the start. Maybe you'll save yourself and him a few PRs and many frustrated days from climbing up the legacy hole.</p>
+<h3 id="3-sniff-it-setup-and-forget"><a href="#3-sniff-it-setup-and-forget">3. Sniff It - Setup and Forget</a></h3>
+<p><a href="https://github.com/Symplify/Symplify/pull/722" class="btn btn-dark btn-sm">
+<em class="fa fa-github fa-fw"></em>
+See pull-request #722
+</a></p>
+<p>To prevent this 10 hours of trauma happening ever again, I made <a href="https://github.com/symplify/codingstandard#use-services-and-constructor-injection-over-static-method">a <code>ForbiddenStaticFunctionSniff</code> sniff</a> that will look after your code.</p>
+<p><em class="fa fa-fw fa-times text-danger fa-lg"></em></p>
+<pre><code class="language-php">class SomeClass
+{
+    public function someFunction()
+    {
+    }
+}</code></pre>
+<p><em class="fa fa-fw fa-check text-success fa-lg"></em></p>
+<pre><code class="language-php">class SomeClass
+{
+    public static function someFunction()
+    {
+    }
+}</code></pre>
+<p>I've added this sniff to set before refactoring, scanned the code and <a href="https://github.com/Symplify/Symplify/pull/722/files#diff-a8b950982764fcffe4b7b3acd261cf91R84">added all found files to ignored</a>. That way I knew what all classes need refactoring.</p>
+<h3 id="4-remove-code-static-code-from-methods-one-step-at-a-time"><a href="#4-remove-code-static-code-from-methods-one-step-at-a-time">4. Remove <code>Static</code> from Methods - One Step at a Time</a></h3>
+<p>I always do this in one single PR, starting with the simplest factory from ignored files above.</p>
+<p>Remove the <code>static</code> in one factory:</p>
+<pre><code class="language-diff"> class UseImportsTransformer
+ {
+-    public static function addNamesToTokens(...)
++    public function addNamesToTokens(...)
+ }</code></pre>
+<p>Pass it via constructor:</p>
+<pre><code class="language-diff"> class RemoveUselessDocBlockFixer
+ {
++    /**
++     * @var UseImportsTransformer
++     */
++    private $userImportsTransformer;
++
++    public function __construct(UseImportsTransformer $userImportsTransformer)
++    {
++        $this-&gt;userImportsTransformer = $userImportsTransformer;
++    }
+ }</code></pre>
+<p>And use it in code:</p>
+<pre><code class="language-diff">-UseImportsTransformer::addNamesToTokens($this-&gt;newUseStatementNames, $tokens);
++$this-&gt;useImportsTransformer-&gt;addNamesToTokens($this-&gt;newUseStatementNames, $tokens);</code></pre>
+<h3 id="5-keep-your-environment-clean"><a href="#5-keep-your-environment-clean">5. Keep Your Environment Clean</a></h3>
+<p>I also admit that another code smell lead to this. In Symplify and Rector there is used <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/">Symfony 3.3 services architecture</a> with autowiring and autodiscovery. State of art in PHP DI at the moment.</p>
+<p>But Fixers and Checkers were exceptions. They were registered as services, <strong>but not autowired</strong>. So I was used to not-to add dependency to them manually, but via setters, <code>new</code> or <code>::static</code>. It eventually and logically leads to this situation.</p>
+<p>I learned something new and <a href="/blog/2018/03/26/new-in-easy-coding-standard-4-clean-symfony-standard-with-yaml-and-services/">migrated to full-service approach in ECS 4</a>.</p>
+<h2 id="3-takeaways-you-should-not-take-statically"><a href="#3-takeaways-you-should-not-take-statically">3 Takeaways You Should not Take Statically</a></h2>
+<ul>
+<li>Static is not only <code>::method()</code>, but also <code>new &lt;class&gt;</code> and <code>::create()</code>.</li>
+<li>Use dependency injection or static methods, not a mixture. <strong>Be consistent</strong> everywhere in your code, or it will eventually backfire.</li>
+<li>There is no best way to do things, <strong>you just have to experience limits of various approaches and use the one that performs the best</strong>. And re-evaluate.</li>
+</ul>
+<p><br><br></p>
+<p>They also say that:</p>
+<blockquote class="blockquote">
+    Wisdom is an ability to learn from others' mistakes.
+</blockquote>
+<p>So I hope you learned something new today!</p>
+
+                <br>
+
+                
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How I Got into Static Trap and Made Fool of Myself" />
+    <meta property="og:description" content="PHP story with code examples, copy-cat killers, just a little bit of static, consistency, sniffs and way to prevent all that ever happening ever again." />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/04/26/how-i-got-into-static-trap-and-made-fool-of-myself" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How I Got into Static Trap and Made Fool of Myself" />
+    <meta name="twitter:description" content="PHP story with code examples, copy-cat killers, just a little bit of static, consistency, sniffs and way to prevent all that ever happening ever again." />

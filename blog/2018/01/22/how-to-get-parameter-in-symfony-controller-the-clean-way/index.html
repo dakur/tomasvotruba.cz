@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Get Parameter in Symfony Controller the Clean Way | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 73 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="how-to-get-parameter-in-symfony-controller-the-clean-way"><a href="#how-to-get-parameter-in-symfony-controller-the-clean-way">How to Get Parameter in Symfony Controller the Clean Way</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-01-Mon">Monday, January 22, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/01/22/how-to-get-parameter-in-symfony-controller-the-clean-way/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-01-22-how-to-get-parameter-in-symfony-controller-the-clean-way.md">Typo? Fix me, please</a>
+        </li>
+    
+            <li class="list-inline-item pull-right">
+                        <a href="https://github.com/TomasVotruba/tomasvotruba.cz/tree/master/tests/Posts/Year{post->getDateInFormat('Y'))/ParameterToSymfonyController" class="badge badge-success">
+                <em class="fa fa-fw fa-thumbs-up"></em> Tested
+            </a>
+        </li>
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        Services are already moving to Constructor Injection in Symfony.
+<br>
+Now it's time for parameters to follow.
+                    </div>
+                </div>
+
+                
+                
+<h3 id="the-easy-way"><a href="#the-easy-way">The Easy Way</a></h3>
+<pre><code class="language-php">final class LectureController extends SymfonyController
+{
+    public function registerAction()
+    {
+        $bankAccount = $this-&gt;container-&gt;getParameter('bankAccount');
+    }
+}</code></pre>
+<p>It works, but it breaks <a href="https://github.com/jupeter/clean-code-php#solid">SOLID encapsulation of dependencies</a>. Controller should not be aware of whole DI container and every service in it. <strong>It should take only what it needs</strong> as any other <a href="/blog/2018/01/08/clean-and-decoupled-controllers-commands-and-event-subscribers-once-and-for-all-with-delegator-pattern/#delegator-pattern-to-the-strike-rescue-strike-prevention">delegator</a>.</p>
+<p><strong>What if we need a service</strong> to pay a registration fee to our bank account?</p>
+<p>Since <a href="https://symfony.com/blog/new-in-symfony-2-8-service-auto-wiring">Symfony 2.8 with autowiring</a> we can go for constructor injection with no obstacles:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+final class LectureController extends SymfonyController
+{
+    /**
+     * @var PaymentService
+     */
+    private $paymentService;
+
+    public function __construct(PaymentService $paymentService)
+    {
+        $this-&gt;paymentService = $paymentService;
+    }
+
+    public function registerAction(): void
+    {
+        $bankAccount = $this-&gt;container-&gt;getParameter('bankAccount');
+
+        $this-&gt;paymentService-&gt;payAmountToAccount(1000, $bankAccount);
+    }
+}</code></pre>
+<p>This can go completely wrong, not because dependency injection is better than service locator, but <strong>because code is now inconsistent</strong>. It's not clear:</p>
+<ul>
+<li>When should we use constructor injection? For services?</li>
+<li>When should we use service locator? For parameters?</li>
+</ul>
+<p>At that's what we think about when <em>we</em> refactored code and know about it's previous state.</p>
+<p>When your colleague will extends this code 3 months later, he might <a href="https://blog.codinghorror.com/the-broken-window-theory/">broke your window</a>:</p>
+<pre><code class="language-diff">&lt;?php declare(strict_types=1);
+
+final class LectureController extends SymfonyController
+{
+    /**
+     * @var PaymentService
+     */
+    private $paymentService;
+
+    public function __construct(PaymentService $paymentService)
+    {
+        $this-&gt;paymentService = $paymentService;
+    }
+
+    public function registerAction(): void
+    {
+        $bankAccount = $this-&gt;container-&gt;getParameter('bankAccount');
+
+        $this-&gt;paymentService-&gt;payAmountToAccount(1000, $bankAccount);
+    }
++
++    public function refundAction(): void
++    {
++        $refundService = $this-&gt;container-&gt;get(RefundService::class);
++        $refundService-&gt;refundToLoggedUser(1000);
++    }
+}</code></pre>
+<h2 id="consistency-over-per-change-pattern"><a href="#consistency-over-per-change-pattern">Consistency over Per Change Pattern</a></h2>
+<p>You understand your code = you know reasons why it's written this way and the boundaries. You know when to use dependency injection and when service (or pamater) locator.</p>
+<p><strong>But that's you. Only you.</strong> Other people don't have your experience and your memory. <strong>They read the code and learn while reading</strong>.</p>
+<p>That's why it's important to use as less rules as possible to prevent <a href="https://chrismm.com/blog/writing-good-code-reduce-the-cognitive-load/">cognitive overload</a>. Which leads to poor understanding of the code and coding further in the same file but in own personal way, not related to original code much.</p>
+<h3 id="di-is-the-flow-ndash-go-with-it"><a href="#di-is-the-flow-ndash-go-with-it">DI is the Flow &ndash; Go With It</a></h3>
+<p>Symfony 3.3 and 3.4/4.0 brought <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/">many new DI features</a> and <strong>with it an evolution to developer experience paradigm</strong>. Thanks to <a href="https://github.com/nicolas-grekas">Nicolas Grekas</a>, and subsequently <a href="https://github.com/dunglas">Kévin Dunglas</a> and <a href="https://github.com/hason">Martin Hasoň</a>.</p>
+<h2 id="the-clean-way"><a href="#the-clean-way">The Clean Way</a></h2>
+<p>Service is created in the container and passed via constructor where needed.
+<strong>Why not parameter, which is also loaded by the container?</strong></p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+final class LectureController extends SymfonyController
+{
+    /**
+     * @var string
+     */
+    private $bankAccount;
+
+    /**
+     * @var PaymentService
+     */
+    private $paymentService;
+
+    public function __construct(string $bankAccount, PaymentService $paymentService)
+    {
+        $this-&gt;paymentService = $paymentService;
+        $this-&gt;bankAccount = $bankAccount;
+    }
+
+    public function registerAction(): void
+    {
+        $this-&gt;paymentService-&gt;payAmountToAccount(1000, $this-&gt;bankAccount);
+    }
+}</code></pre>
+<h3 id="change-the-config"><a href="#change-the-config">Change the Config</a></h3>
+<p>We need to:</p>
+<ul>
+<li>register controller <strong>manually</strong> in every instance</li>
+<li>pass the parameter to constructor <strong>manually</strong> in every instance</li>
+<li>autowire the rest</li>
+</ul>
+<p>It's lot of work, but it's worth it!</p>
+<pre><code class="language-yaml"># config.yml
+parameters:
+    bankAccount: '1093849023/2013'
+
+services:
+    _defaults:
+        autowire: true
+
+    App\Controller\LectureController:
+        arguments:
+            - '%bankAccount%'</code></pre>
+<p>Would you use this approach? 5 lines for 1 parameter in 1 service? Maybe.</p>
+<p>What about 2, 3 or 40 controllers/services using it?</p>
+<pre><code class="language-yaml">services:
+    autowire: true
+
+    App\Controller\LectureController:
+        arguments:
+            - '%bankAccount%'
+
+    App\Controller\ContactController:
+        arguments:
+            - '%bankAccount%'
+
+    # and 40 more services with manual setup
+    App\Model\PaymentService:
+        arguments:
+            # with care when used with another position then 1st one
+            2: '%bankAccount%'</code></pre>
+<p><strong>Doh, so much work :(</strong></p>
+<p>I find <a href="#the-easy-way">the easy way</a> now much more likeable:</p>
+<pre><code class="language-php">$this-&gt;container-&gt;getParameter('bankAccount');</code></pre>
+<p><strong>Wait! No need to go easy and dirty. There <em>is</em> simpler way.</strong></p>
+<p>Since Symfony 3.3 we can use <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/#4-use-psr-4-based-service-autodiscovery-and-registration/">PSR-4 service loading</a> and since <a href="https://symfony.com/blog/new-in-symfony-3-4-local-service-binding">Symfony 3.4/4.0 parameter binding</a>.</p>
+<p>How changed previous steps?</p>
+<ul>
+<li><strike>register controller manually</strike> → use PSR4 <strong>once for all services</strong></li>
+<li><strike>pass the parameter to constructor</strike> → use binding <strong>once for all services</strong></li>
+<li>autowire the rest</li>
+</ul>
+<pre><code class="language-yaml">services:
+    _defaults:
+        autowire: true
+        bind:
+            $bankAccount: '%bankAccount%'
+
+    App\Controller\:
+        resource: ..</code></pre>
+<p><strong>Now you can add 50 more services using <code>$bankAccount</code> as constructor dependency with no extra edit on config</strong>. Win-win!</p>
+<p><br><br></p>
+<p>Happy Config Fit &amp; Slimming!</p>
+
+                <br>
+
+                
+
+                                    <div class="mt-5 mb-5 card card-bigger">
+                        <div class="card-body">
+                                                        <p>
+                                <strong>This Post is Tested, Make it Last Forever</strong>
+                            </p>
+
+                            <p>
+                                The final code is tested (<a href="https://github.com/TomasVotruba/tomasvotruba.cz/tree/master/tests/Posts/Year2018/ParameterToSymfonyController"><em class="fa fa-fw fa-github"></em>see it on Github</a>) and is the best solution in time being.
+                            </p>
+
+                            <p>
+                                Thanks to tests this code:
+                                <ul>
+                                    <li><strong>always run against the most recent dependencies</strong></li>
+                                    <li>will get updates with just a little work</li>
+                                    <li>will be useful for as long as possible</li>
+                                </ul>
+                            </p>
+
+                            <p>
+                                Read more <a href="https://pehapkari.cz/blog/2017/01/12/why-articles-with-code-examples-should-be-CI-tested">about tested posts as they're essential for post's lifetime</a>.</p>
+                            <p>
+                                <strong>Without tests the post won't make it through next <a href="https://semver.org/#spec-item-8">major</a> release</strong> and it's long tail effect would spread obsolete practise.
+                            </p>
+                        </div>
+                    </div>
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Get Parameter in Symfony Controller the Clean Way" />
+    <meta property="og:description" content="Services are already moving to Constructor Injection in Symfony.
+
+Now it&#039;s time for parameters to follow." />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/01/22/how-to-get-parameter-in-symfony-controller-the-clean-way" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Get Parameter in Symfony Controller the Clean Way" />
+    <meta name="twitter:description" content="Services are already moving to Constructor Injection in Symfony.
+
+Now it&#039;s time for parameters to follow." />

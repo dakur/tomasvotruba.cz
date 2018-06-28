@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>New in Easy Coding Standard 4: Clean Symfony Standard with Yaml and Services | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 86 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="new-in-easy-coding-standard-4-clean-symfony-standard-with-yaml-and-services"><a href="#new-in-easy-coding-standard-4-clean-symfony-standard-with-yaml-and-services">New in Easy Coding Standard 4: Clean Symfony Standard with Yaml and Services</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-03-Mon">Monday, March 26, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/03/26/new-in-easy-coding-standard-4-clean-symfony-standard-with-yaml-and-services/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-03-26-new-in-easy-coding-standard-4-clean-symfony-standard-with-yaml-and-services.md">Typo? Fix me, please</a>
+        </li>
+    
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        I wrote about <a href="/blog/2018/03/01/new-in-symplify-3-4-improvements-in-easy-coding-standard/">news in Easy Coding Standard 3</a> a while ago. EasyCodingStandard 4 is released yet (still in alpha), but soon you'll be able to use all the news I'll show you today.
+<br><br>
+And what are they? Neon to Yaml, semi-static to Services, customizable caching, even simpler skipper, short bin and more.
+                    </div>
+                </div>
+
+                
+                
+<h2 id="1-configure-caching-directory"><a href="#1-configure-caching-directory">1. Configure Caching Directory</a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/656" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #661
+</a></p>
+<p>Docker users will be happy for this feature, since it makes ECS much more usable. To enjoy speed of caching of changed files on second run, just tune your config.</p>
+<pre><code class="language-yaml"># easy-coding-standard.yml
+parameters:
+    # defaults to sys_get_temp_dir() . '/_easy_coding_standard'
+    cache_directory: .ecs_cache</code></pre>
+<p>Thank you <a href="https://github.com/marmichalski">Marcin Michalski</a> for adding this feature.</p>
+<p><br></p>
+<h2 id="2-skip-anything-anywhere"><a href="#2-skip-anything-anywhere">2. Skip Anything, Anywhere</a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/661" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #661
+</a></p>
+<p>One of the features I really like is skipping particular spots. PHP CS Fixer and PHP_CodeSniffer can ignore whole directory, 1 sniff everywhere or force to put annotation to your code and that's not the way to go. <strong>Your code should have no idea about tools you use to analyze it</strong>.</p>
+<p>What you really need? Exclude 1 file but only for 1 checker. Or 1 checker for group of files and sometimes only 1 code from sniff on 1 file. That all is possible now.</p>
+<p><strong>Because details matters and it's pointless to think about code or class</strong>, you can now remove <code>skip_codes</code> key from your config and use <code>skip</code> section only:</p>
+<pre><code class="language-diff"> # easy-coding-standard.yml
+ parameters:
+     skip:
+         PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff:
+            - 'packages/CodingStandard/src/Fixer/ClassNotation/LastPropertyAndFirstMethodSeparationFixer.php'
+
+-    skip_codes:
+         SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment:
+             - '*packages*'</code></pre>
+<p>No need to think, where to put it anymore.</p>
+<p><br></p>
+<h2 id="3-short-code-vendor-bin-ecs-code-is-the-king"><a href="#3-short-code-vendor-bin-ecs-code-is-the-king">3. Short <code>vendor/bin/ecs</code> is the King</a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/647" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #647
+</a></p>
+<p>One last detail. Did you use this bin file to run ECS?</p>
+<pre><code class="language-bash">vendor/bin/easy-coding-standard
+# or
+vendor/bin/easy-coding-standard.php</code></pre>
+<p>I know it's pain, mainly during live demo presentations with all that tyops :).</p>
+<p>Now this is the only way to use ECS:</p>
+<pre><code class="language-bash">vendor/bin/ecs</code></pre>
+<p>Typo proof or at least less error prone. Just change it in you <a href="https://blog.martinhujer.cz/have-you-tried-composer-scripts/"><code>composer.json</code>'s <code>script</code> section</a> or CI setups and you're ready to go!</p>
+<p><br></p>
+<h2 id="4-di-migration-finished-from-neon-to-yaml"><a href="#4-di-migration-finished-from-neon-to-yaml">4. DI Migration Finished: From Neon to Yaml</a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/651" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #651
+</a></p>
+<p>Symplify used <code>Nette\DI</code> a long time ago and with it its markup language - Neon. Then it moved to <code>Symfony\DependencyInjection</code> in <a href="https://github.com/Symplify/Symplify/blob/master/CHANGELOG.md#v200---2017-06-16">Symplify 2.0</a>, because it was just impossible to reject <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/">all these awesome Symfony 3.3 features</a> by Nicolas Grekas. But this was just partial migration - Neon files still worked.</p>
+<p>That lead to situation, where 5 <em>custom-cool-classes</em> simulated loading transforming Neon to Yaml format, merging it and then passing to Symfony Container, hoping all went well. And it worked. Well, most of the times.</p>
+<p>Based on feedback from <a href="https://github.com/Symplify/Symplify/issues/565">community around Symplify</a>, rejection of ECS in <a href="https://github.com/doctrine/coding-standard">Doctrine\CodingStandard</a> where Neon was one of reasons and weird feeling from promoting &quot;local-only standard&quot;, I decided to move to Symfony completely.</p>
+<p><a href="https://xkcd.com/927/"></p>
+<img src="https://imgs.xkcd.com/comics/standards.png">
+<p></a></p>
+<p>I had one problem - missed services autocomplete in Yaml files. But you know what they say:</p>
+<blockquote class="blockquote text-center mt-lg-5 mb-lg-5">
+    There are no solutions. There are only trade-offs
+</blockquote>
+<p>I hear you community, so lets trade! <strong>From ECS 4, you can use Yaml everywhere with syntax you know, behavior from Symfony ecosystem you know and with no need to learn new standard.</strong></p>
+<h3 id="how-to-migrate"><a href="#how-to-migrate">How to Migrate?</a></h3>
+<p>Well just rename <code>easy-coding-standard.neon</code> or <code>easy-coding-standard.yml</code> and
+then read about it in <a href="/blog/2018/03/12/neon-vs-yaml-and-how-to-migrate-between-them/">Neon vs. Yaml and How to Migrate Between Them</a>.</p>
+<p><br></p>
+<h2 id="5-from-semi-static-checkers-to-services-as-first-class-citizen"><a href="#5-from-semi-static-checkers-to-services-as-first-class-citizen">5. From Semi-Static Checkers to Services as First-Class Citizen</a></h2>
+<p><a href="https://github.com/Symplify/Symplify/pull/660" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fa fa-github"></em>
+&nbsp;
+Check the PR #660
+</a></p>
+<p>Thanks to Yaml, we could use finally use full power of Symfony\DependencyInjection component, constructor injection, autowiring... again, all that you probably already know from Symfony.</p>
+<p>Why? <strong>ECS is basically a Symfony application with DI Container</strong>. It loads all checkers from config you provide, turns them into services and then uses those services to check the code.</p>
+<p>Could you tell that from?</p>
+<pre><code class="language-yaml"># easy-coding-standard.yml
+checkers:
+    ArrayFixer: ~</code></pre>
+<p>I could not. <strong>I recall how frustrated I was, when I digged through PHP_CodeSniffer and PHP CS Fixer years ago and find out that Sniffs and Fixers are only statically registered services</strong>, nothing more.</p>
+<p>Why not make such intent explicit?</p>
+<pre><code class="language-yaml"># easy-coding-standard.yml
+services:
+    ArrayFixer: ~</code></pre>
+<p>Yaml was the only missing part to do this. And ECS has it now, so does the explicit services!
+And you can do and use any feature you Symfony know. Magic no more #metoo.</p>
+<h3 id="how-to-migrate"><a href="#how-to-migrate">How to Migrate?</a></h3>
+<pre><code class="language-diff"># easy-coding-standard.yml
+-    checkers:
++    services:
+         Symplify\CodingStandard\Fixer\Import\ImportNamespacedNameFixer:
+             include_doc_blocks: true
+
+-        - SlamCsFixer\FinalInternalClassFixer:
++        SlamCsFixer\FinalInternalClassFixer: ~</code></pre>
+<h2 id="6-strike-good-bye-neon-class-autocomplete-strike-or-not"><a href="#6-strike-good-bye-neon-class-autocomplete-strike-or-not">6. <strike>Good Bye Neon Class Autocomplete</strike> Or not?</a></h2>
+<p>Yeah, trade-offs bla bla bla... but what is ECS without class autocomplete? That is killer feature compared to other 2 tools that use strings for Fixer and Sniff names that you have to remember.</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2018/symplify-4-ecs/neon-autocomplete.gif"></div>
+<p><br></p>
+<p>I <a href="https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1153">created issue at Symfony Plugin</a> and hyped people all over the planet to up-vote it. I even seriously though about going to PHPStorm Plugin workshop and learn Java only to add this feature it. Should I try or should I <a href="https://www.youtube.com/watch?v=L0MK7qz13bU">let it go</a>?</p>
+<p><br></p>
+<p>But one night, after glass of wine trying to achieve <a href="https://xkcd.com/323/">Ballmer Peak</a>, I accidentally made a typo in <code>.yml</code> file:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2018/symplify-4-ecs/yaml-autocomplete.gif"></div>
+<p><br></p>
+<p>And that glass of wine, my friends, was hell of a trade-off!</p>
+<p><br><br></p>
+<p>Happy upgrading!</p>
+
+                <br>
+
+                
+    <hr class="mt-4 mb-lg-5">
+
+    Do you want more on this topic? You might like these <strong>related posts</strong>:
+
+            <a href="/blog/2018/03/01/new-in-symplify-3-4-improvements-in-easy-coding-standard">New in Symplify 3: 4 Improvements in EasyCodingStandard</a>    
+    <br>
+    <br>
+
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="New in Easy Coding Standard 4: Clean Symfony Standard with Yaml and Services" />
+    <meta property="og:description" content="I wrote about news in Easy Coding Standard 3 a while ago. EasyCodingStandard 4 is released yet (still in alpha), but soon you&#039;ll be able to use all the news I&#039;ll show you today.
+
+And what are they? Neon to Yaml, semi-static to Services, customizable caching, even simpler skipper, short bin and more." />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/03/26/new-in-easy-coding-standard-4-clean-symfony-standard-with-yaml-and-services" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="New in Easy Coding Standard 4: Clean Symfony Standard with Yaml and Services" />
+    <meta name="twitter:description" content="I wrote about news in Easy Coding Standard 3 a while ago. EasyCodingStandard 4 is released yet (still in alpha), but soon you&#039;ll be able to use all the news I&#039;ll show you today.
+
+And what are they? Neon to Yaml, semi-static to Services, customizable caching, even simpler skipper, short bin and more." />

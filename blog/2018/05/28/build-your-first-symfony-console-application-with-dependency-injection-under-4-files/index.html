@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Build Your First Symfony Console Application with Dependency Injection Under 4 Files | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+        <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+        <!-- post_id: 109 -->
+
+        <div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new ">
+                    <a href="/clusters/" class="bg-success">
+                        Clusters
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/mission/">My Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/clusters/" class="col-3 col-sm-3 ">
+                <em class="fa fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+            <a href="/mission/" class="col-3 col-sm-3 ">
+                <em class="fa fa-heartbeat"></em>
+                <br>
+                Mission
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3 ">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1 id="build-your-first-symfony-console-application-with-dependency-injection-under-4-files"><a href="#build-your-first-symfony-console-application-with-dependency-injection-under-4-files">Build Your First Symfony Console Application with Dependency Injection Under 4 Files</a></h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2018-05-Mon">Monday, May 28, 2018</time>
+    </li>
+
+            <li class="list-inline-item mr-3">
+            <em class="fa fa-fw fa-comments"></em>
+            <a href="https://www.tomasvotruba.cz/blog/2018/05/28/build-your-first-symfony-console-application-with-dependency-injection-under-4-files/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item">
+            <em class="fa fa-fw fa-pencil"></em>
+            <a href="https://github.com/TomasVotruba/tomasvotruba.cz/edit/master/source/_posts/2018/2018-05-28-build-your-first-symfony-console-application-with-dependency-injection-under-4-files.md">Typo? Fix me, please</a>
+        </li>
+    
+            <li class="list-inline-item pull-right">
+                        <a href="https://github.com/TomasVotruba/tomasvotruba.cz/tree/master/tests/Posts/Year{post->getDateInFormat('Y'))/ConsoleDI" class="badge badge-success">
+                <em class="fa fa-fw fa-thumbs-up"></em> Tested
+            </a>
+        </li>
+    
+            <li class="list-inline-item pull-right mr-2">
+            <span class="badge badge-light">
+                <em class="fa fa-fw fa-code"></em> Code
+            </span>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger">
+                    <div class="card-body">
+                        Series about PHP CLI Apps continues with 3rd part about writing Symfony Console Application with Dependency Injection in the first place. Not last, not second, <strong>but the first</strong>.
+<br>
+Luckily, is easy to start using it and very difficult to
+                    </div>
+                </div>
+
+                
+                
+<h2 id="symfony-evolution"><a href="#symfony-evolution">Symfony Evolution</a></h2>
+<p><a href="http://richardmiller.co.uk/2011/04/15/symfony2-controller-as-service/">7 years ago it was a total nightmare to use Controllers as services</a>. Luckily, Symfony evolved a lot in this matter and using Symfony 4.0 packages in a brand new application is much simpler than it was in Symfony 2.8 or even 3.2. The very same evolution allowed to enter Dependency Injection to Symfony Console-based PHP CLI App.</p>
+<h3 id="commands-as-services"><a href="#commands-as-services">Commands as Services</a></h3>
+<p>I already wrote about <a href="/blog/2018/05/07/why-you-should-combine-symfony-console-and-dependency-injection/#3-symfony-console-meets-symfony-dependencyinjection">why is this important</a>, today we look at <strong>how to actually do it</strong>. To be clear, how to do it without the need of bloated FrameworkBundle, that is an official but <a href="https://matthiasnoback.nl/2013/10/symfony2-console-commands-as-services-why/">rather bad-practice solution</a>.</p>
+<h2 id="3-steps-to-first-command-as-a-service"><a href="#3-steps-to-first-command-as-a-service">3 Steps to First Command as a Service</a></h2>
+<p>All we need are these 3 elements:</p>
+<ul>
+<li><code>service.yml</code> file with PSR-4 autodiscovery,</li>
+<li>classic Kernel</li>
+<li>and the bin file - entry point to our application.</li>
+</ul>
+<p>The simplest things first.</p>
+<h3 id="1-code-services-yml-code"><a href="#1-code-services-yml-code">1. <code>services.yml</code></a></h3>
+<p>Create <code>config/services.yml</code> with classic <a href="https://github.com/symfony/symfony/pull/21289#issue-101559374">PSR-4 autodiscovery/autowire setup</a> and register <code>Symfony\Component\Console\Application</code> as well. We will use this class later.</p>
+<pre><code class="language-yaml"># config/services.yml
+services:
+    _defaults:
+        autowire: true
+
+    App\:
+        resource: '../app'
+
+    Symfony\Component\Console\Application:
+        # why public? so we can get it from container in bin file
+        # via "$container-&gt;get(Application::class)"
+        public: true</code></pre>
+<h3 id="2-kernel"><a href="#2-kernel">2. Kernel</a></h3>
+<p>The basic stone of all Symfony Applications. Nothing extra here, we just load the <code>config/services.yml</code> from the previous step:</p>
+<pre><code class="language-php">&lt;?php
+
+# app/Kernel.php
+
+use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+final class AppKernel extends Kernel
+{
+    /**
+     * In more complex app, add bundles here
+     */
+    public function registerBundles(): array
+    {
+        return [];
+    }
+
+    /**
+     * Load all services
+     */
+    public function registerContainerConfiguration(LoaderInterface $loader): void
+    {
+        $loader-&gt;load(__DIR__ . '/../config/services.yml');
+    }
+}</code></pre>
+<p>There is one more thing. We'll</p>
+<h3 id="3-the-bin-file"><a href="#3-the-bin-file">3. The bin file</a></h3>
+<p>Last but not least the entry point to our application - <code>bin/some-app</code>. That's basically twin-brother of <a href="https://github.com/symfony/demo/blob/beb3aa8e988527f16ac50f792eede240fafbfdfc/public/index.php#L35-L39"><code>public/index.php</code></a>, just for CLI Apps.</p>
+<pre><code class="language-php"># bin/some-app
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+
+$kernel = new AppKernel;
+$kernel-&gt;boot();
+
+$container = $kernel-&gt;getContainer();
+$application = $container-&gt;get(Application::class)
+$application-&gt;run();</code></pre>
+<p>So let's say we have a <code>App\Command\SomeCommand</code> with <code>some</code> name and we want to run it:</p>
+<pre><code class="language-bash">bin/some-app some</code></pre>
+<p>But we get:</p>
+<pre><code class="language-bash">Command "some" is not defined.</code></pre>
+<p>Why? We're sure that:</p>
+<ul>
+<li>the <code>App\Command\SomeCommand</code> class exists</li>
+<li>it's located in <code>app/Command/SomeCommand.php</code> file</li>
+<li>the <code>config/services.yml</code> loads it</li>
+<li><code>composer.json</code> section <code>autoload</code> is correctly configured</li>
+<li><code>vendor/autoload.php</code> was dumped with <code>composer dump</code>...</li>
+</ul>
+<p>What are we missing? Oh, we forgot to <strong>load commands to the <code>Application</code> service</strong>. Everything works, but our application doesn't know about our commands. It's like if the web application doesn't know where to find the controller.</p>
+<h3 id="how-to-add-all-services-of-type-a-to-service-of-type-b"><a href="#how-to-add-all-services-of-type-a-to-service-of-type-b">How to Add All Services of Type A to Service of Type B</a></h3>
+<p>With FrameworkBundle we'd add <code>autoconfigure</code> option to <code>services.yml</code> config - it works with tags, but here we need to use clean PHP.
+<a href="/blog/2017/02/12/drop-all-service-tags-in-your-nette-and-symfony-applications/">Tags magic that is often overused in wrong places</a>, so this extra works is actually a good thing. We know what happens... but <strong>mainly readers of our code know it too</strong>.</p>
+<p>This is the place to use <a href="/blog/2018/03/08/why-is-collector-pattern-so-awesome/#drop-that-expression-language-magic">famous collector pattern</a> via <code>CompilerPass</code>:</p>
+<pre><code class="language-php"># app/DependencyInjection/CompilerPass/CollectCommandsToApplicationCompilerPass.php
+
+namespace App\DependencyInjection\CompilerPass;
+
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
+
+final class CollectCommandsToApplicationCompilerPass implements CompilerPassInterface
+{
+    public function process(ContainerBuilder $containerBuilder): void
+    {
+        $applicationDefinition = $containerBuilder-&gt;getDefinition(Application::class);
+
+        foreach ($containerBuilder-&gt;getDefinitions() as $name =&gt; $definition) {
+            if (is_a($definition-&gt;getClass(), Command::class, true)) {
+                $applicationDefinition-&gt;addMethodCall('add', [new Reference($name)]);
+            }
+        }
+    }
+}</code></pre>
+<p>And make our <code>Kernel</code> aware of it:</p>
+<pre><code class="language-php"># app/Kernel.php
+
+// ...
+
+use App\DependencyInjection\CompilerPass\CollectCommandsToApplicationCompilerPass;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Command\Command;
+
+// ...
+
+{
+    protected function build(ContainerBuilder $containerBuilder): void
+    {
+        $containerBuilder-&gt;addCompilerPass(new CommandsToApplicationCompilerPass);
+    }
+
+    // ...
+}</code></pre>
+<p>This will compile to container to something like this:</p>
+<pre><code class="language-php">function createSomeCommand()
+{
+    return new SomeCommand();
+}
+
+function createApplication()
+{
+    $application = new Application;
+    $application-&gt;add(createSomeCommand());
+
+    return $application;
+}</code></pre>
+<p>Now let's try it again:</p>
+<pre><code class="language-bash">bin/some-app some</code></pre>
+<p>It works! And that's it. I told you it'll be easy - how can we not love Symfony :).</p>
+<p><strong>Do you still struggle with some parts?</strong> Don't worry, this post is tested by PHPUnit, so you can find all the code mentioned here - just click on &quot;Tested&quot; in the top of the post to see it.</p>
+<p><br><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                
+
+                                    <div class="mt-5 mb-5 card card-bigger">
+                        <div class="card-body">
+                                                        <p>
+                                <strong>This Post is Tested, Make it Last Forever</strong>
+                            </p>
+
+                            <p>
+                                The final code is tested (<a href="https://github.com/TomasVotruba/tomasvotruba.cz/tree/master/tests/Posts/Year2018/ConsoleDI"><em class="fa fa-fw fa-github"></em>see it on Github</a>) and is the best solution in time being.
+                            </p>
+
+                            <p>
+                                Thanks to tests this code:
+                                <ul>
+                                    <li><strong>always run against the most recent dependencies</strong></li>
+                                    <li>will get updates with just a little work</li>
+                                    <li>will be useful for as long as possible</li>
+                                </ul>
+                            </p>
+
+                            <p>
+                                Read more <a href="https://pehapkari.cz/blog/2017/01/12/why-articles-with-code-examples-should-be-CI-tested">about tested posts as they're essential for post's lifetime</a>.</p>
+                            <p>
+                                <strong>Without tests the post won't make it through next <a href="https://semver.org/#spec-item-8">major</a> release</strong> and it's long tail effect would spread obsolete practise.
+                            </p>
+                        </div>
+                    </div>
+                
+                <a name="comments"></a>
+
+                <h3 id="what-do-you-think"><a href="#what-do-you-think">What do you think?</a></h3>
+
+                <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//' + 'itsworthsharing' + '.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Build Your First Symfony Console Application with Dependency Injection Under 4 Files" />
+    <meta property="og:description" content="Series about PHP CLI Apps continues with 3rd part about writing Symfony Console Application with Dependency Injection in the first place. Not last, not second, but the first.
+
+Luckily, is easy to start using it and very difficult to" />
+    <meta property="og:url" content="https://www.tomasvotruba.cz/blog/2018/05/28/build-your-first-symfony-console-application-with-dependency-injection-under-4-files" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Build Your First Symfony Console Application with Dependency Injection Under 4 Files" />
+    <meta name="twitter:description" content="Series about PHP CLI Apps continues with 3rd part about writing Symfony Console Application with Dependency Injection in the first place. Not last, not second, but the first.
+
+Luckily, is easy to start using it and very difficult to" />

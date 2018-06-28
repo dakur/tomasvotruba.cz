@@ -1,0 +1,80 @@
+.checklist {
+    list-style-type: none;
+}
+
+.checklist li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* used from http://phppackagechecklist.com/css/all.css */
+
+.checklist__item {
+    margin: 0 0 10px 0;
+    position: relative;
+}
+.checklist__input {
+    display: none;
+    user-select: none;
+}
+.checklist__label {
+    margin-left: -1.5em;
+    margin-top: .7em;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    cursor: pointer;
+    user-select: none;
+    color: #DDD;
+}
+
+.checklist__input ~ .checklist__label:hover {
+    color: #529963;
+}
+
+.checklist__input:checked ~ .checklist__label {
+    color: #529963;
+}
+
+.checklist__input:checked ~ .checklist__label:hover {
+    color: #498858;
+}
+
+.checklist__details {
+    display: block;
+    margin: 0 0 10px 0;
+    padding: 1em 1em 1em 3em;
+}
+
+@media only screen and (max-width: 399px) {
+    .checklist__label {
+        position: static;
+        width: 100%;
+        height: 100px;
+        background-size: auto 130%;
+    }
+    .checklist__input:checked ~ .checklist__label {
+        background-size: auto 130%;
+    }
+    .checklist__details {
+        padding: 25px;
+    }
+    .checklist__title {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 800px) {
+    .checklist__label {
+        width: 100px;
+    }
+    .checklist__details {
+        padding-left: 130px;
+    }
+    .checklist__title {
+        font-size: 30px;
+    }
+}

@@ -1,0 +1,1675 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+>
+    <channel>
+        <title>Tomas Votruba writes about PHP and education</title>
+        <link>https://www.tomasvotruba.cz/blog/</link>
+        <description>PHP, Communities and Communication posts by Tomas Votruba</description>
+        <pubDate>{ "now"|date('r')}</pubDate>
+        <atom:link href="https://www.tomasvotruba.cz/rss.xml" rel="self" type="application/rss+xml" />
+
+                                            <lastBuildDate>Mon, 25 Jun 2018 00:00:00 +0000</lastBuildDate>
+            
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Let Changelog Linker Generate CHANGELOG.md for You ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/06/25/let-changelog-linker-generate-changelog-for-you/</link>
+                    <description><![CDATA[ Do you have an open-source project on Github? Do you want your users to know about new features and changes without you writing posts about it?
+Do you keep a changelog? Do you struggle with keeping it up-to-date and descriptive and with all the links to all merged pull-requests?
+
+
+Yes? Then you&#039;ll love Changelog Linker. A PHP CLI tool that does all this boring work for you. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/06/25/let-changelog-linker-generate-changelog-for-you/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/06/25/let-changelog-linker-generate-changelog-for-you#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Open Source is Selfish ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/06/21/open-source-is-selfish/</link>
+                    <description><![CDATA[ Most people I meet see open-source as &amp;quot;putting all your work free to the public&amp;quot;. Do you think that I&#039;d love it so much if that was the case?
+
+That&#039;s why I want to talk about the selfish benefits of open-source, that come first, almost always, but just a few people can see them. And that selfish open-source is a good thing. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/06/21/open-source-is-selfish/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/06/21/open-source-is-selfish#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ 14 Surprising Tips from Selling is Human to Influence Others ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/06/18/14-surprising-tip-from-selling-is-human-to-influence-others/</link>
+                    <description><![CDATA[ Recently, I&#039;ve read Selling is Human by Daniel Pink. He&#039;s famous for Pinkcast - an espresso of knowledge. I like him, because he&#039;s often right to the point, with examples, stories, and science.
+
+What can we learn about selling?
+Lucky for you, you don&#039;t have to read the whole book - here are the top 10 points I found very useful. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/06/18/14-surprising-tip-from-selling-is-human-to-influence-others/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/06/18/14-surprising-tip-from-selling-is-human-to-influence-others#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Collector Pattern for Dummies ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/06/14/collector-pattern-for-dummies/</link>
+                    <description><![CDATA[ I wrote Why is Collector Pattern so Awesome a while ago, but I got feeling and feedback that it&#039;s way too complicated.
+
+The pattern itself is simple, but put in framework context, it might be too confusing to understand.
+
+That&#039;s why we look on collector pattern in minimalistic plain PHP way today. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/06/14/collector-pattern-for-dummies/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/06/14/collector-pattern-for-dummies#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Turn Mocks from Nightmare to Solid Kiss Tests ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/06/11/how-to-turn-mocks-from-nightmare-to-solid-kiss-tests/</link>
+                    <description><![CDATA[ Martin Hlaváč had a very nice talk about testing in Berlin PHP Meetup last week (while I hosted with Rector), and one of the topic was mocking.
+
+I often see developers fighting with this, in places they don&#039;t have to, just because this topic is so widespread all over the internet and unit tools.
+
+Did you know there is easier and more clear way to do &amp;quot;mocking&amp;quot;? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/06/11/how-to-turn-mocks-from-nightmare-to-solid-kiss-tests/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/06/11/how-to-turn-mocks-from-nightmare-to-solid-kiss-tests#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Migrate From PHP CS Fixer to EasyCodingStandard in 6 Steps ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/06/07/how-to-migrate-from-php-cs-fixer-to-easy-coding-standard/</link>
+                    <description><![CDATA[ We looked at how to migrate from PHP_CodeSniffer to Easy Coding Standard on Monday. But what if your weapon of choice is PHP CS Fixer and you&#039;d to run also some sniffs?
+
+There are a few simple A → B changes, but one has to know about them or will get stuck. Let&#039;s learn about them. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/06/07/how-to-migrate-from-php-cs-fixer-to-easy-coding-standard/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/06/07/how-to-migrate-from-php-cs-fixer-to-easy-coding-standard#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Migrate From PHP_CodeSniffer to EasyCodingStandard in 7 Steps ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/06/04/how-to-migrate-from-php-code-sniffer-to-easy-coding-standard/</link>
+                    <description><![CDATA[ Last year, I helped Shopsys Coding Standards and LMC PHP Coding Standard to migrate from PHP_CodeSniffer to EasyCodingStandard.
+
+There are a few simple A → B changes, but one has to know about them or will get stuck.
+
+Do you also use PHP_CodeSniffer and give it EasyCodingStandard a try? Today we look at how to migrate step by step. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/06/04/how-to-migrate-from-php-code-sniffer-to-easy-coding-standard/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/06/04/how-to-migrate-from-php-code-sniffer-to-easy-coding-standard#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Symfony vs Laravel vs Nette - Which PHP Framework Should You Choose ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/05/31/symfony-vs-laravel-vs-nette-which-php-framework-you-should-choose/</link>
+                    <description><![CDATA[ I have been asked this question over hundred times, in person, as a post request. When to use Symfony? How is Laravel better than Symfony? What are Nette killer features compared to Symfony and Laravel?
+
+Today, we look on the answer. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/05/31/symfony-vs-laravel-vs-nette-which-php-framework-you-should-choose/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/05/31/symfony-vs-laravel-vs-nette-which-php-framework-you-should-choose#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Build Your First Symfony Console Application with Dependency Injection Under 4 Files ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/05/28/build-your-first-symfony-console-application-with-dependency-injection-under-4-files/</link>
+                    <description><![CDATA[ Series about PHP CLI Apps continues with 3rd part about writing Symfony Console Application with Dependency Injection in the first place. Not last, not second, but the first.
+
+Luckily, is easy to start using it and very difficult to ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/05/28/build-your-first-symfony-console-application-with-dependency-injection-under-4-files/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/05/28/build-your-first-symfony-console-application-with-dependency-injection-under-4-files#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ The Boss vs. The Masseuse Way to Add Coding Standards to a Big Project ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/05/24/boss-vs-masseuse-way-to-add-coding-standards-to-big-project/</link>
+                    <description><![CDATA[ Do you prefer a boss who&#039;s watching you how you sit at the desk telling how to sit right
+or a masseuse who&#039;s taking care of your hands tired from programming with her gentle hands?
+
+When it comes to coding standards, the love and fun is the best experience with it. Let&#039;s look how such &amp;quot;masseuse&amp;quot; can be added to your big project. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/05/24/boss-vs-masseuse-way-to-add-coding-standards-to-big-project/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/05/24/boss-vs-masseuse-way-to-add-coding-standards-to-big-project#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Is Your Code Readable By Humans? Cognitive Complexity Tells You ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you/</link>
+                    <description><![CDATA[ Cyclomatic complexity is a static analysis measure of how difficult is code to test.
+Cognitive complexity tells us, how difficult code is to understand by a reader.
+
+
+Today, we&#039;ll see why is the later better and how to check it in your code with a Sniff. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Test Private Services in Symfony ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/05/17/how-to-test-private-services-in-symfony/</link>
+                    <description><![CDATA[ 2 versions of Symfony are affected by this dissonance between services and tests.
+Do you use Symfony 3.4 or 4.0? Do you want to test your services, but struggle to get them in a clean way?
+
+Today we look at possible solutions. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/05/17/how-to-test-private-services-in-symfony/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/05/17/how-to-test-private-services-in-symfony#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Load --config With Services in Symfony Console ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/05/14/how-to-load-config-with-services-in-symfony-console/</link>
+                    <description><![CDATA[ PHP CLI apps usually accept config, to setup their behavior. For PHPUnit it&#039;s phpunit.xml, for PHP CS Fixer it&#039;s .php_cs, for EasyCodingStandard it&#039;s easy-coding-standard.yml, for PHPStan it&#039;s phpstan.neon and so on.
+
+In the first post about PHP CLI Apps I wrote about poor DI support in PHP CLI projects.
+
+Today we look on the first barrier that leads most people to prefer static over DI - how to load config with services. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/05/14/how-to-load-config-with-services-in-symfony-console/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/05/14/how-to-load-config-with-services-in-symfony-console#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Rectify: Turn All Action Injects to Constructor Injection in Your Symfony Application ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/05/10/rectify-turn-all-action-injects-to-constructor-injection-in-your-symfony-application/</link>
+                    <description><![CDATA[ Action Injections are much fun, but it can turn your project to legacy very fast. How to refactor out of the legacy back to constructor injection and still keep that smile on your face? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/05/10/rectify-turn-all-action-injects-to-constructor-injection-in-your-symfony-application/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/05/10/rectify-turn-all-action-injects-to-constructor-injection-in-your-symfony-application#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Why You Should Combine Symfony Console and Dependency Injection ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/05/07/why-you-should-combine-symfony-console-and-dependency-injection/</link>
+                    <description><![CDATA[ I saw 2 links to Symfony\Console in today&#039;s Week of Symfony (what a time reference, huh?).
+There are plenty of such posts out there, even in Pehapkari community blog: Best Practice for Symfony Console in Nette or Symfony Console from the Scratch.
+
+But nobody seems to write about the greatest bottleneck of Console applications - static cancer. Why is that? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/05/07/why-you-should-combine-symfony-console-and-dependency-injection/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/05/07/why-you-should-combine-symfony-console-and-dependency-injection#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How Do You Treat Your Own First AI? ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/05/03/how-do-you-treat-your-own-first-ai/</link>
+                    <description><![CDATA[ Artificial intelligence is at boom the last couple of years. I wrote about AI and its relation to jobs development in following years.
+Now we&#039;ll try to look a bit closer. Not in time, but in space. Take a look around you, what do you see?
+Do you see your own first AI already? And how do you treat it? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/05/03/how-do-you-treat-your-own-first-ai/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/05/03/how-do-you-treat-your-own-first-ai#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Programming = Climbing a Huge Mountain ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/04/30/programming-climbing-a-huge-mountain/</link>
+                    <description><![CDATA[ Let&#039;s take a break after 2 long code-posts from last week and enjoy bit of philosophy. I apply the mountain climber in programming for last 2 years and it really helps me to overcome difficult spots.
+
+Today we&#039;ll climb together. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/04/30/programming-climbing-a-huge-mountain/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/04/30/programming-climbing-a-huge-mountain#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How I Got into Static Trap and Made Fool of Myself ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/04/26/how-i-got-into-static-trap-and-made-fool-of-myself/</link>
+                    <description><![CDATA[ PHP story with code examples, copy-cat killers, just a little bit of static, consistency, sniffs and way to prevent all that ever happening ever again. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/04/26/how-i-got-into-static-trap-and-made-fool-of-myself/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/04/26/how-i-got-into-static-trap-and-made-fool-of-myself#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Slowly Turn your Symfony Project to Legacy with Action Injection ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/04/23/how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection/</link>
+                    <description><![CDATA[ The other day I saw the question on Reddit about Symfony&#039;s controller action dependency injection. More people around me are hyped about this new feature in Symfony 3.3 that allows to autowire services via action argument typehints. It&#039;s new, it&#039;s cool and no one has a bad experience with it. The ideal candidate for any code you write today.
+
+Since Nette and Laravel introduced a similar feature in 2014, there are empirical data that we learn from.
+
+Today I&#039;ll share the experience I have from consulting few Nette applications with dangerous overuse of this pattern and how this one thing turned the code to complete mess. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/04/23/how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/04/23/how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ 4 Tips To Get Emotions to Your Blogging About Programming ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/04/19/4-tips-to-get-emotions-to-your-blogging-about-programming/</link>
+                    <description><![CDATA[ Last week I wrote about top 5 bloghacks I found in this book.
+
+Today I&#039;ll share with you 5 tips that proven useful during my programming/self-education career. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/04/19/4-tips-to-get-emotions-to-your-blogging-about-programming/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/04/19/4-tips-to-get-emotions-to-your-blogging-about-programming#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ 5 Steps to Your First Fixer or Sniff Test ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/04/16/5-steps-to-your-first-fixer-or-sniff-test/</link>
+                    <description><![CDATA[ When I wrote my first Sniff 4 years ago I wanted to test it. I expected testing class, that would register sniff, provide ugly code and compare it to fixed one. So I started to explore PHP_CodeSniffer looking for such feature. Found one class, second class, warnings, errors, uff and after 10th error, I closed it.
+
+When I wrote my first Fixer, the story was a bit shorter but very similar. No wonder people don&#039;t test when the entry barrier is so huge.
+
+Since I use both of them and I want to motivate people to write their own sniffs and fixers, I turned this barrier to just 5 short steps for both of them. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/04/16/5-steps-to-your-first-fixer-or-sniff-test/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/04/16/5-steps-to-your-first-fixer-or-sniff-test#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ The Best 5 of 256 Bloghacks Book ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/04/12/the-best-5-of-256-bloghacks-book/</link>
+                    <description><![CDATA[ Have you heard of 256 Bloghacks book by Yegor? Do you think about reading it, but just don&#039;t have the time and money?
+
+This post is the best of selection just for you and if you feel you like it, you can buy it and read as a whole. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/04/12/the-best-5-of-256-bloghacks-book/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/04/12/the-best-5-of-256-bloghacks-book#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Try PSR-12 on Your Code Today ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/04/09/try-psr-12-on-your-code-today/</link>
+                    <description><![CDATA[ The standard is still behind the door, but feedback, before it gets accepted, is very important. After accepting it will be written down and it will be difficult to change anything.
+
+Try PSR-12 today and see, how it works for your code. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/04/09/try-psr-12-on-your-code-today/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/04/09/try-psr-12-on-your-code-today#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ 4 Ways to Speedup Your Symfony Development with PackageBuilder ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/04/05/4-ways-to-speedup-your-symfony-development-with-packagebuilder/</link>
+                    <description><![CDATA[ Symplify 4 was released and with it also one package, that contains all the Symfony tweaks that Symplify packages use.
+
+Throwable render? Test services without public violation? Load parameters with glob? We got you covered! ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/04/05/4-ways-to-speedup-your-symfony-development-with-packagebuilder/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/04/05/4-ways-to-speedup-your-symfony-development-with-packagebuilder#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Rectify: Turn All Doctrine Repositories From Inheritance To Composition in Seconds ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/04/02/rectify-turn-repositories-to-services-in-symfony/</link>
+                    <description><![CDATA[ Today I start new series called Rectify. It will be about instant refactoring to better code not manually, but with Rector.
+
+That way there is no excuse left to change your legacy application to clean code you&#039;ll love to extend.
+
+We&#039;ll start with very popular post - Repository with Doctrine as Service in Symfony. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/04/02/rectify-turn-repositories-to-services-in-symfony/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/04/02/rectify-turn-repositories-to-services-in-symfony#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ New in Coding Standard 4: Long Line Breaks Automated and 3 Legacy Prevention Fixers ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/03/29/new-in-coding-standard-4-long-line-breaks-automated-and-3-legacy-prevention-fixers/</link>
+                    <description><![CDATA[ Legacy code prevention, lines automated and clear naming of classes in huge projects.
+That all is coming to Coding Standard 4 (still in alpha).
+
+Are you curious what work will now these 4 news fixers handle for you? Look inside. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/03/29/new-in-coding-standard-4-long-line-breaks-automated-and-3-legacy-prevention-fixers/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/03/29/new-in-coding-standard-4-long-line-breaks-automated-and-3-legacy-prevention-fixers#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ New in Easy Coding Standard 4: Clean Symfony Standard with Yaml and Services ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/03/26/new-in-easy-coding-standard-4-clean-symfony-standard-with-yaml-and-services/</link>
+                    <description><![CDATA[ I wrote about news in Easy Coding Standard 3 a while ago. EasyCodingStandard 4 is released yet (still in alpha), but soon you&#039;ll be able to use all the news I&#039;ll show you today.
+
+And what are they? Neon to Yaml, semi-static to Services, customizable caching, even simpler skipper, short bin and more. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/03/26/new-in-easy-coding-standard-4-clean-symfony-standard-with-yaml-and-services/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/03/26/new-in-easy-coding-standard-4-clean-symfony-standard-with-yaml-and-services#disqus_thread</comments>
+                </item>
+                                
+            
+                                                    
+                        
+                        
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How Teaching Suicides Itself by Killing the Passion ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/03/22/how-teaching-suicides-itself-by-killing-the-passion/</link>
+                    <description><![CDATA[ Today I wanted to write about Rector showcase how to use it to automate migration to Repository as Service in Symfony.
+
+Instead I read Teaching PHP to students by Romans Malinovskis that got me thinking how outside education can easily kill any piece passion in children.
+
+What if instead of outside-in - education first, we could do it inside-out - passion first? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/03/22/how-teaching-suicides-itself-by-killing-the-passion/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/03/22/how-teaching-suicides-itself-by-killing-the-passion#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Criticize like a Senior Programmer ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/03/19/how-to-criticize-like-a-senior-programmer/</link>
+                    <description><![CDATA[ As I spend most of my socials online time on Github and PHP-related discussion, I&#039;ve noticed many people do so many wrong things while giving critics.
+
+I want to correct this once and for all, so I&#039;ve prepared a guide for you. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/03/19/how-to-criticize-like-a-senior-programmer/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/03/19/how-to-criticize-like-a-senior-programmer#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Monorepo on the Rise in PHP ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/03/15/monorepo-on-the-rise-in-php/</link>
+                    <description><![CDATA[ Do you know what a monorepo is? How to start with it? What you need and do even other programming languages use it? And what about Facebook and Google think about it?
+
+Gomonorepo.org will brief you with all important answers. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/03/15/monorepo-on-the-rise-in-php/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/03/15/monorepo-on-the-rise-in-php#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Neon vs. Yaml and How to Migrate Between Them ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/03/12/neon-vs-yaml-and-how-to-migrate-between-them/</link>
+                    <description><![CDATA[ Do you know *.neon format? It&#039;s config file format created in Czech Republic by David Grudl (author of Nette) and if you&#039;re foreigner, you might know it from or EasyCodingStandard and PHPStan. Even suggested as composer.neon.
+
+And *.yaml is similar format used almost everywhere else.
+
+You spot the suffix is different, but what about syntax differences? And which one is better? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/03/12/neon-vs-yaml-and-how-to-migrate-between-them/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/03/12/neon-vs-yaml-and-how-to-migrate-between-them#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Why is Collector Pattern so Awesome ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/03/08/why-is-collector-pattern-so-awesome/</link>
+                    <description><![CDATA[ How to achieve open for extension and closed for modification one of sOlid principals?
+
+Why Collector pattern beats config tagging? How to use the in Symfony application? How it turns locked architecture into scaling one? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/03/08/why-is-collector-pattern-so-awesome/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/03/08/why-is-collector-pattern-so-awesome#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Rector: Part 3 - Why Instant Upgrades ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/03/05/rector-part-3-why-instant-upgrades/</link>
+                    <description><![CDATA[ Why are instant upgrades better than old school manual upgrades? Why is the path to find exact before/after like hell-road?
+Why you should use Rector and when? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/03/05/rector-part-3-why-instant-upgrades/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/03/05/rector-part-3-why-instant-upgrades#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ New in Symplify 3: 4 Improvements in EasyCodingStandard ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/03/01/new-in-symplify-3-4-improvements-in-easy-coding-standard/</link>
+                    <description><![CDATA[ What is new in Easy Coding Standard 3?
+Nice diffs for fixable sniffs, smart excluding, support for sniff warnings and one more... ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/03/01/new-in-symplify-3-4-improvements-in-easy-coding-standard/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/03/01/new-in-symplify-3-4-improvements-in-easy-coding-standard#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Rector: Part 2 - Maturity of PHP Ecosystem and Founding Fathers ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/02/26/rector-part-2-maturity-of-php-ecocystem-and-founding-fathers/</link>
+                    <description><![CDATA[ What it took for Rector to be born?
+
+Paradigm shift, ecosystem maturity, need for speed to solve common problems community has. And a great team you share your work with that feedbacks and reflects. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/02/26/rector-part-2-maturity-of-php-ecocystem-and-founding-fathers/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/02/26/rector-part-2-maturity-of-php-ecocystem-and-founding-fathers#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Rector: Part 1 - What and How ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/02/19/rector-part-1-what-and-how/</link>
+                    <description><![CDATA[ Rector is a PHP tool that handles 2 things: instant upgrades and architecture refactorings.
+
+What exactly Rector does and how does it work? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/02/19/rector-part-1-what-and-how/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/02/19/rector-part-1-what-and-how#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Sleep Shorter to Get 62 % Smarter ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/02/12/sleep-shorter-to-get-62-percent-smarter/</link>
+                    <description><![CDATA[ Even though I see University as very poor place to learn something useful, I studied Psychology in Brno for 3 years.
+
+Psychological Impacts of Polyphasic Sleep is the topic of my bachelor thesis I wrote in 2012. In the end it gave me clear answer to question: can we sleep less than 4,5 hours a night to get smarter? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/02/12/sleep-shorter-to-get-62-percent-smarter/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/02/12/sleep-shorter-to-get-62-percent-smarter#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Run Symfony Processes Asynchronously ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/02/05/how-to-run-symfony-processes-asynchronously/</link>
+                    <description><![CDATA[ It takes quite a long time to split Symplify monorepo packages: exactly 420 s for 8 packages of Symplify.
+
+Could we go 200 % faster by putting processes from serial to parallel? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/02/05/how-to-run-symfony-processes-asynchronously/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/02/05/how-to-run-symfony-processes-asynchronously#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Deal With Haters in Comments and Github ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/01/29/how-to-deal-with-haters-in-comments-and-github/</link>
+                    <description><![CDATA[ That&#039;s what I was asked yesterday for about 5th person already. How do I deal with that when I write an article, when I tweet or comment on Github and someone is throwing dirt on me? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/01/29/how-to-deal-with-haters-in-comments-and-github/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/01/29/how-to-deal-with-haters-in-comments-and-github#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Get Parameter in Symfony Controller the Clean Way ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/01/22/how-to-get-parameter-in-symfony-controller-the-clean-way/</link>
+                    <description><![CDATA[ Services are already moving to Constructor Injection in Symfony.
+
+Now it&#039;s time for parameters to follow. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/01/22/how-to-get-parameter-in-symfony-controller-the-clean-way/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/01/22/how-to-get-parameter-in-symfony-controller-the-clean-way#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Is Your CHANGELOG Useful or Just Boring Plain Text? And How to Fix That ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/01/15/is-your-changelog-useful-or-just-boring-plain-text-and-how-to-fix-that/</link>
+                    <description><![CDATA[ Do you keep a CHANGELOG? You should! I do, because it&#039;s the main story about the open-source package.
+
+And if you do, is it boring plain text or useful rich markdown? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/01/15/is-your-changelog-useful-or-just-boring-plain-text-and-how-to-fix-that/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/01/15/is-your-changelog-useful-or-just-boring-plain-text-and-how-to-fix-that#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Clean and Decoupled Controllers, Commands and Event Subscribers Once and for All with Delegator Pattern ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/01/08/clean-and-decoupled-controllers-commands-and-event-subscribers-once-and-for-all-with-delegator-pattern/</link>
+                    <description><![CDATA[ Do you write your application for better future sustainability or just to get paid for it today?
+If you&#039;re the first one, you care about design patterns. I&#039;m happy to see you!
+
+
+Today I will show you why and how to use delegator pattern in your application so it makes it to the pension. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/01/08/clean-and-decoupled-controllers-commands-and-event-subscribers-once-and-for-all-with-delegator-pattern/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/01/08/clean-and-decoupled-controllers-commands-and-event-subscribers-once-and-for-all-with-delegator-pattern#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ New in Symplify 3: 4 Time-saving Coding Standard Checkers ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2018/01/01/new-in-symplify-3-4-time-saving-coding-standard-checkers/</link>
+                    <description><![CDATA[ Coding Standard in Symplify 3 brings checkers build from practical use in PHPStorm. It can do lot of work for you, like add getters, remove trailing spaces, but has still some room for automation and improvement.
+
+I already wrote about doc block cleaner fixer and here 4 more checkers, that saves you from monkey-typing and let you focus on algorithms. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2018/01/01/new-in-symplify-3-4-time-saving-coding-standard-checkers/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2018/01/01/new-in-symplify-3-4-time-saving-coding-standard-checkers#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Composer Local Packages for Dummies ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/12/25/composer-local-packages-for-dummies/</link>
+                    <description><![CDATA[ This is the simplest way to start using /packages directory in your application, that leads to cleaner code, maintainable architecture and is the best to start testing. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/12/25/composer-local-packages-for-dummies/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/12/25/composer-local-packages-for-dummies#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ New in Symplify 3: DocBlock Cleaner Fixer ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/12/17/new-in-symplify-3-doc-block-cleaner-fixer/</link>
+                    <description><![CDATA[ Focus on docblock has increased thanks to PHP 7 scalar types and PHPStan with intersection and union types. Thanks to that, more and more docblocks become just visual noise causing cognitive overload.
+
+Symplify 3 introduces a new help hand - fixer that cleans doc block noise for you and makes your code more valuable to the reader. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/12/17/new-in-symplify-3-doc-block-cleaner-fixer/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/12/17/new-in-symplify-3-doc-block-cleaner-fixer#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ New in Symplify 3: Statie Generators ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/12/11/new-in-symplify-3-statie-generators/</link>
+                    <description><![CDATA[ Statie missed one important feature. Posts were the only elements that you could render as standlone page.
+But what if you want a web porfolio, not with posts but with features projects? Or lectures pages?
+
+Statie 3 to the rescue! ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/12/11/new-in-symplify-3-statie-generators/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/12/11/new-in-symplify-3-statie-generators#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Life 3.0: What Will You Do When AI Takes Over the World ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/12/04/life30-what-will-you-do-when-ai-takes-over-the-world/</link>
+                    <description><![CDATA[ Do you remember cell phones? Those that could only call and send SMS. I bought a Nokia phone that could also play mp3s when I was 14 years old.
+Who would have thought we could play movies and use internet on those phones just 10 years later.
+
+Artificial Intelligence is now in same level as mobile phones playing mp3s. Or maybe it already took over the world without knowing us, as Life 3.0 story unveils... ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/12/04/life30-what-will-you-do-when-ai-takes-over-the-world/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/12/04/life30-what-will-you-do-when-ai-takes-over-the-world#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ United PHP 7.1 Adoption 6 Months Later ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/11/27/united-php-71-adoption-6-months-later/</link>
+                    <description><![CDATA[ A year since it&#039;s release and 6 months since GoPHP71 initiative.
+PHP 7.1 is the fastest adopted minor version of PHP already beating PHP 7.0.
+
+How is adoption going in open-source and why it should continue from bleeding-edge projects? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/11/27/united-php-71-adoption-6-months-later/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/11/27/united-php-71-adoption-6-months-later#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Write Interesting Jobs Offers for Programmers ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers/</link>
+                    <description><![CDATA[ A few years watching the labor market from a position of PHP programmers from the perspective of companies. With both sides have a good relationship. I think what they need and what is bothering you. I see that they want each other, just communication is little stuck.
+
+I gave feedback on Jobs.cz, Skrz.cz and few more ads and this is summary of tips, which I want to share with every company trying to hire programmer. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ 7 Tips You Should Know Before Going To University ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/11/13/7-tips-you-should-know-before-going-to-university/</link>
+                    <description><![CDATA[ It&#039;s been 4 years since I finished university without having any degree out of it. During those 4 years, I was asked about university by people I could count on the fingers of one hand. And the about the degree? Not one.
+
+I recently talked with one high-school guy and I realized that college is still seen as something sacred, important and mostly from no other than teachers and parents. I told myself that I&#039;ll write down my insights and advice that I would give my 8 years younger self. If you are 18-19 years&#039;re considering what to do next, go ahead. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/11/13/7-tips-you-should-know-before-going-to-university/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/11/13/7-tips-you-should-know-before-going-to-university#disqus_thread</comments>
+                </item>
+                                
+            
+                                                    
+                        
+                        
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to change PHP code with Abstract Syntax Tree ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/11/06/how-to-change-php-code-with-abstract-syntax-tree/</link>
+                    <description><![CDATA[ Today we can do amazing things with PHP. Thanks to AST and nikic/php-parser we can create very narrow artificial intelligence, which can work for us.
+
+Let&#039;s create first its synapse! ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/11/06/how-to-change-php-code-with-abstract-syntax-tree/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/11/06/how-to-change-php-code-with-abstract-syntax-tree#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ What can You Learn from Menstruation and Symfony Releases ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/10/30/what-can-you-learn-from-menstruation-and-symfony-releases/</link>
+                    <description><![CDATA[ I wrote about monorepo and how it turned me into lazy programmer before.
+
+As monorepo is use more and more, we should look at it again.
+Today from a bit atypical point of view: combined with bit of blood and sunshine.
+
+Are you ready? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/10/30/what-can-you-learn-from-menstruation-and-symfony-releases/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/10/30/what-can-you-learn-from-menstruation-and-symfony-releases#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ IMbox Zero ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/10/23/imbox-zero/</link>
+                    <description><![CDATA[ You have probably heard about Inbox Zero. ZTD technique, to keep your email inbox clean and your brain well rested.
+
+Let&#039;s take it a step further into 2017 - to instant messaging. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/10/23/imbox-zero/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/10/23/imbox-zero#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to use Repository with Doctrine as Service in Symfony ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/10/16/how-to-use-repository-with-doctrine-as-service-in-symfony/</link>
+                    <description><![CDATA[ Dependency injection with autowiring is super easy since Symfony 3.3. Yet on my mentoring I still meet service locators.
+
+Mostly due to traditional registration of Doctrine repositories.
+
+The way out from service locators to repository as service was described by many before and now we put it into Symfony 3.3 context. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/10/16/how-to-use-repository-with-doctrine-as-service-in-symfony/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/10/16/how-to-use-repository-with-doctrine-as-service-in-symfony#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Get the Most Valuable Feedback You Can Get ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/10/09/how-to-get-the-most-valuable-feedback-you-can-get/</link>
+                    <description><![CDATA[ Feedback is one of the best way to improve yourself. To make it really work it have to be able to get to you. &amp;quot;That&#039;s wrong&amp;quot; usually doesn&#039;t work as the person giving the feedback intended.
+
+If the feedback is honest, understandable, from trustful person who knows your history and values it can make your mind shine for the brighter future with gratitude.
+
+How to get such feedback? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/10/09/how-to-get-the-most-valuable-feedback-you-can-get/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/10/09/how-to-get-the-most-valuable-feedback-you-can-get#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ EasyCodingStandard and PHPStan meet 3&amp;nbsp;Symfony E-Commerce Projects ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/10/02/easy-coding-standard-and-phpstan-meet-3-symfony-ecommerce-projects/</link>
+                    <description><![CDATA[ In the last post, we looked at the static analysis of 3 Symfony E-Commerce projects.
+Lines of code, Duplicated code, Cyclomatic complexity or Method length. These metrics are very rarely used in practise (even though there is a sniff for that).
+Today, I am going to show you how you can check them with tools that can help you keep your code better on daily basis - EasyCodingStandard and PHPStan. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/10/02/easy-coding-standard-and-phpstan-meet-3-symfony-ecommerce-projects/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/10/02/easy-coding-standard-and-phpstan-meet-3-symfony-ecommerce-projects#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ 3 non-IT Books That Help you to Become Better Programmer ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/09/25/3-non-it-books-that-help-you-to-become-better-programmer/</link>
+                    <description><![CDATA[ I love reading books. It helps me to create much deeper and persistent neural connections than any other form of self-education.
+
+These books accidentally help me to write more readable code, create understandable and smart architecture or manage open-source in more polite and leading way.
+
+Are you tired of reading technical books? Take a rest with these 3. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/09/25/3-non-it-books-that-help-you-to-become-better-programmer/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/09/25/3-non-it-books-that-help-you-to-become-better-programmer#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ 4 Simple Checkers for Coding Standard Haters but Clean Code Lovers ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/09/18/4-simple-checkers-for-coding-standard-haters-but-clean-code-lovers/</link>
+                    <description><![CDATA[ Do you find coding standards too annoying in telling you where to put that bracket?
+Is that the reason you haven&#039;t tried them yet?
+
+Great! This post is for you. There are other ways to use coding standard and clean code is one of them. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/09/18/4-simple-checkers-for-coding-standard-haters-but-clean-code-lovers/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/09/18/4-simple-checkers-for-coding-standard-haters-but-clean-code-lovers#disqus_thread</comments>
+                </item>
+                                
+            
+                                                    
+                        
+                        
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to write Open-Source in PHP 3: Deprecating Code ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/09/11/how-to-write-open-source-in-php-3-deprecating-code/</link>
+                    <description><![CDATA[ Humans, world and PHP Frameworks constantly evolve - their code functionality changes. Class or method is renamed, method has 1 new argument or new class is decoupled.
+
+In Symfony world you probably know about Backward Compatibility Promise.
+It prevents from unexpected and frustrating BC breaks and helps users to upgrade gradually thanks to deprecation messages.
+
+In this post I will show you how to work with deprecation messages. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/09/11/how-to-write-open-source-in-php-3-deprecating-code/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/09/11/how-to-write-open-source-in-php-3-deprecating-code#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How ApiGen Survived its Own Death ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/09/04/how-apigen-survived-its-own-death/</link>
+                    <description><![CDATA[ ApiGen was broken for a long time. It depended on Reflection package, that was not developed since 2013 and was unable to parse newer code. When I say newer, I mean hot PHP features like ::class in 5.5. I don&#039;t even talk about 5.6 or 7.
+
+I got frustrated. I spent a year on a project that is still not working out of the box. So I took spring off to change it. My goal was to replace reflection or let the project die in peace.
+
+This is story about the whole journey of ups and downs. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/09/04/how-apigen-survived-its-own-death/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/09/04/how-apigen-survived-its-own-death#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Shopsys, Spryker &amp; Sylius under Static Analysis ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/08/28/shopsys-spriker-and-sylius-under-static-analysis/</link>
+                    <description><![CDATA[ When you&#039;re building a new web project based on open-source, you&#039;ll pick a package you know, have good experience with or try a new one that might be even better.
+Lines of code, cyclomatic complexity, method count per class, length of method, number of interfaces relative to classes - these all can be just a superficial number or a quick measure how well is the project built. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/08/28/shopsys-spriker-and-sylius-under-static-analysis/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/08/28/shopsys-spriker-and-sylius-under-static-analysis#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ 5 Useful Rules From Symplify Coding Standard ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/08/21/5-useful-rules-from-symplify-coding-standard/</link>
+                    <description><![CDATA[ Symplify Coding Standard was born from Zenify, back from the days I was only Nette programmer. It focuses on maintainability and clean architecture. I try to make them simple: each of them does one job.
+
+With over 13 000 downloads I think I should write about 5 of them you can use in your projects today. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/08/21/5-useful-rules-from-symplify-coding-standard/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/08/21/5-useful-rules-from-symplify-coding-standard#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Apply Nette Coding Standard in Your Project ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/08/14/how-to-apply-nette-coding-standard-in-your-project/</link>
+                    <description><![CDATA[ Pull-requests are more fun thanks to automated coding standard. You don&#039;t have explain where to put space or bracket. You can talk about architecture or meaning of the code instead. Moreover in open-source. I wanted to make this possible in Nette, but Coding Standards could be found only in documentation.
+
+This year I started to work on a Nette Coding Standard (NCS) that you can put to CLI. And you&#039;ll be able set it up in in your project yourself today. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/08/14/how-to-apply-nette-coding-standard-in-your-project/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/08/14/how-to-apply-nette-coding-standard-in-your-project#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ 7 New Features in Easy Coding Standard 2.2 ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/08/07/7-new-features-in-easy-coding-standard-22/</link>
+                    <description><![CDATA[ After extensive cooperation with David Grudl on Nette\CodingStandard EasyCodingStandard got new features, that moved the project to completely new level of comfort.
+
+Prepared configs, reduction of config to few lines, --config option and more. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/08/07/7-new-features-in-easy-coding-standard-22/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/08/07/7-new-features-in-easy-coding-standard-22#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How PHP Coding Standard Tools Actually Work ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/07/31/how-php-coding-standard-tools-actually-work/</link>
+                    <description><![CDATA[ Do you use PHP CS Fixer or PHP_CodeSniffer? Do you know the way they work is ~80 % the same? Do you wonder how they work under the hood?
+
+Today I will share 3 main pillars of their architecture. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/07/31/how-php-coding-standard-tools-actually-work/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/07/31/how-php-coding-standard-tools-actually-work#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Write Custom Fixer for PHP CS Fixer 2.4 ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/07/24/how-to-write-custom-fixer-for-php-cs-fixer-24/</link>
+                    <description><![CDATA[ You already know how coding standard tools work with tokens and how to write a Sniff.
+
+Today we&#039;ll explore a bit younger tool - PHP CS Fixer and we get from only finding the smelly spot to fixing it. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/07/24/how-to-write-custom-fixer-for-php-cs-fixer-24/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/07/24/how-to-write-custom-fixer-for-php-cs-fixer-24#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Write Custom Sniff for Code Sniffer 3 ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/07/17/how-to-write-custom-sniff-for-code-sniffer-3/</link>
+                    <description><![CDATA[ When I give talks about coding standards, I ask people 2 questions: do you use coding standards? Do you write your own sniffs? On average, above 50 % uses it, but only 1-2 people wrote their own sniff.
+
+PSR-2 is great for start, but main power is in those own sniffs. Every project has their own need, every person has different preferences.
+
+I Google then and found outdated or complicated sources, so I&#039;ve decided to write down a reference post for those, who want to start with sniffs.
+Let&#039;s look what will show all you need (and nothing more) to know to write your first sniff. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/07/17/how-to-write-custom-sniff-for-code-sniffer-3/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/07/17/how-to-write-custom-sniff-for-code-sniffer-3#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Deprecate PHP Package Without Leaving Anyone Behind ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/07/03/how-to-deprecate-php-package-without-leaving-anyone-behind/</link>
+                    <description><![CDATA[ You create PHP open-source packages because you personally use them in your projects. And you take care of them.
+In time you change a job or switch a programming language and you don&#039;t have time to take care of them properly. Number of issues and PRs grows and package is getting obsolete.
+
+You can do 2 things in this situation: nothing like most people do or take responsibility, deprecate package and inform your users about better alternative. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/07/03/how-to-deprecate-php-package-without-leaving-anyone-behind/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/07/03/how-to-deprecate-php-package-without-leaving-anyone-behind#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ PHP Object Calisthenics Made Simple - Version 3.0 is Out Now ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/06/26/php-object-calisthenics-rules-made-simple-version-3-0-is-out-now/</link>
+                    <description><![CDATA[ Object Calisthenics are 9 language-agnostic rules to help you write better and cleaner code.
+They help you to get rid of &amp;quot;else&amp;quot; statements, method chaining, long classes or functions, unreadable short names and much more.
+
+Object Calisthenics 3.0 runs on CodeSniffer 3.0 and PHP 7.1. It brings 6 of them with fancy configuration and code examples. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/06/26/php-object-calisthenics-rules-made-simple-version-3-0-is-out-now/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/06/26/php-object-calisthenics-rules-made-simple-version-3-0-is-out-now#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Require Minimal Code Coverage for Github Pull-Requests with Coveralls ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/06/12/how-to-require-minimal-code-coverage-for-github-pull-requests-with-coveralls/</link>
+                    <description><![CDATA[ Do you maintain tested open-source project? Are you sad of your code-coverage decreasing over time in wave of pull-requests? Are you tired of telling &amp;quot;could you add tests&amp;quot;?
+
+I will show you how to let Travis and Coveralls do this job for you. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/06/12/how-to-require-minimal-code-coverage-for-github-pull-requests-with-coveralls/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/06/12/how-to-require-minimal-code-coverage-for-github-pull-requests-with-coveralls#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Go PHP 7.1! ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/06/05/go-php-71/</link>
+                    <description><![CDATA[ PHP frameworks start to require PHP 7.1, leading with Nette 3 and Symfony 4.
+
+Why skip PHP 7.0 and go directly to PHP 7.1? When is the best time to join?
+What projects are already &amp;quot;on the move&amp;quot;? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/06/05/go-php-71/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/06/05/go-php-71#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Thank you David Grudl ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/06/01/thank-you-david/</link>
+                    <description><![CDATA[ While using open-source, we rarely realize that there is one or few people behind it. People who work in their free time and put an effort in it.
+We feel like using a product - it should work and when it doesn&#039;t, it&#039;s broken. And when our application is constantly broken, we will be angry for them.
+
+But if our application is smooth and ready, do we love and say thank you?
+
+I&#039;d like to express my gratitude and tribute for you, David - you made my programming life very joyful and curious experience. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/06/01/thank-you-david/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/06/01/thank-you-david#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Symplify packages deprecations brought by Symfony 3.3 ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/05/29/symplify-packages-deprecations-brought-by-symfony-33/</link>
+                    <description><![CDATA[ Symfony 3.3 brings new Dependency Injection features,
+that were supplemented by few of Symplify packages in Symfony 3.2 and below.
+There is no need - as Honza Mikes said - to bring the wood to the forest. So they were deprecated.
+
+I will show why and what packages were deprecated and how to upgrade your app
+to use Symfony 3.3 instead. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/05/29/symplify-packages-deprecations-brought-by-symfony-33/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/05/29/symplify-packages-deprecations-brought-by-symfony-33#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to refactor to new Dependency Injection features in Symfony 3.3 ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/</link>
+                    <description><![CDATA[ This May will be released Symfony 3.3 with many DependencyInjection improvements.
+Each of them is quite nice, but combined together - they are huge jump compare to what we have now.
+
+Today I will show you what code can you drop and how to migrate it. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Combine power of PHP_CodeSniffer and PHP CS Fixer in 3 lines ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/05/03/combine-power-of-php-code-sniffer-and-php-cs-fixer-in-3-lines/</link>
+                    <description><![CDATA[ PHP_CodeSniffer has over 3 400 stars on Github and 210 default sniffs,
+PHP CS Fixer with 4 423 stars brings you 142 fixers.
+
+Both powerful tools dealing with coding standards with huge communities behind them.
+Can you imagine using them both and actually enjoy it? Today I will show you how. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/05/03/combine-power-of-php-code-sniffer-and-php-cs-fixer-in-3-lines/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/05/03/combine-power-of-php-code-sniffer-and-php-cs-fixer-in-3-lines#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ 3 Symfony and Laravel Patterns that Make Code Easy to Extend Without Modification ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/04/14/3-symfony-and-laravel-patterns-that-make-code-easy-to-extends-without-modification/</link>
+                    <description><![CDATA[ Do you write open-source? If so, you probably get many PR and issues about adding new feature, that people miss. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/04/14/3-symfony-and-laravel-patterns-that-make-code-easy-to-extends-without-modification/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/04/14/3-symfony-and-laravel-patterns-that-make-code-easy-to-extends-without-modification#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Why Is Doctrine Dying ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/03/27/why-is-doctrine-dying/</link>
+                    <description><![CDATA[ Do you use Doctrine ORM? If so, do you follow its evolution on Github? Symfony is evolving, Laravel is evolving, Nette is evolving, world is evolving... Doctrine not. Today I will show you 3 reasons why. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/03/27/why-is-doctrine-dying/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/03/27/why-is-doctrine-dying#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Statie 4: How to Create The Simplest Blog ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/03/13/statie-4-how-to-create-the-simplest-blog/</link>
+                    <description><![CDATA[ Statie is very powerful tool for creating small sites. But you will use just small part of it&#039;s features, having just micro-sites. How to get to full 100%? Build a blog.
+
+Today I will show you, how to put your first post. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/03/13/statie-4-how-to-create-the-simplest-blog/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/03/13/statie-4-how-to-create-the-simplest-blog#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Statie 3: How to Add Reusable Parts of Code ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/03/09/statie-3-how-to-add-reusable-parts-of-code/</link>
+                    <description><![CDATA[ You already know how to run Statie with layout and how to add data structures.
+ ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/03/09/statie-3-how-to-add-reusable-parts-of-code/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/03/09/statie-3-how-to-add-reusable-parts-of-code#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Statie 2: How add Contact Page With Data ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/03/06/statie-2-how-to-add-contact-page-with-data/</link>
+                    <description><![CDATA[ In first post about Statie you generated simple index with layout. Today we look on first semi-dynamic feature: data structures. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/03/06/statie-2-how-to-add-contact-page-with-data/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/03/06/statie-2-how-to-add-contact-page-with-data#disqus_thread</comments>
+                </item>
+                                
+            
+                                                    
+                        
+                        
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Fast and Easy Way to Learn Complex Topics ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/02/22/fast-and-easy-way-to-learn-complex-topics/</link>
+                    <description><![CDATA[ This little trick helps me to learn complex topic both fast and easy. It works very well during my lectures and posts. In Informatics, people tend to make issues more complex than it is necessary. It slows down the learning steep with no added value.
+
+I think it&#039;s about time to take it back to the simplest step and make learning faster (or machines will). Today I will show you how. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/02/22/fast-and-easy-way-to-learn-complex-topics/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/02/22/fast-and-easy-way-to-learn-complex-topics#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Statie: How to run it Locally ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/02/20/statie-how-to-run-it-locally/</link>
+                    <description><![CDATA[ Statie is a tool to create semi-static webpages. It allows you to host your website on Github for free. Event with own domain and https. It was created in late 2016 based on Scuplin and its major feature is simplicity.
+
+That was the &amp;quot;pitch&amp;quot;, now I will show you how to use it. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/02/20/statie-how-to-run-it-locally/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/02/20/statie-how-to-run-it-locally#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Minimalistic Way to Create Your First Nette Extension ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/02/15/minimalistic-way-to-create-your-first-nette-extension/</link>
+                    <description><![CDATA[ Nette extension allows you not only to create open-source packages, but also to split your application to small and logical chunks of code.
+
+Open-source extensions are more complex using many Nette\DI features, but today I will show you, how to start with one Nette\DI method and one service only. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/02/15/minimalistic-way-to-create-your-first-nette-extension/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/02/15/minimalistic-way-to-create-your-first-nette-extension#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Drop all Service Tags in Your Nette and Symfony Applications ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/02/12/drop-all-service-tags-in-your-nette-and-symfony-applications/</link>
+                    <description><![CDATA[ What is tagging for? Why we should get rid of it?
+Today I will show you, how to do it gradually without breaking the application. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/02/12/drop-all-service-tags-in-your-nette-and-symfony-applications/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/02/12/drop-all-service-tags-in-your-nette-and-symfony-applications#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to Decouple Monolith like a Boss with Composer Local Packages ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/02/07/how-to-decouple-monolith-like-a-boss-with-composer-local-packages/</link>
+                    <description><![CDATA[ While building PHP applications that grows and grows, you often get to the situation when there is too much code. You get easily lost, duplicate and code smells and rottens. The cognitive upkeep to add a new class is bigger every day.
+ ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/02/07/how-to-decouple-monolith-like-a-boss-with-composer-local-packages/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/02/07/how-to-decouple-monolith-like-a-boss-with-composer-local-packages#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How Monolithic Repository in Open Source saved my Laziness ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/01/31/how-monolithic-repository-in-open-source-saved-my-laziness/</link>
+                    <description><![CDATA[ I&#039;ve started creating open-source about 6 years ago. Now I&#039;m maintaining over 20 repositories. I used classic standalone repositories, but with each new package I wanted to add, I realized, how much work it needs to keep everything up-to-date and consistent. So I didn&#039;t and got stuck.
+
+Fortunately, I noticed talk from Fabien about monorepo and Symfony. I said to myself: &amp;quot;I don&#039;t know a thing about it. Let&#039;s try it out. I can always return if it sucks.&amp;quot;
+
+I never did. Today I will show you why I see monorepo approach in open-source so awesome. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/01/31/how-monolithic-repository-in-open-source-saved-my-laziness/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/01/31/how-monolithic-repository-in-open-source-saved-my-laziness#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Why I Switched Scrutinizer for PHPStan and You Should Too ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/01/28/why-I-switched-scrutinizer-for-phpstan-and-you-should-too/</link>
+                    <description><![CDATA[ I used Scrutinizer for a few years now for code coverage and code quality. Configuration was far complex, some issues appeared and build kept failing. But I really wanted a code quality checker for my open-source projects and this was the best tool available.
+
+But last week I had an issue with simple composer install command and I have had enough. Then my attention turned to PHPStan, soon-to-be its replacement. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/01/28/why-I-switched-scrutinizer-for-phpstan-and-you-should-too/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/01/28/why-I-switched-scrutinizer-for-phpstan-and-you-should-too#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ 4 Emotional and Honest Reasons Why I Quit my Twitter ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/01/20/4-emotional-reasons-why-I-quit-my-twitter/</link>
+                    <description><![CDATA[ Nowadays we tend to live busy life with all those social networks, notifications and pings. So busy, we don&#039;t have emotional space to just evaluate &amp;quot;How do I like that?&amp;quot;. In my life, this creates cycles, where I keep doing over and over the same thing without any progress.After few months feeling bad with Twitter, I&#039;ve finally decided to quit. Instead of technical point of view I will focus on my feelings - because that&#039;s what matters the most. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/01/20/4-emotional-reasons-why-I-quit-my-twitter/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/01/20/4-emotional-reasons-why-I-quit-my-twitter#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ Why I deleted my LinkedIn account ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2017/01/05/why-I-deleted-my-linkedin-account/</link>
+                    <description><![CDATA[ I used LinkedIn since 2008 when it was sending spam to all my friends. After 8 years of tuning my profile to 95 % score, reading mostly copy-pasted messages,
+checking false notifications, flirting with HR girls and hoping for up votes for my recent skills, I&#039;ve decided it is time to let it go. Why and what I&#039;m gonna do now? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2017/01/05/why-I-deleted-my-linkedin-account/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2017/01/05/why-I-deleted-my-linkedin-account#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to avoid @inject thanks to Decorator feature in Nette ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2016/12/24/how-to-avoid-inject-thanks-to-decorator-feature-in-nette/</link>
+                    <description><![CDATA[ I often find @inject being overused in projects I review while mentoring. They often bring less writing, but in exchange they break SOLID principles.
+
+Today I will show you solution that will keep your code both small and clean - Decorator feature in Nette. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2016/12/24/how-to-avoid-inject-thanks-to-decorator-feature-in-nette/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2016/12/24/how-to-avoid-inject-thanks-to-decorator-feature-in-nette#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                                                    
+                        
+                        
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to write open-source in PHP 2: Rise value of your package with help of skeleton ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2016/09/16/how-to-write-open-source-in-php-2-enjoy-skeletons/</link>
+                    <description><![CDATA[ After creating a repo, we have to fill it with something useful. Our code! Of course, but we also need some metadata files.
+What are they for? Is there some prepared code we can use? What are badges for? I will answer all these questions today. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2016/09/16/how-to-write-open-source-in-php-2-enjoy-skeletons/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2016/09/16/how-to-write-open-source-in-php-2-enjoy-skeletons#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ How to write open-source in PHP 1: Create a repository on Github ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2016/09/09/how-to-write-open-source-in-php-1-create-a-repository/</link>
+                    <description><![CDATA[ Do you have some code you want to share but you don&#039;t know exactly how? Well, writing open-source is complex process.
+In this series, I&#039;ll break it down to the smallest steps possible, so that you
+can start your own OS project with zero-knowledge (OS = open-source).
+Ready? Let&#039;s start with creating a Github repository! ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2016/09/09/how-to-write-open-source-in-php-1-create-a-repository/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2016/09/09/how-to-write-open-source-in-php-1-create-a-repository#disqus_thread</comments>
+                </item>
+                                
+            
+                                                    
+                        
+                        
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                                                    
+                        
+                        
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ The Best of SymfonyCon 2015 ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2015/12/20/the-best-of-symfonycon-2015/</link>
+                    <description><![CDATA[ Annual SymfonyCon held this year in Paris. Despite all the attacks, Paris lives on. Maybe more. An example of this can be 1000 visitors who arrived at the event. I represented Bohemia with Dennis, and also with Petr and Cuba from Lmc.eu. ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2015/12/20/the-best-of-symfonycon-2015/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2015/12/20/the-best-of-symfonycon-2015#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                                                    
+                        
+                                
+            
+                        
+                        
+                        
+                            <item>
+                    <title><![CDATA[ 4 Hot News in Symfony 3 ]]></title>
+                    <link>https://www.tomasvotruba.cz/blog/2015/11/09/4-hot-news-in-symfony-3/</link>
+                    <description><![CDATA[ In November 2015 except for a PHP 7 and Drupal 8,
+Symfony 3 is about to come.
+
+What changes and news it brings? ]]></description>
+                    <guid isPermaLink="false">https://www.tomasvotruba.cz/blog/2015/11/09/4-hot-news-in-symfony-3/</guid>
+                    <dc:creator><![CDATA[ Tomas Votruba ]]></dc:creator>
+                    <pubDate>{post->getDateInFormat('r'))</pubDate>
+                    <comments>https://www.tomasvotruba.cz/blog/2015/11/09/4-hot-news-in-symfony-3#disqus_thread</comments>
+                </item>
+                                
+            
+                        
+                                                    
+                        
+                        </channel>
+</rss>
